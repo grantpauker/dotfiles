@@ -1,1 +1,354 @@
-/home/god/.aliases
+#!/bin/bash
+alias aliases='vim ~/.aliases'
+alias resource='source ~/.profile && bind -f ~/.inputrc'
+alias fclear='echo -e "\033c\c"'
+alias termux='ssh 192.168.1.81 -p 8022'
+alias swp='rm -f .*.sw*'
+bruh (){
+  if [ "$1" = "" ]; then
+    freq=8000
+  else
+    freq=$1
+  fi
+	cat /dev/urandom | aplay -q -f cdr -r $freq &
+  trap "kill -9 $!" SIGINT SIGTERM
+	while :; do
+    sort -R ~/Documents/shakspeare.txt | head -n 1
+  done
+	kill -9 $!
+}
+running(){
+ ps aux | grep $(echo "$1" | sed -e 's/^\(.\)/\[\1\]/')
+}
+alias murder='sudo kill -9'
+ckill(){
+  if [ "$1" = "" ]; then
+    process_name="a.out"
+  else
+    process_name="$1"
+  fi
+  echo $process_name
+  if [[ $(pidof $process_name) != "" ]]; then
+    pidof $process_name | xargs kill -9
+  fi
+}
+
+alias lallegro='pkg-config `echo -en '"'"'pkg-config --libs allegro\e*\x01\ed\edecho'"'"' | bash -i 2>/dev/null`'
+alias lopengl='echo "-lglut -lGL -lGLU"'
+transfer(){
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+    return 1
+  fi
+  tmpfile=$( mktemp -t transferXXX )
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile
+  else
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile
+  fi
+  cat $tmpfile
+  cat $tmpfile | xclip -selection c
+  rm -f $tmpfile
+  echo
+}
+alias funcadd='. /home/god/projects/bash/_add/funcadd'
+alias aliad='. /home/god/projects/bash/_add/aliad'
+alias please='sudo'
+audiolen(){
+  if [ "$1" = "" ]; then
+    ext=$(mostext)
+  else
+    ext="$1"
+  fi
+  out=`find -maxdepth 1 -type f -name "*$ext" -print0 | xargs -0 mplayer -vo dummy -ao dummy -identify 2> /dev/null | perl -nle '/ID_LENGTH=([0-9\.]+)/ && ($t +=$1) && printf "%02d:%02d:%02d\n",$t/3600,$t/60%60,$t%60' | tail -n 1`
+  if [ "$out" == "" ];then
+    echo 00:00:00
+  else
+    echo  $out
+  fi
+}
+rgb(){
+  printf "\x1b[38;2;$1;$2;$3m"
+}
+printrgb(){
+  printf "$(rgb $1 $2 $2)$4\n"
+}
+hex(){
+  hex="$1"
+  r=$(printf "%d\n" 0x${hex:0:2})
+  g=$(printf "%d\n" 0x${hex:2:2})
+  b=$(printf "%d\n" 0x${hex:4:2})
+  printf "\x1b[38;2;$r;$g;${b}m$2\n"
+}
+printhex(){
+  printf "$(hex $1 $2 $3)$4\n"
+}
+alias cclip='xclip -sel clip'
+alias clipdir='echo -n $PWD | cclip'
+clip(){
+	echo -n $1 | cclip
+}
+printfunc(){
+    grep --color=auto -zPo "$2[\s\S]*?(\{([^{}]++|(?1))*\})" $1T
+    echo ""
+}
+title(){
+	echo -ne "\033]0;$1\007"
+}
+prompt(){
+  if [ "$2" == "-n" ]; then
+		end=":$ "
+	else
+		end=":\\e[1;34m\w\\e[00m$ "
+	fi
+	PS1="\e[1;32m$1\e[00m$end"
+}
+fileswap(){
+  mv $1 "tmp"
+  mv $2 $1
+  mv "tmp" $2
+}
+lpass(){
+    addons=~/projects/bash/lpass-addons
+    state=0
+    if [ "$1" == "logout" ]; then
+      orig-lpass $1
+      return
+    elif [ "$1" == "generate" ]; then
+      password=$($addons/lpass-generate $2 )
+      echo $password
+			password=$(echo $password | tr -d ' ')
+      echo -n $password | xclip -sel clip
+      return
+    elif [ "$1" == "copy" ]; then
+      $addons/lpass-copy $2
+      return
+    fi
+    status=$(orig-lpass status)
+    if [ $? -ne 0 ]; then
+      if [ "$status" = 'Not logged in.' ]; then
+        orig-lpass login grantpauker@gmail.com 1>&2
+        state=1
+      else
+	echo "Lastpass error: $status" 1>&2
+      fi
+    fi
+    if [ "$1" == "add" ]; then
+      $addons/lpass-add
+    elif [ "$1" == "login" ] && [ $state -eq 0 ]; then
+      orig-lpass login grantpauker@gmail.com
+    else
+      orig-lpass $*
+    fi
+}
+wifi(){
+  curl -s --max-time 2 -I http://google.com 2>&1 > /dev/null
+  if [[ $? -eq 0 ]]; then
+    if [ "$1" != "0" ]; then
+      echo OK
+    fi
+    return 0
+  else
+    if [ "$1" != "0" ]; then
+      echo FAIL
+    fi
+    return 1
+  fi
+}
+alias bofa='echo DEEZ NUTS'
+alias no='while :; do echo n; done'
+alias sizes='du -hs'
+alias lh='ls -lh'
+alias lah='ls -lah'
+startup(){
+   echo $* >> ~/.aliases
+}
+bind -x '"\C-l":fclear'
+alias bashrc='vim ~/.bashrc'
+isint(){
+  re='^-?[0-9]+$'
+  [[ $1 =~ $re ]]
+}
+alias upload='transfer'
+
+alias mostext='find -maxdepth 1 -type f | sed '\''s@/.*\.\(.*\)$@\1@'\'' | logtop | sed -n 2p | sed '\''s@.*\(\..*\)@\1@g'\'''
+up(){
+    goto=""
+    for i in $(seq 1 $1);
+    do
+      goto="$goto../"
+    done
+    cd $goto
+}
+alias get='(printf "\x1b[38;2;255;0;0m###FUNCTIONS###\x1b[0m\n" && for i in $(declare -F | sed '"'"'s@declare -f @@g'"'"' | grep  -v '"'"'^_'"'"'); do type $i | sed -n '"'"'1!p'"'"'; done && printf "\x1b[38;2;255;0;0m###ALIASES###\x1b[0m\n" && alias)'
+alias lgtk='pkg-config --cflags --libs gtk+-3.0 && echo -n "-rdynamic"'
+alias sudo='/usr/bin/sudo'
+alias readme='vi `find -maxdepth 1 -type f | grep -i read`'
+search(){
+  sudo find $(if [ "$2" == "" ]; then echo "/"; else echo "$2"; fi) -regex ".*$1[^/]*"
+}
+ports(){
+  for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev); do
+    syspath="${sysdevpath%/dev}"
+    devname="$(udevadm info -q name -p $syspath)"
+    [[ "$devname" == "bus/"* ]] && continue
+    eval "$(udevadm info -q property --export -p $syspath)"
+    [[ -z "$ID_SERIAL" ]] && continue
+    echo "/dev/$devname - $ID_SERIAL" | grep -i "$1"
+  done
+}
+message(){
+  if [ "$2" == "" ]; then
+    sep='#'
+  else
+    sep="$2"
+  fi
+  len1="${#1}"
+  len2="${#sep}"
+  printf "$sep%.0s" $(eval echo "{1..$((($(tput cols)-len1)/2/len2))}")
+  printf "$1"
+  printf "$sep%.0s" $(eval echo "{1..$((($(tput cols)-len1)/2/len2))}")
+  printf "\n"
+}
+names(){
+	prompt $1
+	title $1
+}
+alias serial='~/projects/bash/serial/serial'
+loop(){
+    while :; do
+        eval "$*";
+    done
+}
+printasciiart(){
+    maxlen=$(wc -L $1 | sed 's/ .*//g');
+    len=$(tput cols);
+    if [ "$maxlen" -lt "$len" ]; then
+        cat $1;
+    fi
+}
+rgb(){
+    printf "\x1b[38;2;$1;$2;$3m"
+}
+len(){
+    echo ${#1}
+}
+dim(){
+	dim=$(xrandr | tail -1 | sed -e 's@[[:blank:]]*\([0-9]*x[0-9]*\).*@\1@g')
+	if [ "$1" == "x" ]; then
+		echo $dim | sed 's/x.*//g'
+	elif [ "$1" == "y" ]; then
+		echo $dim | sed 's/.*x//g'
+	elif [ "$1" == "win" ]; then
+		if [ "$2" == "x" ]; then
+			tput cols
+		elif [ "$2" == "y" ]; then
+			tput lines
+		else
+			echo $(tput cols)x$(tput lines)
+		fi
+	else
+		echo $dim
+	fi
+}
+ipad(){
+	ip addr show | grep "inet " | grep -v 127\.0\.0\.1 | sed "s@.*inet \(.*\)/.*@\1@g"
+	curl ifconfig.me
+}
+whiteless(){
+    echo $1 | sed -e 's@[[:blank:]]@@g'
+}
+btc(){
+  cur=$(curl -s https://api.coindesk.com/v1/bpi/currentprice/USD.json | jq ".bpi | .USD | .rate_float")
+  prev=$(curl -s https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday | jq " .bpi  | .[]")
+  change=$(bc -l <<< "$cur-$prev")
+  per=$(bc -l <<< "100*$change/$prev")
+  if [ "$(printf %.*f 0 $change)" -lt "0" ]; then
+    r=255; g=50; b=50
+  else
+    r=50; g=255; b=10
+  fi
+  echo "$cur | $(rgb $r $g $b)$change  $(rgb 255 255 255)| $(rgb $r $g $b)$(printf %.*f 3 $per)% $(rgb 255 255 255)"
+}
+
+alias renet='sudo systemctl restart NetworkManager'
+bind -x '"\C-x\C-t":crontab -e'
+alias disk='sudo fdisk -l'
+runit(){
+    vim $(realpath $1) && $(realpath $1)
+}
+alias inputrc='vim ~/.inputrc'
+log(){
+    echo "${@:2}" | tee -a $1
+}
+random(){
+	if [ "$1" == "" ]; then
+		lower=0
+	else
+		lower=$1
+	fi
+  if [ "$2" == "" ]; then
+    upper=101
+  else
+		if [ "$2" -lt "$1" ]; then
+			echo "Second argument must be greater than the first"
+			return
+		fi
+    upper=$(($2+1))
+  fi
+  echo $((RANDOM%(upper-lower)+lower))
+}
+10print(){
+	yes 'c=(╱ ╲);printf ${c[RANDOM%2]}'|bash
+}
+flasher ()
+{
+    i=0
+		while [ "$i" -lt "10" ]; do
+        printf "\\e[?5h"
+        sleep 0.1
+        printf "\\e[?5l"
+        read -s -n1 -t1 && break
+				i=$((i+1))
+    done
+}
+alias yt='youtube-dl'
+reapt(){
+	run=$(fc -l -2 | sed -n 1p | sed 's/^[0-9]*[[:space:]]*//g')
+	eval "$run" 2>&1 >/dev/null | tail
+}
+salert(){
+  base=$(basename $1)
+  if [ ! -e $1 ]; then
+    echo "Not a file"
+    exit
+  fi
+  sudo cp $1 /usr/share/sounds/gnome/default/alerts/
+  file='/usr/share/gnome-control-center/sounds/gnome-sounds-default.xml'
+  sudo sed -i "s@</sounds>@@g" $file
+  sudo sh -c " echo ' <sound deleted=\"false\">' >> $file"
+  sudo sh -c " echo \"    <name>${base%.*}</name>\" >> $file"
+  sudo sh -c " echo \"    <filename>/usr/share/sounds/gnome/default/alerts/$base</filename>\" >> $file"
+  sudo sh -c " echo ' </sound>' >> $file"
+  sudo sh -c " echo '</sounds>' >> $file"
+}
+alias g='grep'
+alias cpusage='top -b -o +%CPU | head -n 17 | tail -n 11'
+alias spotify='/usr/bin/spotify --force-device-scale-factor=2.2'
+binary () 
+{ 
+    echo "obase=2;$1" | bc
+}
+alias lsfml='pkg-config --libs sfml-all'
+alias lgtkmm='pkg-config --cflags --libs gtkmm-3.0'
+alias lbox2d='pkg-config --cflags --libs box2d'
+alias premake='~/builds/premake5.0/premake5'
+prev(){
+	dir=`pwd`
+	cd ..
+	eval "$*"
+	cd $dir
+}
+alias i3config='vim ~/.i3/config'
+alias i3reload='i3-msg reload'
