@@ -17,14 +17,14 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
 	HBINPATH="$HOME/bin"
 fi
 
 NEWPATH="$HOME/go/bin:$HBINPATH:$HOME/projects/bash/pushbullet"
 if [[ $PATH != *"$NEWPATH"* ]]; then
-  export PATH="$PATH:$NEWPATH"
-fi	
+	export PATH="$PATH:$NEWPATH"
+fi
 
 export GDK_SCALE=2
 
