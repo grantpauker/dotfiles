@@ -1,19 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 alias aliases='vim ~/.aliases'
-alias resource='source ~/.profile && bind -f ~/.inputrc'
+alias resource='source ~/.zshrc'
 alias fclear='echo -e "\033c\c"'
 alias termux='ssh 192.168.1.81 -p 8022'
 alias swp='rm -f .*.sw*'
 bruh() {
-	if [ "$1" = "" ]; then
-		freq=8000
-	else
-		freq=$1
-	fi
-	cat /dev/urandom | aplay -q -f cdr -r $freq &
+	cat /dev/urandom | aplay -q -f cdr -r 8000 &
 	trap "kill -9 $!" SIGINT SIGTERM
 	while :; do
-		sort -R ~/Documents/shakspeare.txt | head -n 1
+		sort -R ~/Documents/shakespeare.txt | head -n 1
 	done
 	kill -9 $!
 }
@@ -90,7 +85,7 @@ clip() {
 	echo -n $1 | cclip
 }
 printfunc() {
-	grep --color=auto -zPo "$2[\s\S]*?(\{([^{}]++|(?1))*\})" $1T
+	grep --color=auto -zPo "$2[\s\S]*?(\{([^{}]++|(?1))*\})" $1
 	echo ""
 }
 title() {
@@ -164,8 +159,7 @@ alias lah='ls -lah'
 startup() {
 	echo $* >>~/.aliases
 }
-bind -x '"\C-l":fclear'
-alias bashrc='vim ~/.bashrc'
+#bind -x '"\C-l":fclear'
 isint() {
 	re='^-?[0-9]+$'
 	[[ $1 =~ $re ]]
@@ -183,7 +177,7 @@ up() {
 alias get='(printf "\x1b[38;2;255;0;0m###FUNCTIONS###\x1b[0m\n" && for i in $(declare -F | sed '"'"'s@declare -f @@g'"'"' | grep  -v '"'"'^_'"'"'); do type $i | sed -n '"'"'1!p'"'"'; done && printf "\x1b[38;2;255;0;0m###ALIASES###\x1b[0m\n" && alias)'
 alias lgtk='pkg-config --cflags --libs gtk+-3.0 && echo -n "-rdynamic"'
 alias sudo='/usr/bin/sudo'
-alias readme='vi `find -maxdepth 1 -type f | grep -i read`'
+alias readme='vim `find -maxdepth 1 -type f | grep -i read`'
 search() {
 	sudo find $(if [ "$2" == "" ]; then echo "/"; else echo "$2"; fi) -regex ".*$1[^/]*"
 }
@@ -259,11 +253,11 @@ whiteless() {
 	echo $1 | sed -e 's@[[:blank:]]@@g'
 }
 btc() {
-	cur=$(curl -s https://api.coindesk.com/v1/bpi/currentprice/USD.json | jq ".bpi | .USD | .rate_float")
-	prev=$(curl -s https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday | jq " .bpi  | .[]")
-	change=$(bc -l <<<"$cur-$prev")
-	per=$(bc -l <<<"100*$change/$prev")
-	if [ "$(printf %.*f 0 $change)" -lt "0" ]; then
+	cur=$(curl -s "https://api.coindesk.com/v1/bpi/currentprice/USD.json" | jq ".bpi | .USD | .rate_float")
+	prev=$(curl -s "https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday" | jq " .bpi  | .[]")
+	change=$(($cur-$prev))
+	per=$((100*$change/$prev))
+	if [[ "$change" -lt "0" ]]; then
 		r=255
 		g=50
 		b=50
@@ -272,11 +266,11 @@ btc() {
 		g=255
 		b=10
 	fi
-	echo "$cur | $(rgb $r $g $b)$change  $(rgb 255 255 255)| $(rgb $r $g $b)$(printf %.*f 3 $per)% $(rgb 255 255 255)"
+	echo "$cur | $(rgb $r $g $b)$change  $(rgb 255 255 255)| $(rgb $r $g $b)$per% $(rgb 255 255 255)"
 }
 
 alias renet='sudo systemctl restart NetworkManager'
-bind -x '"\C-x\C-t":crontab -e'
+#bind -x '"\C-x\C-t":crontab -e'
 alias disk='sudo fdisk -l'
 runit() {
 	vim $(realpath $1) && $(realpath $1)
@@ -353,3 +347,52 @@ prev() {
 }
 alias i3config='vim ~/.i3/config'
 alias i3reload='i3-msg reload'
+alias getcolors='python ~/.dotfiles/themes/terminalcolors.py'
+
+hcat(){
+	occurences=$(sed 's/\(#[0-9A-Fa-f]\{6\}\)/\1\n/g' $1 | grep -co "\#[0-9a-fA-F]\{6\}")
+	colors=($(sed ':a;N;$!ba;s/\n/ /g' "$1" | grep -o '\#[0-9a-fA-F]\{6\}[^0-9a-fA-F]' | sed 's/[^0-9a-fA-F#]//g' | awk '!a[$0]++'))
+	for hex in "${colors[@]}"; do
+		r=$(printf "%d\n" 0x${hex:1:2})
+		g=$(printf "%d\n" 0x${hex:3:2})
+		b=$(printf "%d\n" 0x${hex:5:2})
+		if [[ "$((r*0.299 + g*0.587 + b*0.114))" -lt "186.0" ]]; then
+			color="\x1b[38;2;255;255;255m"
+		else
+			color="\x1b[38;2;0;0;0m"
+		fi
+		printf "$color\x1b[48;2;${r};${g};${b}m$hex\e[0m\n"
+	done
+}
+getcolor(){
+  success=false
+  exec < /dev/tty
+  oldstty=$(stty -g)
+  stty raw -echo min 0
+  col=$1
+  #          OSC   Ps  ;Pt ST
+  echo -en "\033]4;${col};?\033\\" >/dev/tty  # echo opts differ w/ OSes
+  result=
+  if IFS=';' read -r -d '\' color ; then
+      result=$(echo $color | sed -E 's/^.*\;//;s/[^0-9a-f/]|rgb://g;s/([0-9A-Fa-f]{2}){2}(\/|$)/\1/g')
+      success=true
+  fi
+  stty $oldstty
+  echo $result
+  $success
+}
+alias su='su -p'
+newline(){
+	echo $* | tr " " "
+"
+}
+alias hsearch='history | grep'
+vimclip(){
+	file="$(mktemp /tmp/XXXXXXXXXXXXXXX)"
+	xclip -selection c -o >> $file
+	vim $file
+	echo -n "$(cat $file)" | xclip -sel clip
+	rm -rf $file
+}
+
+alias zathura='GDK_SCALE=1.25 zathura'

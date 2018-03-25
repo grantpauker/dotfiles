@@ -1,6 +1,6 @@
 #!/bin/sh
-start-pulseaudio-x11 
+exec start-pulseaudio-x11 
 [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
-[ -e ~/.fehbg ] && source ~/.fehbg
+[ -e ~/.fehbg ] && ~/.fehbg
 [ -e ~/.compton.conf ] && compton --config ~/.compton.conf -b
-i3
+exec i3

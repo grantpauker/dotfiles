@@ -16,17 +16,20 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-	HBINPATH="$HOME/bin"
-fi
 
 NEWPATH="$HOME/go/bin:$HBINPATH:$HOME/projects/bash/pushbullet"
 if [[ $PATH != *"$NEWPATH"* ]]; then
 	export PATH="$PATH:$NEWPATH"
 fi
 
-export GDK_SCALE=2
-
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
+export GDK_SCALE=2
+export ELM_SCALE=0.5
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+xmodmap -e "clear mod4"
+xmodmap -e "add Mod4 = Super_L"
+export QT_SCREEN_SCALE_FACTORS=2
+
