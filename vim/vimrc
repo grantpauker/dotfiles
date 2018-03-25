@@ -1,4 +1,4 @@
-st noexpandtab " Make sure that every file uses real tabs, not spaces
+set noexpandtab " Make sure that every file uses real tabs, not spaces
 set shiftround  " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
 set autoindent  " Copy indent from current line, over to the new line
