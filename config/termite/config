@@ -1,3 +1,5 @@
+[options]
+font = Monospace 12
 [colors]
 foreground = #FFFFFF
 background  = #263238
