@@ -396,3 +396,6 @@ vimclip(){
 }
 
 alias zathura='GDK_SCALE=1.25 zathura'
+aur(){
+	git clone "https://aur.archlinux.org/$1.git"
+}

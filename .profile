@@ -32,4 +32,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 xmodmap -e "clear mod4"
 xmodmap -e "add Mod4 = Super_L"
 export QT_SCREEN_SCALE_FACTORS=2
-
+xhost +

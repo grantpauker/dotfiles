@@ -1,5 +1,3 @@
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 exec [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 exec [ -e ~/.fehbg ] && ~/.fehbg
 exec [ -e ~/.compton.conf ] && compton --config ~/.compton.conf -b
@@ -103,8 +101,9 @@ for_window [tiling] border pixel 0
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -112,7 +111,7 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
@@ -124,7 +123,7 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -136,6 +135,7 @@ assign [class="Firefox"] $ws1
 assign [class="Termite" instance="^(?!dropdown)^(?!math)^(?!vimclip)"] $ws2
 assign [class="Code"] $ws3
 assign [class="Godot"] $ws3
+assign [class="TelegramDesktop"] $ws4
 
 for_window [instance="Godot_Engine"] floating enable
 
@@ -143,10 +143,11 @@ for_window [instance="Godot_Engine"] floating enable
 bindsym $mod+Shift+r exec "xrdb ~/.Xresources && /usr/bin/i3-msg restart"
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "zenity --icon-name='system-log-out' --question --title='Shutdown?' --text='Are you sure, proceed to logout?' && i3-msg exit"
+bindsym $mod+Shift+e exec "zenity --icon-name='system-log-out' --question --title='Logout?' --text='Are you sure, proceed to logout?' && i3-msg exit"
 # resize window (you can also use the mouse for that)
 set $resize_width 8
 set $small_resize_width 4
+
 set $really_small_resize_width 2
 mode "resize" {
 	bindsym g mode "gaps"
@@ -198,18 +199,31 @@ mode "gaps" {
 	bindsym Escape mode "default"
 }
 mode "application" {
-	bindsym $mod+f exec firefox;  mode "default"
-	bindsym $mod+c exec code; mode "default"
-	bindsym $mod+t exec $term; mode "default"
-	bindsym $mod+m exec gnome-mahjongg; mode "default"
-	bindsym $mod+r exec $term -e ranger; mode "default"
+	bindsym f exec firefox;  mode "default"
+	bindsym c exec code; mode "default"
+	bindsym t exec $term; mode "default"
+	bindsym m exec gnome-mahjongg; mode "default"
+	bindsym r exec $term -e ranger; mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-
+mode "system" {
+	bindsym l exec ~/.bin/i3exit lock;  mode "default"
+	bindsym e exec ~/.bin/i3exit logout; mode "default"
+	bindsym s exec ~/.bin/i3exit suspend; mode "default"
+	bindsym h exec ~/.bin/i3exit hibernate; mode "default"
+	bindsym r exec ~/.bin/i3exit reboot; mode "default"
+	bindsym p exec ~/.bin/i3exit shutdown; mode "default"
+	
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
 bindsym $mod+r mode "resize"
 bindsym $mod+a mode "application"
+bindsym $mod+Shift+s mode "system"
+
+
 
 # i3bar config
 bar {

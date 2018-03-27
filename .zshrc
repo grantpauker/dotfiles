@@ -1,4 +1,4 @@
-NEWPATH="$HOME/go/bin:$HBINPATH:$HOME/projects/bash/pushbullet:$HOME/.cargo/bin:/opt/devkitpro/devkitARM/bin"
+NEWPATH="$HOME/go/bin:$HBINPATH:$HOME/projects/bash/pushbullet:$HOME/.cargo/bin:/opt/devkitpro/devkitARM/bin:$HOME/.bin"
 if [[ $PATH != *"$NEWPATH"* ]]; then
   export PATH="$PATH:$NEWPATH"
 fi
