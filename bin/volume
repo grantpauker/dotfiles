@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-if [ "$(pamixer --get-mute)" == "true" ]; then
-    echo -n -e "––"
-else
-    echo -n "$(pamixer --get-volume)%"
-fi
