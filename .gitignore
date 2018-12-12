@@ -2,3 +2,4 @@
 *.swp*
 config/mpv/watch_later
 *.pyc
+old

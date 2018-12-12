@@ -22,14 +22,20 @@ dehome(){
 dotlink(){
 	f1="$(dehome $1)"
 	f2="$(dehome $2)"
-	[[ -a $1 ]] || { echo "$(color 1)$1$(color 7) does not exist"; return; }
+	[[ ! -a $1 ]] && echo "$(color 1)$1$(color 7) does not exist" && return
 	[[ "$(realpath $1)" == "$(realpath $2)" ]] && echo "$(color 6)$f1$(color 7) already symlinked to$(color 6) $f2$(color 7)" && return
-	[[ -a $2 ]] && confirm "$(color 3)$f2 $(color 7)already exists. Delete it and relink (y/n)? " && confirm "Are you sure, this will delete$(color 3) $f2$(color 7) (y/n)? " && echo "$(color 1)Deleting$(color 3) $f2$(color 7)" && rm -rf $2
+	[[ -a $2 ]] && confirm "$(color 3)$f2 $(color 7)already exists. Delete it and relink (y/n)? " \
+				&& backup $2 old/$1 && echo "$(color 1)Deleting$(color 3) $f2$(color 7)" \
+				&& rm -rf $2
 	
 	echo "$(color 2)Linking$(color 6) $f1$(color 7) to$(color 6) $f2$(color 7)"
 	ln -s $(realpath $1) $2
 }
-
+backup(){
+	[[ ! -a old ]] && mkdir old && echo "$(color 6)old$(color 7) folder doesn't exist, creating one"
+	echo -e "$(color 2)Copying$(color 6) $f1$(color 7) to$(color 6) $2$(color 7)"
+	cp -r $1 $2
+}
 [[ -a header ]] && color 6 && cat header && color 7 && echo 
 echo -e "Linking files...\n"
 
