@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
-cat header
-echo -e "\nLinking files...\n"
 dotlink(){
 	[[ -a $2 ]] || ln -s $(realpath $1) $2 && echo "$2 alerady exists"
 }
-for c in config/*; do
+
+cat header
+echo -e "\nLinking files...\n"
+
+# Link files
+for c in config/* i3 bin xinitrc Xresources xsession zprofile zshenv zshrc aliases functions; do
 	dotlink $c ~/.$c
 done
-dotlink i3 ~/.i3
-dotlink bin ~/.bin
-
-dotlink xinitrc ~/.xinitrc
-dotlink Xresources ~/.Xresources
-dotlink xsession ~/.xsession
-dotlink zprofile ~/.zprofile
-dotlink zshenv ~/.zshenv
-dotlink zshrc ~/.zshrc
-dotlink aliases ~/.aliases
-dotlink functions ~/.functions
