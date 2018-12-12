@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+unread=$(echo $(($(telegram-cli -ECRD -e 'dialog_list' | sed 's/.*: \([0-9]*\) .*/\1\+/g;/^[^0-9]*$/d')0)))
+printf " $unread\n\n$base0C"
+

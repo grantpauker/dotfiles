@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+dotlink(){
+	[[ -a $2 ]] || ln -s $1 $2
+}
+for c in config/*; do
+	dotlink $(realpath $c) ~/.$c
+done
+dotlink $(realpath i3) ~/.i3
+dotlink $(realpath bin) ~/.bin
+
+dotlink $(realpath xinitrc) ~/.xinitrc
+dotlink $(realpath Xresources) ~/.Xresources
+dotlink $(realpath xsession) ~/.xsession
+dotlink $(realpath zprofile) ~/.zprofile
+dotlink $(realpath zshenv) ~/.zshenv
+dotlink $(realpath zshrc) ~/.zshrc
+dotlink $(realpath aliases) ~/.aliases
+dotlink $(realpath functions) ~/.functions
+

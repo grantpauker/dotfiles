@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+for f in $*; do 
+	ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,pix_fmt -of json $f | jq -r '.streams[] | if (.codec_type) == "video" then "\(.codec_name) \(.width)x\(.height) \(.pix_fmt)" elif (.codec_type) == "audio" then "\(.codec_name)" elif (.codec_type) == "subtitle" then "subtitles" else empty end' | sed 's/yuv420p10le/10bit/g;s/yuv420p/8bit/g' | paste -sd " "
+done
+

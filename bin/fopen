@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+f="$(find -not -path '*/\.*' -type f | rofi -dmenu -i -p "open")"
+rifle "$f"

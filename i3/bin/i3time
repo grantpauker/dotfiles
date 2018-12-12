@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+time=$(date '+%m-%d-%y %I:%M:%S')
+printf "$time\n\n$base0C"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+p=""
+while :; do
+	read -s pass
+	if [[ "$pass" == "$p" ]]; then
+		printf "\033[0;32mright\033[0m\n"
+	else
+		printf "\033[0;31mwrong\033[0m\n"
+	fi
+done

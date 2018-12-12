@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+mountable=$(lsblk -lp | grep part | grep -v "t /" | grep -v nvme0n1 | awk '{print $1, "(" $4")"}')
+[[ -z "$mountable"  ]] && exit
+drive=$(echo "$mountable" | rofi -dmenu -no-custom -p "drive" | awk '{print $1}')
+dirs=(/mnt /media ~/tmp)
+[[ "$dirs" == "" ]] && exit
+mountpoint=$(find ${dirs[@]} -maxdepth 2 | rofi -dmenu -no-custom -p "directory")
+sudo mount $drive $mountpoint
+

@@ -1,0 +1,4 @@
+include theme
+set font "monospace normal 12" 
+set selection-clipboard clipboard
+map i recolor

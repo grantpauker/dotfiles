@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+USER_HOME=$(eval echo ~${SUDO_USER})
+case "$1" in
+"-r")
+	rm $USER_HOME/.system/dog
+	exit ;;
+"-c")
+	cat $USER_HOME/.system/dog
+	exit ;;
+esac
+d="$1 - $(date)"
+echo "$d" >> $USER_HOME/.system/dog
+notify-send "$d"
+

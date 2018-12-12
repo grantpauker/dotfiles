@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+choice=$(printf "shutdown\nreboot\nlogout\n" | rofi -theme mini -dmenu -no-custom -p "run")
+/home/god/.bin/i3exit $choice &>> /dev/null

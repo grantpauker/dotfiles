@@ -1,0 +1,1172 @@
+info_begin
+format: 2
+mpd_version: 0.21
+fs_charset: UTF-8
+tag: Artist
+tag: ArtistSort
+tag: Album
+tag: AlbumSort
+tag: AlbumArtist
+tag: AlbumArtistSort
+tag: Title
+tag: Track
+tag: Name
+tag: Genre
+tag: Date
+tag: OriginalDate
+tag: Composer
+tag: Performer
+tag: Disc
+tag: Label
+tag: MUSICBRAINZ_ARTISTID
+tag: MUSICBRAINZ_ALBUMID
+tag: MUSICBRAINZ_ALBUMARTISTID
+tag: MUSICBRAINZ_TRACKID
+tag: MUSICBRAINZ_RELEASETRACKID
+tag: MUSICBRAINZ_WORKID
+info_end
+song_begin: gucci_gang.mp3
+Time: 1.224000
+Format: 24000:24:1
+mtime: 1533695072
+song_end
+song_begin: Arctic Monkeys - Do I Wanna Know.mp3
+Time: 265.769000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Do I Wanna Know?
+Album: AM
+Track: 1
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - R U Mine.mp3
+Time: 200.124000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: R U Mine?
+Album: AM
+Track: 2
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - One For The Road.mp3
+Time: 204.930000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: One For The Road
+Album: AM
+Track: 3
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Arabella.mp3
+Time: 211.200000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Arabella
+Album: AM
+Track: 4
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - I Want It All.mp3
+Time: 184.555000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: I Want It All
+Album: AM
+Track: 5
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - No 1 Party Anthem.mp3
+Time: 239.673000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: No. 1 Party Anthem
+Album: AM
+Track: 6
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Mad Sounds.mp3
+Time: 210.233000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Mad Sounds
+Album: AM
+Track: 7
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Fireside.mp3
+Time: 177.658000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Fireside
+Album: AM
+Track: 8
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Whyd You Only Call Me When Youre High.mp3
+Time: 161.384000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Why'd You Only Call Me When You're High?
+Album: AM
+Track: 9
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Snap Out Of It.mp3
+Time: 195.657000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Snap Out Of It
+Album: AM
+Track: 10
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Knee Socks.mp3
+Time: 257.828000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Knee Socks
+Album: AM
+Track: 11
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - I Wanna Be Yours.mp3
+Time: 180.140000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: I Wanna Be Yours
+Album: AM
+Track: 12
+Date: 2013-09-09
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: alt-J - Breezeblocks.mp3
+Time: 225.306000
+Artist: alt-J
+AlbumArtist: alt-J
+Title: Breezeblocks
+Album: An Awesome Wave
+Track: 4
+Date: 2012-09-18
+Date: 2012
+OriginalDate: 2012
+OriginalDate: 2012
+Genre: Indie Rock
+Performer: alt-J
+Performer: alt-J
+Performer: alt-J
+Label: Canvasback/ATL
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Breakbot - Another You (feat Ruckazoid).mp3
+Time: 202.004000
+Artist: Breakbot
+AlbumArtist: Breakbot
+Title: Another You (feat. Ruckazoid)
+Album: Another You
+Track: 1
+Date: 2018-06-29
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Alternative Dance
+Performer: Breakbot
+Performer: Breakbot
+Performer: Breakbot
+Label: Ed Banger Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Breakbot - Baby Im Yours (feat Irfane).mp3
+Time: 215.980000
+Artist: Breakbot
+AlbumArtist: Breakbot
+Title: Baby I'm Yours (feat. Irfane)
+Album: By Your Side
+Track: 10
+Date: 2012-09-14
+Date: 2012
+OriginalDate: 2012
+OriginalDate: 2012
+Genre: Alternative Dance
+Performer: Breakbot
+Performer: Breakbot
+Performer: Breakbot
+Label: Because Music/WMI
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Childish Gambino - Bonfire.mp3
+Time: 193.828000
+Artist: Childish Gambino
+AlbumArtist: Childish Gambino
+Title: Bonfire
+Album: Camp
+Track: 3
+Date: 2011-01-01
+Date: 2011
+OriginalDate: 2011
+OriginalDate: 2011
+Genre: Hip Hop
+Performer: Childish Gambino
+Label: Glassnote
+Format: 44100:24:2
+mtime: 1533015094
+song_end
+song_begin: Gorillaz - Feel Good Inc.mp3
+Time: 221.335000
+Artist: Gorillaz
+AlbumArtist: Gorillaz
+Title: Feel Good Inc
+Album: Demon Days
+Track: 6
+Date: 2005-05-23
+Date: 2005
+OriginalDate: 2005
+OriginalDate: 2005
+Genre: Alternative Hip Hop
+Performer: Gorillaz
+Performer: Gorillaz
+Performer: Gorillaz
+Label: Parlophone UK
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Brianstorm.mp3
+Time: 174.106000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Brianstorm
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 1
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Teddy Picker.mp3
+Time: 165.328000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Teddy Picker
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 2
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - D Is For Dangerous.mp3
+Time: 134.948000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: D Is For Dangerous
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 3
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Balaclava.mp3
+Time: 169.639000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Balaclava
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 4
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Fluorescent Adolescent.mp3
+Time: 181.420000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Fluorescent Adolescent
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 5
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Only Ones Who Know.mp3
+Time: 181.342000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Only Ones Who Know
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 6
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Do Me A Favour.mp3
+Time: 205.844000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Do Me A Favour
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 7
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - This House Is A Circus.mp3
+Time: 190.197000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: This House Is A Circus
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 8
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - If You Were There Beware.mp3
+Time: 275.095000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: If You Were There, Beware
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 9
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - The Bad Thing.mp3
+Time: 149.054000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: The Bad Thing
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 10
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Old Yellow Bricks.mp3
+Time: 186.644000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Old Yellow Bricks
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 11
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - 505.mp3
+Time: 249.103000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: 505
+Album: Favourite Worst Nightmare (Standard Version)
+Track: 12
+Date: 2007-04-24
+Date: 2007
+OriginalDate: 2007
+OriginalDate: 2007
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino/WBR
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: ArtificialMusic - Herbal Tea.mp3
+Time: 184.894000
+Artist: Artificial.Music
+AlbumArtist: Artificial.Music
+Title: Herbal Tea
+Album: Grocery List
+Track: 1
+Date: 2017-09-07
+Date: 2017
+OriginalDate: 2017
+OriginalDate: 2017
+Performer: Artificial.Music
+Performer: Artificial.Music
+Performer: Artificial.Music
+Label: Silent Running Scandal
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: KNOWER - Time Traveler.mp3
+Time: 225.097000
+Artist: KNOWER
+AlbumArtist: KNOWER
+Title: Time Traveler
+Album: Let Go
+Track: 2
+Date: 2013-04-29
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Performer: KNOWER
+Performer: KNOWER
+Performer: KNOWER
+Label: Knower
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: KNOWER - The Government Knows.mp3
+Time: 227.186000
+Artist: KNOWER
+AlbumArtist: KNOWER
+Title: The Government Knows
+Album: Life
+Track: 3
+Date: 2016-02-05
+Date: 2016
+OriginalDate: 2016
+OriginalDate: 2016
+Performer: KNOWER
+Performer: KNOWER
+Performer: KNOWER
+Label: KNOWER
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: KNOWER - Overtime.mp3
+Time: 268.329000
+Artist: KNOWER
+AlbumArtist: KNOWER
+Title: Overtime
+Album: Life
+Track: 5
+Date: 2016-02-05
+Date: 2016
+OriginalDate: 2016
+OriginalDate: 2016
+Performer: KNOWER
+Performer: KNOWER
+Performer: KNOWER
+Label: KNOWER
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: KNOWER - Butts Tits Money.mp3
+Time: 214.413000
+Artist: KNOWER
+AlbumArtist: KNOWER
+Title: Butts Tits Money
+Album: Life
+Track: 6
+Date: 2016-02-05
+Date: 2016
+OriginalDate: 2016
+OriginalDate: 2016
+Performer: KNOWER
+Performer: KNOWER
+Performer: KNOWER
+Label: KNOWER
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Soft Cell - Tainted Love.mp3
+Time: 164.688000
+Artist: Soft Cell
+AlbumArtist: Soft Cell
+Title: Tainted Love
+Album: Non-Stop Erotic Cabaret
+Track: 2
+Date: 1981-11-27
+Date: 1981
+Genre: Dance Rock
+Performer: Soft Cell
+Format: 48000:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Tennis Court.mp3
+Time: 205.766000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Tennis Court
+Album: Pure Heroine
+Track: 1
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - 400 Lux.mp3
+Time: 234.866000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: 400 Lux
+Album: Pure Heroine
+Track: 2
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Royals.mp3
+Time: 192.653000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Royals
+Album: Pure Heroine
+Track: 3
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Ribs.mp3
+Time: 259.265000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Ribs
+Album: Pure Heroine
+Track: 4
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Buzzcut Season.mp3
+Time: 248.163000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Buzzcut Season
+Album: Pure Heroine
+Track: 5
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Team.mp3
+Time: 196.075000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Team
+Album: Pure Heroine
+Track: 6
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Glory And Gore.mp3
+Time: 211.513000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Glory And Gore
+Album: Pure Heroine
+Track: 7
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - Still Sane.mp3
+Time: 186.148000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: Still Sane
+Album: Pure Heroine
+Track: 8
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - White Teeth Teens.mp3
+Time: 214.622000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: White Teeth Teens
+Album: Pure Heroine
+Track: 9
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Lorde - A World Alone.mp3
+Time: 294.426000
+Artist: Lorde
+AlbumArtist: Lorde
+Title: A World Alone
+Album: Pure Heroine
+Track: 10
+Date: 2013-01-01
+Date: 2013
+OriginalDate: 2013
+OriginalDate: 2013
+Genre: Art Pop
+Performer: Lorde
+Performer: Lorde
+Performer: Lorde
+Label: Lava Music / Republic Records
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Foster The People - Sit Next to Me.mp3
+Time: 245.838000
+Artist: Foster The People
+AlbumArtist: Foster The People
+Title: Sit Next to Me
+Album: Sacred Hearts Club
+Track: 3
+Date: 2017-07-21
+Date: 2017
+OriginalDate: 2017
+OriginalDate: 2017
+Genre: Indie Pop
+Performer: Foster The People
+Label: Columbia
+Format: 44100:24:2
+mtime: 1533501590
+song_end
+song_begin: Ween - Ocean Man.mp3
+Time: 128.130000
+Artist: Ween
+AlbumArtist: Ween
+Title: Ocean Man
+Album: The Mollusk
+Track: 13
+Date: 1997-04-18
+Date: 1997
+OriginalDate: 1997
+OriginalDate: 1997
+Genre: Alternative Rock
+Performer: Ween
+Label: Elektra Records
+Format: 44100:24:2
+mtime: 1532852111
+song_end
+song_begin: Foster The People - Pumped Up Kicks.mp3
+Time: 239.699000
+Artist: Foster The People
+AlbumArtist: Foster The People
+Title: Pumped Up Kicks
+Album: Torches
+Track: 2
+Date: 2011-05-23
+Date: 2011
+OriginalDate: 2011
+OriginalDate: 2011
+Genre: Indie Pop
+Performer: Foster The People
+Label: Columbia
+Format: 44100:24:2
+mtime: 1533540889
+song_end
+song_begin: Arctic Monkeys - Star Treatment.mp3
+Time: 355.604000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Star Treatment
+Album: Tranquility Base Hotel & Casino
+Track: 1
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - One Point Perspective.mp3
+Time: 208.744000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: One Point Perspective
+Album: Tranquility Base Hotel & Casino
+Track: 2
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - American Sports.mp3
+Time: 156.186000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: American Sports
+Album: Tranquility Base Hotel & Casino
+Track: 3
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Tranquility Base Hotel  Casino.mp3
+Time: 212.114000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Tranquility Base Hotel & Casino
+Album: Tranquility Base Hotel & Casino
+Track: 4
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Golden Trunks.mp3
+Time: 169.900000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Golden Trunks
+Album: Tranquility Base Hotel & Casino
+Track: 5
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Four Out Of Five.mp3
+Time: 312.372000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Four Out Of Five
+Album: Tranquility Base Hotel & Casino
+Track: 6
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - The Worlds First Ever Monster Truck Front Flip.mp3
+Time: 180.088000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: The World's First Ever Monster Truck Front Flip
+Album: Tranquility Base Hotel & Casino
+Track: 7
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Science Fiction.mp3
+Time: 188.656000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Science Fiction
+Album: Tranquility Base Hotel & Casino
+Track: 8
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - She Looks Like Fun.mp3
+Time: 182.622000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: She Looks Like Fun
+Album: Tranquility Base Hotel & Casino
+Track: 9
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - Batphone.mp3
+Time: 271.673000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: Batphone
+Album: Tranquility Base Hotel & Casino
+Track: 10
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Arctic Monkeys - The Ultracheese.mp3
+Time: 217.887000
+Artist: Arctic Monkeys
+AlbumArtist: Arctic Monkeys
+Title: The Ultracheese
+Album: Tranquility Base Hotel & Casino
+Track: 11
+Date: 2018-05-11
+Date: 2018
+OriginalDate: 2018
+OriginalDate: 2018
+Genre: Garage Rock
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Performer: Arctic Monkeys
+Label: Domino Recording Co
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Louis Cole - Weird Part of the Night.mp3
+Time: 260.780000
+Artist: Louis Cole
+AlbumArtist: Louis Cole
+Title: Weird Part of the Night
+Album: Weird Part of the Night
+Track: 1
+Date: 2016-08-22
+Date: 2016
+OriginalDate: 2016
+OriginalDate: 2016
+Performer: Louis Cole
+Performer: Louis Cole
+Performer: Louis Cole
+Label: Louis Cole
+Format: 44100:24:2
+mtime: 1532843620
+song_end
+song_begin: Phoenix - Lisztomania.mp3
+Time: 248.293000
+Artist: Phoenix
+AlbumArtist: Phoenix
+Title: Lisztomania
+Album: Wolfgang Amadeus Phoenix
+Track: 1
+Date: 2009-01-01
+Date: 2009
+OriginalDate: 2009
+OriginalDate: 2009
+Genre: Alternative Dance
+Performer: Phoenix
+Performer: Phoenix
+Performer: Phoenix
+Label: Glassnote
+Format: 44100:24:2
+mtime: 1532843620
+song_end

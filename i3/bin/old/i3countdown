@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+datediff() {
+	d1=$(date -d "$1" +%s)
+	d2=$(date -d "$2" +%s)
+	printf "$(( (d1 - d2) / 86400 ))"
+}
+d=$(datediff "27 Aug 2018" "now - 1 day")
+printf "$d days\n\n$base0F"
+

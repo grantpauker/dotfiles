@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+contains(){
+	[[ $1 = *"$2"* ]]
+}
+
+loc="ny/New_york_city"
+apikey="ce4f08aa7cc2cea5"
+
+url="http://api.wunderground.com/api/$apikey/forecast/q/$loc.json"
+
+resp=$(wget -qO- $url)
+
+high=$(echo $resp | jq -r ' .forecast | .simpleforecast | .forecastday | .[0] | .high | .fahrenheit')
+low=$(echo $resp | jq -r ' .forecast | .simpleforecast | .forecastday | .[0] | .low | .fahrenheit')
+
+if contains $cond cloud; then 
+  icon=""
+	color="#EEFFFF"
+elif contains $cond rain; then
+  icon=""
+	color="#80CBC4"
+elif contains $cond snow; then
+  icon=""
+	color="#80CBC4"
+else
+	icon=""
+	color="#FFCB6B"
+fi
+color=#80CBC4
+printf "$icon $low°⬌$high°\n\n$color"

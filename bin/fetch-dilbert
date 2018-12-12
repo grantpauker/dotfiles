@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+wifi(){
+  iwgetid &>> /dev/null
+}
+MAX_CHECK=12
+CHECK=0
+if wifi; then 
+	dilbert-wallpaper
+else
+  while ! wifi && [[ "$CHECK" -lt "$MAX_CHECK" ]] ; do 
+		echo "No wifi, trying again... ($CHECK)"
+		CHECK=$((CHECK+1))
+    sleep 3
+  done
+	dilbert-wallpaper
+fi

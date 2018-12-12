@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+song=$(mpc current)
+status=$(mpc status | sed -n 2p | sed 's/\[\(.*\)\].*/\1/g')
+if [[ "$status" == "playing" ]]; then
+	printf "$song\n\n$base0C"
+elif [[ "$status" == "paused" ]]; then
+	printf "<span font_style=\"italic\">$song</span>\n\n$base05"
+fi
+

@@ -1,0 +1,9 @@
+
+source ~/.theme/shell
+STATUS=""
+[[ -f /var/run/logkeys.pid ]] && STATUS+="K"
+[[ -f /tmp/screencast.lock ]] && STATUS+="S"
+[[ -f /tmp/no-lid-suspend ]] && STATUS+="L"
+
+[[ "$STATUS" != "" ]] && printf "$STATUS\n\n$base0C" || printf ""
+

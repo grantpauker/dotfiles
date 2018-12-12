@@ -1,0 +1,6 @@
+configuration {
+	location: 1;
+	width: 100;
+	columns: 9;
+	lines: 1;
+}

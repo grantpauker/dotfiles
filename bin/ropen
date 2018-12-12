@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+c="$(xclip -o)"
+mpv --geometry=+1-1 --autofit=40% --title="mpvfloat" $c
+
+

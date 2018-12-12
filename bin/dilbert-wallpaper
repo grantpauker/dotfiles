@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+dilbert -t
+echo "Creating wallpaper..."
+w=$(ffprobe -v quiet -print_format json -show_format -show_streams /tmp/dilbert-today.jpg | jq -r '.streams[0].height')
+[[ "$w" -gt "400" ]] && geo="2000x+1130+750" || geo="2000x+1130+1000"
+convert ~/Pictures/Wallpapers/wallpaper.png /tmp/dilbert-today.jpg -geometry "$geo" -composite -matte ~/Pictures/Wallpapers/wallpaper-dilbert.png 
+echo "Setting wallpaper..."
+~/.fehbg

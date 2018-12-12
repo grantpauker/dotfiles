@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+n=$(checkupdates | wc -l)
+[[ "$n" != "0" ]] && printf " $n\n\n$base0B"

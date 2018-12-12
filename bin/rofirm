@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+[[ $(printf "no\nyes" | rofi -theme mini -dmenu -no-custom -p "$1") == "yes" ]] && $2
+
+

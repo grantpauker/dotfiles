@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+! iwgetid &>> /dev/null && exit
+strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}')
+printf "$(iwgetid -r) "
+if [[ "$strength" -gt "80" ]]; then
+	printf "●●●●\n\n$base0B"
+elif [[ "$strength" -gt "55" ]]; then
+	printf "●●●○\n\n$base0B"
+elif [[ "$strength" -gt "30" ]]; then
+	printf "●●○○\n\n$base0A"
+elif [[ "$strength" -gt "5" ]]; then
+	printf "●○○○\n\n$base09"
+else
+	printf "○○○○\n\n$base0F" 
+fi
