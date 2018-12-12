@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+cat header
+echo -e "\nLinking files..."
 dotlink(){
-	[[ -a $2 ]] || ln -s $(realpath $1) $2
+	[[ -a $2 ]] || ln -s $(realpath $1) $2 && echo "$2 alerady exists"
 }
 for c in config/*; do
 	dotlink $c ~/.$c
