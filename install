@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+color(){
+	tput setaf $1
+}
+
 confirm(){
 	read -p "$1" answer
 	case ${answer:0:1} in
@@ -10,17 +14,24 @@ confirm(){
 		;;
 	esac
 }
-dotlink(){
-	f1="$(realpath $1 | sed 's|^'$HOME'|~|g')"
-	f2="$(realpath $2 | sed 's|^'$HOME'|~|g')"
 
-	[[ -a $2 ]] && confirm "$(tput setaf 3)$f2 $(tput setaf 7)already exists. Delete it and relink (y/n)? " confirm "Are you sure, this will delete $f2 (y/n)? " && { echo "$(tput setaf 1)Deleting$(tput setaf 7) $f2..."; rm -rf $2; } || return
-	echo "$(tput setaf 2)Linking$(tput setaf 6) $f1 $(tput setaf 7)to $(tput setaf 6)$f2$(tput setaf 7)..."
+dehome(){
+	echo $1 | sed 's|^'$HOME'|~|g'
+}
+
+dotlink(){
+	f1="$(dehome $1)"
+	f2="$(dehome $2)"
+	[[ -a $1 ]] || { echo "$(color 1)$1$(color 7) does not exist"; return; }
+	[[ "$(realpath $1)" == "$(realpath $2)" ]] && echo "$(color 6)$f1$(color 7) already symlinked to $(color 6)$f2$(color 7)" && return
+	[[ -a $2 ]] && confirm "$(color 3)$f2 $(color 7)already exists. Delete it and relink (y/n)? " && confirm "Are you sure, this will delete $(color 3)$f2$(color 7) (y/n)? " && echo "$(color 1)Deleting$(color 7) $f2" && rm -rf $2
+	
+	echo "$(color 2)Linking$(color 6) $f1 $(color 7)to $(color 6)$f2$(color 7)"
 	ln -s $(realpath $1) $2
 }
 
-cat header
-echo -e "\nLinking files...\n"
+[[ -a header ]] && cat header && echo 
+echo -e "Linking files...\n"
 
 # Link files
 for c in config/* i3 bin xinitrc Xresources xsession zprofile zshenv zshrc aliases functions; do
