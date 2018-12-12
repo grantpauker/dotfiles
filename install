@@ -24,7 +24,7 @@ dotlink(){
 	f2="$(dehome $2)"
 	[[ -a $1 ]] || { echo "$(color 1)$1$(color 7) does not exist"; return; }
 	[[ "$(realpath $1)" == "$(realpath $2)" ]] && echo "$(color 6)$f1$(color 7) already symlinked to $(color 6)$f2$(color 7)" && return
-	[[ -a $2 ]] && confirm "$(color 3)$f2 $(color 7)already exists. Delete it and relink (y/n)? " && confirm "Are you sure, this will delete $(color 3)$f2$(color 7) (y/n)? " && echo "$(color 1)Deleting$(color 7) $f2" && rm -rf $2
+	[[ -a $2 ]] && confirm "$(color 3)$f2 $(color 7)already exists. Delete it and relink (y/n)? " && confirm "Are you sure, this will delete $(color 3)$f2$(color 7) (y/n)? " && echo "$(color 1)Deleting$(color 3) $f2$(color 7)" && rm -rf $2
 	
 	echo "$(color 2)Linking$(color 6) $f1 $(color 7)to $(color 6)$f2$(color 7)"
 	ln -s $(realpath $1) $2
