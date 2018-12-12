@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
+confirm(){
+	read -p "$1" answer
+	case ${answer:0:1} in
+		y|Y )
+			return 0
+		;;
+		n|N|* )
+			return 1
+		;;
+	esac
+}
 dotlink(){
-	[[ -a $2 ]] || ln -s $(realpath $1) $2 && echo "$2 alerady exists"
+	f1="$(realpath $1 | sed 's|^'$HOME'|~|g')"
+	f2="$(realpath $2 | sed 's|^'$HOME'|~|g')"
+
+	[[ -a $2 ]] && confirm "$(tput setaf 3)$f2 $(tput setaf 7)already exists. Delete it and relink (y/n)? " confirm "Are you sure, this will delete $f2 (y/n)? " && { echo "$(tput setaf 1)Deleting$(tput setaf 7) $f2..."; rm -rf $2; } || return
+	echo "$(tput setaf 2)Linking$(tput setaf 6) $f1 $(tput setaf 7)to $(tput setaf 6)$f2$(tput setaf 7)..."
+	ln -s $(realpath $1) $2
 }
 
 cat header
@@ -8,5 +24,5 @@ echo -e "\nLinking files...\n"
 
 # Link files
 for c in config/* i3 bin xinitrc Xresources xsession zprofile zshenv zshrc aliases functions; do
-	dotlink $c ~/.$c
+	dotlink $c ~/.$c 
 done
