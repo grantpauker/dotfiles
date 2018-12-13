@@ -108,8 +108,7 @@ bindsym $mod+Shift+$down move down $winmv
 bindsym $mod+Shift+$up move up $winmv
 bindsym $mod+Shift+$right move right $winmv
 
-bindsym $mod+w split h
-bindsym $mod+Shift+w split v
+bindsym $mod+w split toggle
 
 bindsym $mod+f fullscreen toggle
 
