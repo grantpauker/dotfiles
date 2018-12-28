@@ -245,15 +245,15 @@ function $ {
 cdiff(){
 	diff $@ | colordiff
 }
-psearch(){
-	if ! [[ -v PSEARCH_DIR ]]; then
-		echo "PSEARCH_DIR not set, exiting"
-		return
-	fi
-	depth=$(($(realpath $PSEARCH_DIR | awk -F"/" '{print NF-1}')+2))
-	f=$(find $PSEARCH_DIR -maxdepth 2 -mindepth 2 -type d | cut -d'/' -f $depth- | fzf)
-	cd $PSEARCH_DIR/$f
-}
+#psearch(){
+	#if ! [[ -v PSEARCH_DIR ]]; then
+		#echo "PSEARCH_DIR not set, exiting"
+		#return
+	#fi
+	#depth=$(($(realpath $PSEARCH_DIR | awk -F"/" '{print NF-1}')+2))
+	#f=$(find $PSEARCH_DIR -maxdepth 2 -mindepth 2 -type d | cut -d'/' -f $depth- | fzf)
+	#cd $PSEARCH_DIR/$f
+#}
 ztheme(){
 	export ZSH_THEME="$1"
 	source $ZSH/oh-my-zsh.sh
@@ -329,4 +329,8 @@ password(){
 }
 decode(){
 	echo $* | base64 --decode | tee >(xclip -sel clip)
+}
+psearch(){
+	DIR=$(find -not -path "./.gradle/*" -not -path "./.cache/*" -not -path "./.eclipse/*" -not -path "./.mozilla/*" -not -path './.cargo/*' -type d | fzf)
+	cd $DIR
 }

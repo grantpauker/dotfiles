@@ -31,9 +31,8 @@ set $up k
 set $down j
 set $left h
 set $right l
-set $capslock F13
 set $mod Mod4
-set $mousesaccel 1
+set $mouseaccel 0.2
 
 floating_modifier $mod
 
@@ -50,13 +49,14 @@ exec [ -e ~/.fehbg ] && ~/.fehbg
 exec [ -e ~/.compton.conf ] && compton --config ~/.compton.conf -b
 exec xhost +
 exec xinput --set-prop 12 'libinput Accel Speed' $mouseaccel
+exec gaps on
+smart_gaps on
 
 exec syncthing
 exec mpd
 exec nm-applet
 exec greenclip daemon
 exec udiskie
-#exec conky -d
 
 exec telegram-desktop
 exec $browser
@@ -67,12 +67,11 @@ exec_always pgrep -x mpdupdate || mpdupdate
 
 # popups
 set $fixwin resize set 1500 600, move position center
-bindsym $mod+z [instance="dropdown"] scratchpad show, [instance="dropdown"] 
+bindsym $mod+z       [instance="dropdown"] scratchpad show
 bindsym $mod+Shift+z [instance="dropdown"] $fixwin
-bindsym $mod+x [instance="math"] scratchpad show, [instance="math"]
+bindsym $mod+x       [instance="math"] scratchpad show
 bindsym $mod+Shift+x [instance="math"] $fixwin
 bindsym $mod+Shift+c exec vimclip
-#bindsym $mod+v exec fopen
 bindsym $mod+Shift+v exec vopen -t
 
 # rofi
@@ -83,7 +82,7 @@ bindsym XF86Search exec rofi -show run
 bindsym $mod+grave exec rofi-symbols
 
 # window control
-bindsym $mod+q [con_id=__focused__	instance="^(?!dropdown)^(?!math)^(?!vimbuf)"] kill
+bindsym $mod+q [con_id=__focused__ instance="^(?!dropdown)^(?!math)"] kill
 bindsym $mod+a [urgent=latest] focus
 bindsym $mod+Shift+a [urgent=latest] move workspace current
 
@@ -109,17 +108,10 @@ bindsym $mod+Shift+$up move up $winmv
 bindsym $mod+Shift+$right move right $winmv
 
 bindsym $mod+w split toggle
-
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-
-#bindsym $mod+Shift+a focus parent
-#bindsym $mod+d focus child
-
-#bindsym $mod+Shift+minus move scratchpad
-#bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+space floating toggle
 
 # workspace control
 set $ws1 "1 "
@@ -130,7 +122,6 @@ set $ws5 "5 "
 set $ws6 "6 "
 set $ws7 "7 "
 set $ws8 "8"
-set $ws8 "9"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -174,19 +165,20 @@ bindsym $mod+y resize shrink width $rw2 px or $rw2 ppt
 bindsym $mod+u resize shrink height $rw2 px or $rw2 ppt 
 bindsym $mod+i resize grow height $rw2 px or $rw2 ppt 
 bindsym $mod+o resize grow width $rw2 px or $rw2 ppt 
-bindsym $mod+t exec gaps
 
 bindsym $mod+Shift+y resize shrink width $rw1 px or $rw1 ppt 
 bindsym $mod+Shift+u resize shrink height $rw1 px or $rw1 ppt 
 bindsym $mod+Shift+i resize grow height $rw1 px or $rw1 ppt 
 bindsym $mod+Shift+o resize grow width $rw1 px or $rw1 ppt 
+
+bindsym $mod+t exec gaps
 bindsym $mod+semicolon gaps outer current minus $rg1
 bindsym $mod+apostrophe gaps outer current plus $rg1
 bindsym $mod+Shift+semicolon gaps inner current minus $rg1
 bindsym $mod+Shift+apostrophe gaps inner current plus $rg1
 
 # open applications
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $termfree
 bindsym $mod+s exec $browser
 bindsym $mod+Shift+s exec $browser --incognito
@@ -194,9 +186,12 @@ bindsym $mod+c exec code
 bindsym $mod+r exec $term -e "ranger"
 bindsym $mod+Shift+r exec $termfree -e "ranger"
 
+#background applications
+bindsym $mod+Shift+e exec lk
+
 # stystem control
 bindsym $mod+Escape exec refresh
-bindsym $mod+Shift+Escape exec i4lock
+bindsym --release $mod+Shift+Escape exec killer
 bindsym $mod+Delete exec i3exit logout
 bindsym $mod+Shift+Delete exec shutdown-menu
 
@@ -204,7 +199,7 @@ bindsym $mod+Shift+Delete exec shutdown-menu
 bar {
 	i3bar_command i3bar -t
 	font pango: FontAwesome, Fira Code Retina 9
-	status_command i3blocks -c ~/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position top
 	workspace_buttons yes
 	colors {
@@ -226,9 +221,6 @@ client.unfocused				$clear	$clear $clear	$clear  $clear
 client.focused_inactive	$clear	$clear $clear $clear  $clear
 client.urgent						$base0F	$clear $clear $base0F	$base0F
 
-exec gaps on
-smart_gaps on
-
 # audio keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id sc up 5
 bindsym XF86AudioLowerVolume exec --no-startup-id sc down 5
@@ -244,18 +236,17 @@ bindsym XF86AudioNext exec --no-startup-id sc next
 bindsym XF86AudioPrev exec --no-startup-id sc prev
 
 # sreen control
-set $b_change 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc $b_change -time 1 
-bindsym XF86MonBrightnessDown exec xbacklight -dec $b_change -time 1
+set $backlight 8
+bindsym XF86MonBrightnessUp exec backlight $backlight
+bindsym XF86MonBrightnessDown exec backlight -$backlight
 
-bindsym $mod+XF86MonBrightnessUp exec xbacklight -inc $(($b_change/2)) -time 1 
-bindsym $mod+XF86MonBrightnessDown exec xbacklight -dec $(($b_change/2)) -time 1 
+bindsym $mod+XF86MonBrightnessUp exec backlight $(($backlight/2))
+bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/2))
 
-bindsym $mod+Shift+XF86MonBrightnessUp exec xbacklight -inc $(($b_change/4)) -time 1 
-bindsym $mod+Shift+XF86MonBrightnessDown exec xbacklight -dec $(($b_change/4)) -time 1 
+bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight/4))
+bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight/4))
 
 bindsym $mod+e exec redtoggle
-bindsym $mod+Shift+e exec lk
 
 # screenshot
 bindsym $mod+Tab exec screenshot -s
@@ -266,43 +257,22 @@ bindsym $mod+Shift+Tab exec screencast
 for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] resize set 1500 600
+for_window [instance="dropdown"] sticky enable
 
 # dropdown calculator
 for_window [instance="math"] floating enable
 for_window [instance="math"] move scratchpad
 for_window [instance="math"] resize set 1500 600
-
-# vim buffer
-for_window [instance="vimbuf"] floating enable
-for_window [instance="vimbuf"] move scratchpad
-for_window [instance="vimbuf"] resize set 1500 600
-
-#	rofi notes
-for_window [instance="rnotes"] floating enable
-for_window [instance="rnotes"] resize set 1500 600
-for_window [instance="rnotes"] move position center
-for_window [instance="rnotes"] move up 625
+for_window [instance="math"] sticky enable
 
 # vimclip
 for_window [instance="vimclip"] floating enable
 for_window [instance="vimclip"] resize set 1500 600
 for_window [instance="vimclip"] move position center
-
-# file opener
-#for_window [instance="fopen"] floating enable
-#for_window [instance="fopen"] resize set 1500 600
-#for_window [instance="fopen"] move position center
-
-# mpv floating window
-for_window [title="mpvfloat"] floating enable
-for_window [title="mpvfloat"] sticky enable
-for_window [title="mpvfloat"] border pixel 0
+for_window [instance="vimclip"] sticky enable
 
 # ncmpcpp floating window
 for_window [title="ncmpcppfloat"] floating enable
-
-# calcurse floating window
-for_window [title="calcursefloat"] floating enable
 
 # music
 set $ncmcheck xdotool search --name "[n]cmpcppfloat"
