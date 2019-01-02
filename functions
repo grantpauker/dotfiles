@@ -2,19 +2,6 @@
 running() {
 	ps aux | grep $(echo "$1" | sed -e 's/^\(.\)/\[\1\]/')
 }
-audiolen() {
-	if [ "$1" = "" ]; then
-		ext=$(mostext)
-	else
-		ext="$1"
-	fi
-	out=$(find -maxdepth 1 -type f -name "*$ext" -print0 | xargs -0 mplayer -vo dummy -ao dummy -identify 2>/dev/null | perl -nle '/ID_LENGTH=([0-9\.]+)/ && ($t +=$1) && printf "%02d:%02d:%02d\n",$t/3600,$t/60%60,$t%60' | tail -n 1)
-	if [ "$out" == "" ]; then
-		echo 00:00:00
-	else
-		echo $out
-	fi
-}
 rgb() {
 	printf "\x1b[38;2;$1;$2;$3m"
 }
@@ -33,48 +20,6 @@ printhex() {
 }
 clip() {
 	echo -n "$*" | cclip
-}
-printfunc() {
-	grep --color=auto -zPo "$2[\s\S]*?(\{([^{}]++|(?1))*\})" $1
-	echo ""
-}
-fileswap() {
-	mv $1 "tmp"
-	mv $2 $1
-	mv "tmp" $2
-}
-lpass() {
-	addons=~/projects/bash/lpass-addons
-	state=0
-	if [ "$1" == "logout" ]; then
-		orig-lpass $1
-		return
-	elif [ "$1" == "generate" ]; then
-		password=$($addons/lpass-generate $2)
-		echo $password
-		password=$(echo $password | tr -d ' ')
-		echo -n $password | xclip -sel clip
-		return
-	elif [ "$1" == "copy" ]; then
-		$addons/lpass-copy $2
-		return
-	fi
-	status=$(orig-lpass status)
-	if [ $? -ne 0 ]; then
-		if [ "$status" = 'Not logged in.' ]; then
-			orig-lpass login grantpauker@gmail.com 1>&2
-			state=1
-		else
-			echo "Lastpass error: $status" 1>&2
-		fi
-	fi
-	if [ "$1" == "add" ]; then
-		$addons/lpass-add
-	elif [ "$1" == "login" ] && [ $state -eq 0 ]; then
-		orig-lpass login grantpauker@gmail.com
-	else
-		orig-lpass $*
-	fi
 }
 up() {
 	cd $(printf '../%.0s' $(seq 1 $1))
@@ -134,13 +79,11 @@ random() {
 	echo $((RANDOM % (upper - lower) + lower))
 }
 flasher() {
-	i=0
-	while [ "$i" -lt "10" ]; do
-		printf "\\e[?5h"
+	for in in {0..10}; do
+		printf '\e[?5h'
 		sleep 0.1
-		printf "\\e[?5l"
-		read -s -n1 -t1 && break
-		i=$((i + 1))
+		printf '\e[?5l'
+		sleep 0.1
 	done
 }
 binary() {
@@ -273,12 +216,6 @@ mmerge(){
 		ffmpeg -i "$1" -i "$2" -map 0 -map 1 -c copy "srt-$1" ;;
 	esac
 }
-run(){
-	setsid nohup $* > /dev/null
-}
-dimensions(){
-	ffprobe -v quiet -print_format json -show_format -show_streams "$1" | jq -r '"\(.streams[0].width)x\(.streams[0].height)"'
-}
 cleep(){
 	for f in $(seq 1 $1); do
 		sleep 1
@@ -304,20 +241,6 @@ duration () {
 }
 ext(){
 	echo ${1%.*}
-}
-episodes(){
-	curl -s $1 | awk '/class="change_translation_text" data-language="en"/{getline; gsub(/<\/span>/,""); gsub(/^[ \t]+|[ \t]+$/, "");$1=$1;gsub(/ /,"-");gsub(/..$/,"");gsub(/,|'"'"'|"/,"");print tolower($0)}'
-}
-
-remaining(){
-	local TIME=$(echo '{ "command": ["get_property_string", "time-remaining"] }' | socat - /tmp/mpvsocket | jq -r .data)
-	local SPEED=$(echo '{ "command": ["get_property_string", "speed"] }' | socat - /tmp/mpvsocket | jq -r .data)
-	local REMAINING=$((TIME/SPEED))
-	printf '%d:%02d:%02d\n' $(($REMAINING/3600)) $(($REMAINING%3600/60)) $(($REMAINING%60))
-}
-chemhw(){
-	curl -s --cookie ~/.cookies/bertier.txt https://sites.google.com/a/sandi.net/bertierchemistry2018/home/honors-chemistry\?pli\=1 | tidy -q 2>/dev/null | awk -v m=1 '/Week/{count++; next} count == m' | lynx --stdin --dump
-	#curl -s --cookie ~/.cookies/bertier.txt https://sites.google.com/a/sandi.net/bertierchemistry2018/home/honors-chemistry\?pli\=1 | xmllint --html --xpath '//*[@dir="ltr"]' - 2>/dev/null | tidy -q 2>/dev/null | awk -v m=1 '/Week/{count++; next} count == m' | lynx --stdin --dump
 }
 mc(){
 	mkdir $1

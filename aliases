@@ -83,3 +83,5 @@ alias bell='printf "\a"'
 alias alert='PROMPT=$PROMPT$(printf "\a")'
 alias antialert='PROMPT=$(echo $PROMPT | sed "s/\a//g")'
 alias cala='cal -n 2'
+alias rr='rranger'
+alias cd='echo "Do you really need to use cd"; cd' # TODO - remove; only to remember to use arrow keys

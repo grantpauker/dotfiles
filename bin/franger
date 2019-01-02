@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rm -f /tmp/ranger-chosen
+kitty -e ranger --choosefiles=/tmp/ranger-chosen

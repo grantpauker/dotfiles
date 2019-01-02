@@ -1,5 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="minimal"
+export ZSH_CUSTOM=$HOME/.config/zsh-custom
 
 plugins=(
 	sudo

@@ -46,7 +46,7 @@ set $math python -q -i -c 'from math import *'
 exec xrandr --dpi 276
 exec [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 exec [ -e ~/.fehbg ] && ~/.fehbg
-exec [ -e ~/.compton.conf ] && compton --config ~/.compton.conf -b
+exec [ -e ~/.config/compton.conf ] && compton --config ~/.config/compton.conf -b
 exec xhost +
 exec xinput --set-prop 12 'libinput Accel Speed' $mouseaccel
 exec gaps on
