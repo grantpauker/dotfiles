@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-[[ "$1" == "" ]] && echo "no file" && exit
-youtube-dl -q --write-auto-sub --skip-download -o "/tmp/mpv-youtube-subtitles.%(ext)s" $1
-trap "rm -f mpv /tmp/mpv-youtube-subtitles*" EXIT
-setsid mpv -quiet --sub-file=$(echo /tmp/mpv-youtube-subtitles*) $1

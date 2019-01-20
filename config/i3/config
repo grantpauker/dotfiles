@@ -75,6 +75,7 @@ bindsym $mod+Shift+c exec vimclip
 bindsym $mod+Shift+v exec vopen -t
 
 # rofi
+bindsym $mod+XF86BrightnessAdjust exec rofi -show run
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+d exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+b exec rofi-hw
@@ -148,12 +149,13 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 for_window [instance="Godot_Engine"] floating enable
+#for_window [class="QDriverStation"] floating enable
 assign [class="Google-chrome"] $ws1
 assign [class="^(?!workfree)kitty"] $ws2
 assign [class="Code"] $ws3
 assign [class="Godot"] $ws3
 assign [class="TelegramDesktop"] $ws4
-assign [class="mpv"] $ws5
+#assign [class="mpv"] $ws5
 for_window [class="Spotify"] move to workspace $ws5
 for_window [title="YouTube Music - Google Chrome"] move to workspace $ws6
 
@@ -171,7 +173,7 @@ bindsym $mod+Shift+u resize shrink height $rw1 px or $rw1 ppt
 bindsym $mod+Shift+i resize grow height $rw1 px or $rw1 ppt 
 bindsym $mod+Shift+o resize grow width $rw1 px or $rw1 ppt 
 
-bindsym $mod+t exec gaps
+bindsym $mod+g exec gaps
 bindsym $mod+semicolon gaps outer current minus $rg1
 bindsym $mod+apostrophe gaps outer current plus $rg1
 bindsym $mod+Shift+semicolon gaps inner current minus $rg1
@@ -183,6 +185,7 @@ bindsym $mod+Shift+Return exec $termfree
 bindsym $mod+s exec $browser
 bindsym $mod+Shift+s exec $browser --incognito
 bindsym $mod+c exec code
+bindsym $mod+t exec telegram-desktop
 bindsym $mod+r exec $term -e "ranger"
 bindsym $mod+Shift+r exec $termfree -e "ranger"
 
@@ -199,8 +202,8 @@ bindsym $mod+Shift+Delete exec shutdown-menu
 bar {
 	i3bar_command i3bar -t
 	font pango: FontAwesome, Fira Code Retina 9
-	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	position top
+	status_command i3blocks -c ~/.config/i3blocks/config
+	position bottom
 	workspace_buttons yes
 	colors {
 		background	$base00
@@ -241,10 +244,10 @@ bindsym XF86MonBrightnessUp exec backlight $backlight
 bindsym XF86MonBrightnessDown exec backlight -$backlight
 
 bindsym $mod+XF86MonBrightnessUp exec backlight $(($backlight/2))
-bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/2))
+bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/4))
 
-bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight/4))
-bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight/4))
+bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight*2))
+bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight*2))
 
 bindsym $mod+e exec redtoggle
 
@@ -300,3 +303,5 @@ bindsym $mod+Shift+backslash exec --no-startup-id sc clear
 bindsym $mod+slash exec --no-startup-id rofi-mpd -s
 bindsym $mod+Shift+slash exec --no-startup-id rofi-mpd -a
 bindsym $mod+Shift+p exec --no-startup-id rofi-mpd -p
+
+bindsym $mod+Shift+t exec notify-send DUNST_COMMAND_TOGGLE

@@ -6,6 +6,7 @@ source install-utils
 echo -e "Linking files...\n"
 
 # Link files
+dotlink wallpaper.png ~/Pictures/wallpaper.png
 for c in config/* bin xinitrc Xresources xsession zprofile zshenv zshrc aliases functions; do
 	dotlink $c ~/.$c 
 done

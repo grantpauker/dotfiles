@@ -11,7 +11,10 @@ else
 	COLOR="$base0F"
 fi
 if sc ismute; then
-	printf "$icon ––\n\n$COLOR"
+	COLOR="$base05"
+	printf "<span color='$COLOR'>$icon </span>"
+	printf "<span color='$COLOR' font_style='italic'>$(sc getvol)</span>"
 else
-	printf "$icon $(sc getvol)\n\n$COLOR"
+	printf "<span color='$COLOR'>$icon $(sc getvol)</span>"
 fi
+

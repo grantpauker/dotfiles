@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-OUTPUT=~/.tmp/helio-wallpaper.jpg
-wget http://www.opentopia.com/images/data/sunlight/world_sunlight_map_rectangular.jpg -O $OUTPUT
-~/.fehbg

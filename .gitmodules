@@ -1,0 +1,12 @@
+[submodule "config/zsh-custom/zsh"]
+	path = config/zsh-custom/zsh
+	url = https://github.com/junegunn/fzf.git
+[submodule "config/zsh-custom/plugins/fzf"]
+	path = config/zsh-custom/plugins/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "config/zsh-custom/plugins/fzf-zsh"]
+	path = config/zsh-custom/plugins/fzf-zsh
+	url = https://github.com/Treri/fzf-zsh.git
+[submodule "config/zsh-custom/plugins/zsh-syntax-highlighting"]
+	path = config/zsh-custom/plugins/zsh-syntax-highlighting
+	url = git://github.com/zsh-users/zsh-syntax-highlighting.git

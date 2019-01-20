@@ -70,6 +70,13 @@ prompt_git() {
 	fi
 }
 
+prompt_virtualenv() {
+	[[ "$VIRTUAL_ENV" == "" ]] && return
+	name="$(basename $VIRTUAL_ENV)"
+	echo -n " %F{yellow}($name)"
+}
+
+
 # Dir: current working directory
 prompt_dir() {
 	#[[ -L $PWD ]] && color="cyan" || color="blue" # change color if folder is a symlink
@@ -107,6 +114,7 @@ build_prompt() {
 	prompt_status
 	prompt_dir
 	prompt_git
+  prompt_virtualenv
 	prompt_reset
 }
 

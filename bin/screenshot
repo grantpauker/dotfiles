@@ -2,10 +2,9 @@
 OUTPUT=~/Pictures/screenshots/`date +%Y-%m-%d-%H:%M:%S`.jpg
 if [[ "$1" == "-a" ]]; then
 	maim --hidecursor | tee >(xclip -selection clipboard -t image/png) $OUTPUT
-	notify-send "saved screenshot" -a maim
+	notify-send "saved screenshot to $OUTPUT" -a maim
 elif [[ "$1" == "-s" ]]; then
 	GEOMETRY=$(slop -l -c 0.54,0.87,1.0,0.25) || exit
-	echo hey
 	maim --hidecursor -g $GEOMETRY | tee >(xclip -selection clipboard -t image/png) $OUTPUT
-	notify-send "saved screenshot" -a maim
+	notify-send "saved screenshot to $OUTPUT" -a maim
 fi

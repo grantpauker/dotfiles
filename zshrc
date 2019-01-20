@@ -9,6 +9,7 @@ plugins=(
 	fzf-zsh
 	dircycle
 	extract
+	zsh-syntax-highlighting
 )
 
 fpath=(~/.zsh/completion $fpath)
@@ -31,13 +32,11 @@ setopt extendedglob
 setopt HIST_IGNORE_ALL_DUPS
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_SEARCH_PATH:/usr/local/lib/pkgconfig
-export EDITOR=nvim
 
 zstyle ':completion:*' rehash true
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
-export GOBIN=$HOME/go/bin
 export PSEARCH_DIR=~/projects
 export FZF_DEFAULT_OPTS='--color 16'
 
@@ -45,3 +44,5 @@ autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
 
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=1

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# a useless script, just for fun
-msg=("pp extendus" "arch is for nerds" "dog cat hey ho")
-rand=$(od -N 4 -t uL -An /dev/urandom | tr -d ' ')
-chosen="${msg[rand % ${#msg[@]}]}"
-
-figlet -w $(tput cols) -f ~/Documents/fonts/figlet/big.flf $chosen | lolcat -p 0.75
-printf "\nThat's the facts!\n\n" | lolcat -p 0.5

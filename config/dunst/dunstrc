@@ -119,7 +119,7 @@
     startup_notification = true
 
     # dmenu path
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = rofi -theme mini -dmenu -p dunst
 
     # browser for opening urls in context menu
     browser = /usr/bin/firefox -new-tab
@@ -134,7 +134,7 @@
     # xev might be helpful to find names for keys
 
     # close notification
-    close = mod4+m
+    #close = mod4+m
 
     # close all notifications
     #close_all = mod4+shift+m
@@ -143,7 +143,7 @@
     #history = mod4+n
 
     # context menu
-    #context = mod4+shift+i
+    context = ctrl+.
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.

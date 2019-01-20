@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 source ~/.theme/shell
-! iwgetid &>> /dev/null && exit
-strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}')
+[[ "$(nmcli radio  wifi)" == "disabled" ]] && printf "<span color='$base05' font_style='italic'>Wifi Disabled</span>" && exit
+! iwgetid &>> /dev/null && printf "<span color='$base05' font_style='italic'>No Connection</span>" && exit
+strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}' | head -n1)
 printf "$(iwgetid -r) "
 if [[ "$strength" -gt "80" ]]; then
 	printf "●●●●\n\n$base0B"

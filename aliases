@@ -31,7 +31,7 @@ alias po=popd
 alias pu=pushd
 alias r=ranger
 alias rd=rmdir
-alias readme='nvim `find -maxdepth 1 -type f | grep -i read`'
+alias readme='$EDITOR `find -maxdepth 1 -type f | grep -i read`'
 alias renet='sudo systemctl restart NetworkManager'
 alias s='sudo '
 alias sizes='du -hs'
@@ -44,8 +44,8 @@ alias sudo='/usr/bin/sudo '
 alias sv='sudo -E nvim'
 alias try='export LAST="$(cat ~/.system/zsh_not_found)"; sudo pacman -S $LAST'
 alias upip='micropython -m upip'
-alias v=nvim
-alias vi=nvim
+alias v='nvim'
+alias vi='nvim'
 alias vim='nvim'
 alias at=youtube-dl
 alias browser='$BROWSER'
@@ -61,10 +61,9 @@ alias lkk='sudo logkeys -k'
 alias music='google-chrome-stable --new-window https://music.youtube.com &>> /dev/null'
 alias sumn='sudo umount'
 alias of='rifle $(fzf)'
-alias vf='nvim $(fzf)'
-
+alias vf='$EDITOR $(fzf)'
 alias cfi3='$EDITOR ~/.config/i3/config'
-alias cfi3blocks='$EDITOR ~/.config/i3/i3blocks.conf'
+alias cfi3blocks='$EDITOR ~/.config/i3blocks/config'
 alias cfaliases='$EDITOR ~/.aliases'
 alias cffunctions='$EDITOR ~/.functions'
 alias cfconfigs='$EDITOR ~/.bin/configs'
@@ -84,4 +83,9 @@ alias alert='PROMPT=$PROMPT$(printf "\a")'
 alias antialert='PROMPT=$(echo $PROMPT | sed "s/\a//g")'
 alias cala='cal -n 2'
 alias rr='rranger'
-alias cd='echo "Do you really need to use cd"; cd' # TODO - remove; only to remember to use arrow keys
+alias c='git clone'
+alias nvenv='virtualenv env && venv && pip install pylint autopep8'
+alias venv='source ./env/bin/activate'
+alias uenv='deactivate'
+alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
+

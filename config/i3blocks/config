@@ -1,5 +1,5 @@
 # Global properties
-command=~/.config/i3/bin/i3$BLOCK_NAME
+command=~/.bin/i3blocks/$BLOCK_NAME
 separator_block_width=20
 markup=pango
 
@@ -30,7 +30,6 @@ signal=1
 # Network interface monitoring
 [wifi]
 interval=1
-instance=wlp58s0
 
 # Battery indicator
 [battery]
@@ -53,13 +52,9 @@ interval=5
 
 [pacman]
 interval=300
-signal=13
 
 #[countdown]
 #interval=60
 
 #[telegram]
 #interval=10
-
-#[message]
-#interval=1
