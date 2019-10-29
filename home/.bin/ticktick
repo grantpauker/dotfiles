@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+URL=https://ticktick.com/\?language\=en_US\#p/inbox115136578/tasks/5da158a14e275038ad3db4de
+surf $URL

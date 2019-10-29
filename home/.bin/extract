@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+archive="$1"
+[[ ! -a "$archive" ]] && echo "\"$archive\" does not exist" && exit
+case "$archive" in
+	*.tar.bz2|*.tar.xz|*.tbz2) tar xvjf "$archive" ;;
+	*.tar.gz|*.tgz) tar xvzf "$archive" ;;
+	*.lzma) unlzma "$archive" ;;
+	*.bz2) bunzip2 "$archive" ;;
+	*.rar) unrar x -ad "$archive" ;;
+	*.r00) unrar x -ad "$archive" ;;
+	*.gz) gunzip "$archive" ;;
+	*.tar) tar xvf "$archive" ;;
+	*.zip) unzip "$archive" ;;
+	*.Z) uncompress "$archive" ;;
+	*.7z) 7z x "$archive" ;;
+	*.xz) unxz "$archive" ;;
+	*.exe) cabextract "$archive" ;;
+	*) echo "unknown filetype" ;;
+esac

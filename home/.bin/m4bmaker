@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+join_by(){
+	local IFS="$1"
+	shift
+	echo "$*"
+}
+
+get_duration(){
+	ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 "$1"
+}
+
+files=$(join_by "|" "${@:2}")
+outfile=${1%.*}
+metadata=$outfile.chapters.txt
+
+:> $metadata
+
+total_duration=0
+for f in "${@:2}"; do
+	echo "$total_duration ${f%.*}" >> $metadata
+	duration=$(get_duration "$f")
+	total_duration=$(bc <<< $total_duration+$duration)
+done
+
+
+ffmpeg -i "concat:$files" -c:a aac -b:a 64k -f mp4 $1
+mp4chaps -i $1
+
+rm $metadata

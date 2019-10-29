@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-out=$(i3-msg -t get_tree | jq -r '.nodes[1].nodes[1] | recurse(.nodes[]) | if .type == "workspace" then . as $ws | .nodes[] | "\($ws.name)  \(.name) \(.window)"  else empty end')
-win=$(printf "$out" | rofi -dmenu -p "window")
-cmd=$(echo $win | sed 's/.* \([0-9]*\)/[id=\1] focus/g')
-i3-msg "$cmd"
-
-

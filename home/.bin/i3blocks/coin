@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+price=$(coin $BLOCK_INSTANCE)
+if [[ "${price:0:1}" == "-" ]]; then
+	COLOR=#F07178
+else
+	COLOR=#C3E88D
+fi
+printf "${price:1}\n\n$COLOR\n"
+

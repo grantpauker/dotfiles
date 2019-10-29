@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+n=$(du -a ~/.local/share/mail/*/INBOX/new/* | wc -l)
+[[ "$n" != "0" ]] && printf " $n\n\n#C3E88D" || exit 0
+

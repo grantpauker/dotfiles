@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+[[ "$(nmcli radio  wifi)" == "disabled" ]] && printf "<span color='#959DCB' font_style='italic'>Wifi Disabled</span>" && exit
+! iwgetid &>> /dev/null && printf "<span color='#959DCB' font_style='italic'>No Connection</span>" && exit
+strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}' | head -n1)
+printf "$(iwgetid -r) "
+if [[ "$strength" -gt "80" ]]; then
+	printf "●●●●\n\n#C3E88D\n"
+elif [[ "$strength" -gt "55" ]]; then
+	printf "●●●○\n\n#C3E88D\n"
+elif [[ "$strength" -gt "30" ]]; then
+	printf "●●○○\n\n#FFCB6B\n"
+elif [[ "$strength" -gt "5" ]]; then
+	printf "●○○○\n\n#F78C6C\n"
+else
+	printf "○○○○\n\n#FF5370"\n 
+fi

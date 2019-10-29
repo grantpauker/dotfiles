@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+connect(){
+	NETWORK=$(nmcli -f IN-USE,SSID,RATE,SIGNAL,BARS,SECURITY d wifi list | tail -n +2 | dmenu -i -l 10 -p "Network:")
+	[[ "$NETWORK" == "" ]]  && exit
+	COLS=$(echo "$NETWORK" | awk '{print NF}')
+	FIRST=$(echo "$NETWORK" | awk '{print $1}')
+	if [[ "$FIRST" == "*" ]]; then
+		exit
+	else
+		COLS=$((COLS-5))
+		SSID=$(echo $NETWORK | awk '{ for(i=1; i<='$COLS'; i++) {printf $i" "} }')
+		SSID="${SSID::-1}"	
+		SECURITY=$(echo "$NETWORK" | awk '{print $NF}')
+	fi
+	if nmcli -f NAME c | rg -q $SSID; then
+		NAME="$(nmcli -f NAME c | rg "$SSID [0-9]*")"
+		nmcli c up "$NAME"
+	else
+		if [[ "$SECURITY" == "--" ]]; then
+			nmcli device wifi connect "$SSID"
+		else
+			PASS=$(echo -n | dmenu -i -p "password: ")
+			[[ "$PASS" == "" ]] && exit
+			nmcli device wifi connect "$SSID" password "$PASS"
+		fi
+	fi
+}
+
+delete(){
+	CONNECTION=$(nmcli c | tail -n +2 | dmenu -i -l 10 -p "Connection:")
+	COLS=$(echo "$CONNECTION" | awk '{print NF}')
+	COLS=$((COLS-3))
+	NAME=$(echo $CONNECTION | awk '{ for(i=1; i<='$COLS'; i++) {printf $i" "} }')
+	NAME="${NAME::-1}"	
+	if [[ $(printf "no\nyes" | dmenu -i -p "Are you sure you want to delete '$NAME':") == "yes" ]]; then
+		nmcli c delete "$NAME"
+	fi
+}
+
+if [[ "$(nmcli n)" == "enabled" ]]; then
+	NET_OP="Disable Networking"
+else
+	NET_OP="Enable Networking"
+fi
+
+if [[ "$(nmcli r wifi)" == "enabled" ]]; then
+	WIFI_OP="Disable WiFi"
+else
+	WIFI_OP="Enable WiFi"
+fi
+
+ACTIVE="$(nmcli -t -f NAME connection show --active)"
+
+CMD="$(printf "Connect\nDisconnect\nDelete\n$NET_OP\n$WIFI_OP\nGUI" | dmenu -i -p "Option:")"
+
+if [[ "$CMD" == "Connect" ]]; then
+	connect
+elif [[ "$CMD" == "Disconnect" ]]; then
+	[[ "$ACTIVE" != "" ]] && nmcli con down "$ACTIVE"
+elif [[ "$CMD" == "Delete" ]]; then
+	delete
+elif [[ "$CMD" == "Enable Networking" ]]; then
+	nmcli n on
+elif [[ "$CMD" == "Disable Networking" ]]; then
+	nmcli n off
+elif [[ "$CMD" == "Enable WiFi" ]]; then
+	nmcli r wifi on
+elif [[ "$CMD" == "Disable WiFi" ]]; then
+	nmcli r wifi off
+elif [[ "$CMD" == "GUI" ]]; then
+	nm-connection-editor
+fi

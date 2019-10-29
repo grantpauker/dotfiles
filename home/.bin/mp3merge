@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+join_by(){
+	local IFS="$1"
+	shift
+	echo "$*"
+}
+files=$(join_by "|" "${@:2}")
+ffmpeg -i "concat:$files" -acodec copy "$1"

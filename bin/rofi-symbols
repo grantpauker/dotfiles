@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-symbols_file=~/.bin/symbols
-symbols="$(cat $symbols_file | rofi -dmenu -i -p symbol)"
-[[ "$symbols" == "" ]] && exit
-printf "${symbols:0:1}" | xclip -sel clip
-notify-send "copied ${symbols:0:1} to clipboard" -a symbol

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+source ~/.theme/shell
+red_enabled(){
+	[[ "$(ps -C redshift | grep -o redshift)" == "redshift" ]]
+}
+red_on(){
+	redshift -x
+	killall redshift
+}
+red_off(){
+	LAT=32.8328
+	LONG=-117.2713
+	redshift -l $LAT:$LONG -r &
+	disown
+}
+if red_enabled; then
+	red_on
+else
+	red_off
+fi

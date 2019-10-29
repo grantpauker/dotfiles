@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+while read file; do
+	case "$1" in
+	"C-x")
+		echo "$file" &>> ~/dog ;;
+  esac
+done

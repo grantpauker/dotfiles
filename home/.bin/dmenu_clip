@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+n=$(xcmenu --dmenu | \
+	sed 's/^[ ]*//g' | \
+	dmenu -i -p "clip:" -l 10| awk '{print substr($1, 1, length($1)-1)}')
+[[ "$n" == "" ]] && exit
+echo -n "$(xcmenu -g $n)" | xclip -sel c
+

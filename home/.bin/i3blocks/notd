@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+get_seeded_random()
+{
+  seed="$1"
+  openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt \
+    </dev/zero 2>/dev/null
+}
+day=$(($(($(date +%s)-25200))/86400))
+num=$(shuf -i 1000-9999 -n1 --random-source=<(get_seeded_random $day))
+printf "$num\n\n#89DDFF\n"

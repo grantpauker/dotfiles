@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+time=$(date '+%m-%d-%y %I:%M:%S')
+printf "$time\n\n#89DDFF\n"

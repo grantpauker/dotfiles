@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+FOLDER=$PWD
+mkdir ~/builds
+cd ~/builds
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+for package in $(cat packages); do
+	yay $package
+done
+cd $FOLDER

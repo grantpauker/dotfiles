@@ -1,0 +1,284 @@
+# font
+font pango:Fira Code 8, FontAwesome 8
+
+#constants
+set $width 3200
+set $height 1800
+set $halfwidth 1600
+set $halfheight 900
+
+#color
+set $base00 #292D3E
+set $base01 #444267
+set $base02 #32374D
+set $base03 #676E95
+set $base04 #8796B0
+set $base05 #959DCB
+set $base06 #959DCB
+set $base07 #FFFFFF
+set $base08 #F07178
+set $base09 #F78C6C
+set $base0A #FFCB6B
+set $base0B #C3E88D
+set $base0C #89DDFF
+set $base0D #82AAFF
+set $base0E #C792EA
+set $base0F #FF5370
+set $clear  #00000000
+
+# keys
+set $up k
+set $down j
+set $left h
+set $right l
+set $mod Mod4
+set $mouseaccel 0.2
+
+floating_modifier $mod
+
+# commands
+set $term kitty
+set $termfree kitty --class "workfree"
+#set $term st
+#set $termfree st -c "workfree"
+#set $browser firefox
+#set $privbrowser firefox --private-window
+#set $browser google-chrome-stable --enable-fast-unload
+#set $privbrowser google-chrome-stable --incognito
+set $browser qutebrowser
+set $privbrowser qutebrowser
+#set $math python -q -i -c 'import numpy as np'
+set $math qalc
+set $filemanager lf
+#set $dmenu_options -fn 'Monospace-9:normal' -nb '#292D3E' -sf '#292D3E' -sb '#82AAFF' -nf '#959DCB' -i 
+
+# startup 'n' stuff
+exec dunst
+exec xrandr --dpi 276
+exec [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
+exec [ -e ~/.fehbg ] && ~/.fehbg
+exec [ -e ~/.config/compton.conf ] && compton --config ~/.config/compton.conf -b
+exec xhost +
+exec xinput --set-prop 12 'libinput Accel Speed' $mouseaccel
+#exec gaps on
+#smart_gaps on
+
+#exec syncthing
+#exec mpd
+exec nm-applet
+exec clipbored
+exec udiskie
+exec xcmenu -d
+
+exec telegram-desktop
+exec $browser
+exec $term
+exec ticktick
+exec $termfree --name "dropdown" 
+exec $termfree --name "math" -e $math
+#exec_always pgrep -x mpdupdate || mpdupdate
+
+# popups
+set $fixwin resize set 1500 600, move position center
+bindsym $mod+z       [instance="dropdown"] scratchpad show
+bindsym $mod+Shift+z [instance="dropdown"] $fixwin
+bindsym $mod+x       [instance="math"] scratchpad show
+bindsym $mod+Shift+x [instance="math"] $fixwin
+bindsym $mod+Shift+c exec vimclip
+
+# dmenu
+bindsym $mod+space exec i3-dmenu-desktop
+bindsym $mod+Shift+space exec dmenu_clip
+bindsym XF86Search exec dmenu_run
+bindsym $mod+grave exec dmenu_symbols
+bindsym $mod+d exec dmenu_docs
+
+# window control
+bindsym $mod+q [con_id=__focused__ instance="^(?!dropdown)^(?!math)"] kill
+bindsym $mod+a [urgent=latest] focus
+bindsym $mod+Shift+a [urgent=latest] move workspace current
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+set $winmv 40px
+bindsym $mod+Shift+Left move left $winmv
+bindsym $mod+Shift+Down move down $winmv
+bindsym $mod+Shift+Up move up $winmv
+bindsym $mod+Shift+Right move right $winmv
+
+bindsym $mod+Shift+$left move left $winmv
+bindsym $mod+Shift+$down move down $winmv
+bindsym $mod+Shift+$up move up $winmv
+bindsym $mod+Shift+$right move right $winmv
+bindsym $mod+Shift+w split toggle
+bindsym $mod+f fullscreen toggle
+#bindsym --release $mod+Shift+f exec --no-startup-id xdotool key --clearmodifiers F11
+
+#bindsym $mod+space focus mode_toggle
+#bindsym $mod+Shift+space floating toggle
+
+# workspace control
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+#for_window [instance="Godot_Engine"] floating enable
+for_window [title="float"] floating enable
+for_window [title="float2"] floating enable
+assign [class="Google-chrome"]  $ws1
+assign [class="Firefox"] $ws1
+assign [class="qutebrowser"] $ws1
+assign [class="^(?!workfree)st-*"] $ws2
+assign [class="Code"] $ws5
+assign [class="Godot"] $ws5
+assign [class="TelegramDesktop"] $ws4
+for_window [title="YouTube Music - Google Chrome"] move to workspace $ws7
+for_window [class="Surf" title=".*ticktick.*"] move to workspace $ws3
+
+# window/gap resizing
+set $rw2 8
+set $rw1 4
+set $rg1 5
+bindsym $mod+y resize shrink width $rw2 px or $rw2 ppt 
+bindsym $mod+u resize shrink height $rw2 px or $rw2 ppt 
+bindsym $mod+i resize grow height $rw2 px or $rw2 ppt 
+bindsym $mod+o resize grow width $rw2 px or $rw2 ppt 
+
+bindsym $mod+Shift+y resize shrink width $rw1 px or $rw1 ppt 
+bindsym $mod+Shift+u resize shrink height $rw1 px or $rw1 ppt 
+bindsym $mod+Shift+i resize grow height $rw1 px or $rw1 ppt 
+bindsym $mod+Shift+o resize grow width $rw1 px or $rw1 ppt 
+
+#bindsym $mod+g exec gaps
+#bindsym $mod+semicolon gaps outer current minus $rg1
+#bindsym $mod+apostrophe gaps outer current plus $rg1
+#bindsym $mod+Shift+semicolon gaps inner current minus $rg1
+#bindsym $mod+Shift+apostrophe gaps inner current plus $rg1
+
+# open applications
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $termfree
+bindsym $mod+s exec $browser
+bindsym $mod+Shift+s exec $privbrowser
+bindsym $mod+c exec code
+bindsym $mod+t exec telegram-desktop
+bindsym $mod+Shift+t exec ticktick
+
+# stystem control
+bindsym $mod+Shift+BackSpace exec sc mute && i3-msg kill && $browser && i3-msg workspace "$ws1"
+bindsym $mod+Escape exec refresh
+bindsym --release $mod+Shift+Escape exec killer
+bindsym $mod+Delete exec i3exit logout
+bindsym $mod+Shift+Delete exec dmenu_shutdown
+bindsym $mod+w exec dmenu_nm
+
+# i3bar config
+bar {
+	i3bar_command i3bar -t
+	font pango: FontAwesome, Fira Code Retina 9
+	status_command i3blocks -c ~/.config/i3blocks/config
+	position bottom
+	workspace_buttons yes
+	colors {
+		background	$base00
+		separator		$base03
+		#class							border	backgr	text
+		focused_workspace		$base0D	$base0D	$base00
+		active_workspace		$base00 $base00 $base00
+		inactive_workspace	$base00 $base00 $base03
+		urgent_workspace		$base0F $base0F $base07
+	}
+}
+
+# window borders/gaps
+for_window [class="^.*"] border pixel 1
+for_window [class="Google-chrome"] border pixel 1
+client.focused					$base0C	$clear $clear $base0C	$base0C
+client.unfocused				$clear	$clear $clear	$clear  $clear
+client.focused_inactive	$clear	$clear $clear $clear  $clear
+client.urgent						$base0F	$clear $clear $base0F	$base0F
+
+# audio keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id sc up 5
+bindsym XF86AudioLowerVolume exec --no-startup-id sc down 5
+
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id sc up 5 -f
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id sc down 5 -f
+
+bindsym XF86AudioMute exec --no-startup-id sc tmute
+
+bindsym XF86AudioPlay exec --no-startup-id sc tplay 
+bindsym XF86AudioNext exec --no-startup-id sc next 
+bindsym XF86AudioPrev exec --no-startup-id sc prev
+
+# sreen control
+set $backlight 8
+bindsym XF86MonBrightnessUp exec backlight $backlight
+bindsym XF86MonBrightnessDown exec backlight -$backlight
+
+bindsym $mod+XF86MonBrightnessUp exec backlight $(($backlight/2))
+bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/4))
+
+bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight*2))
+bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight*2))
+
+bindsym $mod+e exec redtoggle
+
+# screenshot
+bindsym $mod+Tab exec screenshot -s
+bindsym $mod+Shift+Tab exec screencast
+
+# dropdown terminal
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] resize set 1500 600
+for_window [instance="dropdown"] sticky enable
+
+# dropdown calculator
+for_window [instance="math"] floating enable
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] resize set 1500 600
+for_window [instance="math"] sticky enable
+
+# vimclip
+for_window [instance="vimclip"] floating enable
+for_window [instance="vimclip"] resize set 1500 600
+for_window [instance="vimclip"] move position center
+for_window [instance="vimclip"] sticky enable

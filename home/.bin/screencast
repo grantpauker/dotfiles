@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+LOCKFILE="/tmp/screencast.lock"
+if lockfile -r 0 $LOCKFILE; then
+	trap "rm -rf $LOCKFILE" EXIT
+	OUTPUT=~/Pictures/screencasts/`date +%Y-%m-%d-%H:%M:%S`.mkv
+	read -r X Y W H G ID < <(slop -f "%x %y %w %h %g %i" -l -c 0.54,0.87,1.0,0.25)
+	ffmpeg -f x11grab -s "$W"x"$H" -i $DISPLAY+$X,$Y "$OUTPUT"
+	notify-send "saved screencast to $OUTPUT"  -a ffmpeg
+else
+	killall ffmpeg
+fi
+

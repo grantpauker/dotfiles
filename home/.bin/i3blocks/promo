@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+formattime() {
+	((h=${1}/3600))
+	((m=(${1}%3600)/60))
+	((s=${1}%60))
+	if [[ "$h" -eq "0" ]]; then
+		printf "%02d:%02d\n" $m $s
+	else
+		printf "%02d:%02d:%02d\n" $h $m $s
+	fi
+}
+
+FILE=~/.promo-time
+[[ -f $FILE ]] || exit
+
+cur=$(date "+%s")
+next=$(head -n1 $FILE)
+left=$((next-cur))
+
+if [[ $left -lt 0 ]]; then
+	sed -i 1d $FILE
+	lines=$(wc -l $FILE | awk '{ print $1 }')
+	if [[ "$lines" == "0" ]]; then
+		rm -f $FILE
+	fi
+	notify-send -a Promo "Timer done"
+	exit
+fi
+time=$(formattime $left)
+printf "$time\n\n#89DDFF\n"
