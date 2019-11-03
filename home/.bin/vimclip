@@ -3,7 +3,6 @@ xdotool search --classname vimclip && exit
 file="/tmp/vimclip-buffer"
 :> $file
 xclip -sel clip -o >> $file
-echo $file
 kitty --class "workfree" --name "vimclip" -e nvim $file
 xclip -sel clip -i -r $file
 :> $file

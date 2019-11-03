@@ -9,7 +9,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 export EDITOR=nvim
 export TERMINAL=kitty
-export BROWSER=qutebrowser
+export BROWSER=google-chrome-stable
 export OPENER=opener
 
 export GDK_SCALE=2
@@ -18,3 +18,5 @@ export QT_SCREEN_SCALE_FACTORS=2
 
 export CARGO_HOME=$HOME/.local/share/cargo
 export LPDEST=MFC9340CDW
+export LIBGL_DRI3_DISABLE=1
+

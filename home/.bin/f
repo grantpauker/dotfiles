@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-fd --color=always . $* | fzf --ansi
-

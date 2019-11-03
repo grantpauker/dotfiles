@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-out="$(calcurse-caldav)"
-stat=$?
-local_change=$(($(echo "$out" | grep import | awk '{print $1"+"$4}')))
-remote_change=$(($(echo "$out" | grep export | awk '{print $1"+"$4}')))
-echo "$out"
-[[ $stat -eq 0 ]] && notify-send -i emblem-default -a calcurse-caldav "Caldav sync sucessful (local $local_change, remote $remote_change)" || notify-send -i emblem-unreadable -a calcurse-caldav "Error syncing caldav"

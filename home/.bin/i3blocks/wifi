@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-[[ "$(nmcli radio  wifi)" == "disabled" ]] && printf "<span color='#959DCB' font_style='italic'>Wifi Disabled</span>" && exit
-! iwgetid &>> /dev/null && printf "<span color='#959DCB' font_style='italic'>No Connection</span>" && exit
+[[ "$(nmcli radio  wifi)" == "disabled" ]] && printf "<span color='#959DCB' font_style='italic'>Wifi Disabled</span>\n" && exit
+[[ "$(iw wlp58s0 link)" == "Not connected." ]] && printf "<span color='#959DCB' font_style='italic'>No Connection</span>\n" && exit
 strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}' | head -n1)
-printf "$(iwgetid -r) "
+printf "$(iw dev wlp58s0 link | grep SSID | awk '{print $2}') "
 if [[ "$strength" -gt "80" ]]; then
 	printf "●●●●\n\n#C3E88D\n"
 elif [[ "$strength" -gt "55" ]]; then

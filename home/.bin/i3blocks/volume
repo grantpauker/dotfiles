@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 if sc isjack; then
-	icon=""
+	icon=" "
 else
-	icon=""
+	icon=" "
 fi
+#icon="V"
 vol=$(sc getvol)
 if [[ "$vol" -gt "100" ]]; then
 	COLOR="#FF5370"
@@ -12,10 +13,10 @@ else
 fi
 if sc ismute; then
 	COLOR="#959DCB"
-	printf "<span color='$COLOR'>$icon </span>"
+	printf "<span color='$COLOR'>$icon</span>"
 	printf "<span color='$COLOR' font_style='italic'>$(sc getvol)</span>"
 else
-	printf "<span color='$COLOR'>$icon $(sc getvol)</span>"
+	printf "<span color='$COLOR'>${icon}$(sc getvol)</span>"
 fi
 printf "\n"
 

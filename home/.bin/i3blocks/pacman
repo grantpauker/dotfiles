@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+symbol=""
 n=$(yay -Pn)
-[[ "$n" != "0" ]] && printf " $n\n\n#C3E88D\n" || exit 0
+[[ "$n" != "0" ]] && printf "$symbol $n\n\n#C3E88D\n" || exit 0

@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-[[ -f /var/run/logkeys.pid ]] && llkk || llk -o ~/.log/logkeys.log

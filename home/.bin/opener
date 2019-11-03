@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 IFS=$'\n' 
 FILE=~/.config/opener/config
+! [[ -f $FILE ]] && echo "ERROR: config file ($FILE) does not exist" && exit
 for file in $*; do
 	file_opened="false"
 	if [[ ! -f "$file" ]]; then
@@ -13,7 +14,7 @@ for file in $*; do
 		else
 			regex=$(echo $line | sed -e 's/^[ \t]*//')
 			if [[ "$file" =~ $regex ]]; then
-				nohup $app "$file" &>/dev/null &
+				nohup $app "$file" >>/dev/null &
 				file_opened="true"
 			fi
 		fi

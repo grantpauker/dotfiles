@@ -1,4 +1,4 @@
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 export ZSH_THEME="minimal"
 export ZSH_CUSTOM=$HOME/.config/zsh-custom
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -7,12 +7,8 @@ export FZF_DEFAULT_OPTS='--color 16'
 
 plugins=(
 	sudo
-	fzf-zsh
-	dircycle
-	fast-syntax-highlighting
 )
 
-fpath=(~/.zsh/completion $fpath)
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 source ~/.functions
@@ -34,7 +30,7 @@ zstyle ':completion:*' rehash true
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
-
+fpath=(/path/to/folder/containing_lf $fpath)
 autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
@@ -49,3 +45,6 @@ unsetopt BEEP
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+
+source /usr/share/fzf/key-bindings.zsh

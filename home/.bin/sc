@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-i3volumefix="pkill -RTMIN+1 i3blocks"
+i3volumefix(){
+	pkill -RTMIN+1 i3blocks
+}
 isjack(){
 	[[ "$(grep -c "Pin-ctls: 0x00" /proc/asound/card0/codec\#0)" == "2" ]]
-}
-ismute(){
-	[[ "$(awk '/muted/ {print $2}' <(pacmd list-sinks))" == "yes" ]]
 }
 
 case "$1" in
@@ -13,29 +12,29 @@ case "$1" in
 		arg="--allow-boost"
 	fi
 	pamixer $varg -i "$2" $arg
-	$i3volumefix ;;
+	i3volumefix ;;
 "down")
 	if [[ "$3"  == "-f" ]]; then
 		arg="--allow-boost"
 	fi
 	pamixer $varg -d "$2" $arg
-	$i3volumefix ;;
+	i3volumefix ;;
 "vol")
 	if [[ "$3"  == "-f" ]]; then
 		arg="--allow-boost"
 	fi
 	pamixer $varg --set-volume "$2" $arg
-	$i3volumefix ;;
+	i3volumefix ;;
 "tmute")
 	pamixer -t
-	$i3volumefix ;;
+	i3volumefix ;;
 "mute")
 	pamixer -m
-	$i3volumefix ;;
+	i3volumefix ;;
 "getvol")
 	pamixer --get-volume ;;
 "ismute")
-	ismute ;;
+	pamixer --get-mute &>> /dev/null;;
 "isjack")
 	isjack ;;
 "tplay")
@@ -44,4 +43,8 @@ case "$1" in
 	playerctl pause ;;
 "play")
 	playerctl play ;;
+"next")
+	playerctl next ;;
+"prev")
+	playerctl prev ;;
 esac

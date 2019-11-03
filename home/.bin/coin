@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-web=$(wget -q -O - https://www.coinbase.com/price/$1)
-price=$(echo $web | xmllint --html --xpath "/html/body/div[2]/div/main/div/div/div[3]/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/span" - 2>/dev/null | tr -d 'a-z<>' | tr -d '/')
-sign=$(echo $web | xmllint --html --xpath "/html/body/div[2]/div/main/div/div/div[3]/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/span[1]" - 2>/dev/null | sed 's/.*>\(.\)<.*/\1/g')
-echo ${sign}${price}

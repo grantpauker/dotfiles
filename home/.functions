@@ -121,22 +121,6 @@ getcolor(){
   echo "#$result" | awk '{print toupper($0)}'
   $success
 }
-httpstatus(){
-	curl -o /dev/null --silent --head --write-out "%{http_code}\n" "$1"
-}
-gitexist(){
-	[[ "$(git ls-remote $1)" != "" ]]
-}
-aur(){
-	url="https://aur.archlinux.org/$1.git"
-	if ! gitexist "$url"; then	
-		echo "error: target not found: $1"
-	else
-		cd ~/builds/aur
-		git clone "$url"
-		cd $1
-	fi
-}
 getapp(){
 	id=$(xprop -root 32x '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)
 	if [[ "$id" == "0x0" ]]; then
@@ -273,14 +257,10 @@ svg2png(){
 addpath(){
 	export PATH="$PATH:$(readlink -f $1)"
 }
-pdfsplit(){
-	i=0
-	for range in "${@:3}"; do
-		pdftk $1 cat $range output ${2}${i}.pdf
-		i=$((i+1))
-	done
-}
 ytc(){ 
 	#echo "https://www.youtube-nocookie.com/embed/?playlist=$1" 
 	echo "https://www.youtube-nocookie.com/embed/?playlist=$1" | tee >(xclip -sel clip)
+}
+check(){
+	echo "$(ls -l /media/legal-files/arch/backup2.tar.gz | awk '{print $5}') $(ls -lh /media/legal-files/arch/backup2.tar.gz | awk '{print $5}')"
 }

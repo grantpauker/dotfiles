@@ -1,20 +1,27 @@
-st.font: Fira Code:pixelsize=36:antialias=true:autohint=true;
-st.borderpx:          5
-st.foreground:   #959DCB
-st.background:   #292D3E
-st.color0:  #292D3E
-st.color1:  #F07178
-st.color2:  #C3E88D
-st.color3:  #FFCB6B
-st.color4:  #82AAFF
-st.color5:  #C792EA
-st.color6:  #89DDFF
-st.color7:  #959DCB
-st.color8:  #676E95
-st.color9:  #F07178
-st.color10: #C3E88D
-st.color11: #FFCB6B
-st.color12: #82AAFF
-st.color13: #C792EA
-st.color14: #89DDFF
-st.color15: #FFFFFF
+st.font:              Fira Code:pixelsize=36:antialias=true:autohint=true;
+st.alpha: 0.91
+st.borderpx:          5        
+st.foreground:        #959DCB  
+st.background:        #292D3E  
+st.color0:            #292D3E  
+st.color1:            #F07178  
+st.color2:            #C3E88D  
+st.color3:            #FFCB6B  
+st.color4:            #82AAFF  
+st.color5:            #C792EA  
+st.color6:            #89DDFF  
+st.color7:            #959DCB  
+st.color8:            #676E95  
+st.color9:            #F07178  
+st.color10:           #C3E88D  
+st.color11:           #FFCB6B  
+st.color12:           #82AAFF  
+st.color13:           #C792EA  
+st.color14:           #89DDFF  
+st.color15:           #FFFFFF  
+
+dmenu.background:     #292D3E  
+dmenu.foreground:     #959DCB  
+dmenu.selbackground:  #82AAFF  
+dmenu.selforeground:  #292D3E  
+dmenu.font:           mono-10

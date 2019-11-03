@@ -1,0 +1,49 @@
+sxiv:
+  .*.jpg$
+  .*.png$
+zathura:
+  .*.pdf$
+google-chrome-stable:
+  .*.html$
+  .*.htm$
+  .*.com$
+  .*.co$
+  .*.io$
+  .*.org$
+  .*.net$
+  .*.edu$
+  .*.gov$
+mpv:
+  .*.mkv$
+  .*.mp4$
+  .*.mp3$
+  .*.m4b$
+  .*.m4a$
+nvim:
+  ^[^.]*$
+  .*.txt$
+  .*.config$
+  .*.c$
+  .*.py$
+  .*.cpp$
+  .*.sh$
+libreoffice:
+  .*.docx$
+  .*.doc$
+extract:
+  .*.tar.bz2$
+  .*.tar.xz$
+  .*.tbz2$
+  .*.tar.gz$
+  .*.tgz$
+  .*.lzma$
+  .*.bz2$
+  .*.rar$
+  .*.r00$
+  .*.gz$
+  .*.tar$
+  .*.zip$
+  .*.Z$
+  .*.7z$
+  .*.xz$
+  .*.exe$

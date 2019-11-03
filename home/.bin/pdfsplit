@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+i=0
+for range in "${@:3}"; do
+	stapler cat $1 $range ${2}${i}.pdf
+	i=$((i+1))
+done
+
