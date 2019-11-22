@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BATTERY=0
-status=$(acpi -b | grep "Battery $BATTERY" | sed "/Battery $BATTERY/s/.*[0-9]: \([a-zA-Z]*\), .*/\1/g")
+status=$(acpi -a | grep "Adapter $BATTERY" | awk '{print $3}')
 percent=$(acpi -b | grep "Battery $BATTERY" | sed "/Battery $BATTERY/s/.* \([0-9]*\)%.*/\1/g")
 BACKGROUND="#292D3E"
 if [[ "$percent" -le "5" ]]; then
@@ -20,7 +20,7 @@ else
 	COLOR="#C3E88D"
 	ICON=""
 fi
-if [[ "$status" == "Charging" ]]; then
+if [[ "$status" == "on-line" ]]; then
 	ICON=""
 fi
 printf "<span background='$BACKGROUND' foreground='$COLOR'>$ICON $percent%%</span>\n"

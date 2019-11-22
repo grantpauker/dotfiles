@@ -1,7 +1,7 @@
 [global]
     font = Monospace 8
 		icon_position = left
-		icon_path = /usr/share/icons/Paper/48x48/actions:/usr/share/icons/Paper/48x48/apps:/usr/share/icons/Paper/48x48/categories:/usr/share/icons/Paper/48x48/devices:/usr/share/icons/Paper/48x48/emblems:/usr/share/icons/Paper/48x48/emotes:/usr/share/icons/Paper/48x48/mimetypes:/usr/share/icons/Paper/48x48/panel:/usr/share/icons/Paper/48x48/places:/usr/share/icons/Paper/48x48/status:/usr/share/icons/Paper/48x48/web
+		#icon_path = 
     # allow a small subset of html markup:
     # <b>bold</b>
     # <i>italic</i>
@@ -64,7 +64,7 @@
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
-    transparency = 40
+    transparency = 0
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -124,8 +124,8 @@
     # browser for opening urls in context menu
     browser = /usr/bin/firefox -new-tab
 
-    frame_width = 0
-    frame_color = "#000000"
+    frame_width = 2
+    frame_color = "#89ddff"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key

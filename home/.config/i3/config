@@ -39,13 +39,9 @@ floating_modifier $mod
 # commands
 set $term alacritty
 set $termfree alacritty --class "workfree"
-#set $term st
-#set $termfree st -c "workfree"
-#set $browser firefox
-#set $privbrowser firefox --private-window
 set $browser google-chrome-stable
 set $privbrowser google-chrome-stable --incognito
-set $math qalc
+set $calculator qalc
 set $filemanager lf
 
 # startup 'n' stuff
@@ -53,7 +49,7 @@ exec dunst
 exec xrandr --dpi 276
 exec [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 exec [ -e ~/.fehbg ] && ~/.fehbg
-exec [ -e ~/.config/compton/config ] && compton -b
+exec picom -b
 exec xhost +
 exec xinput --set-prop 12 'libinput Accel Speed' $mouseaccel
 
@@ -67,26 +63,28 @@ exec ticktick
 exec $browser
 exec $term
 exec $termfree --title "dropdown" 
-exec $termfree --title "math" -e $math
+exec $termfree --title "dropcalc" -e $calculator
 
 # popups
 set $fixwin resize set 1500 600, move position center
 bindsym $mod+z       [title="dropdown"] scratchpad show
 bindsym $mod+Shift+z [title="dropdown"] $fixwin
-bindsym $mod+x       [title="math"] scratchpad show
-bindsym $mod+Shift+x [title="math"] $fixwin
-bindsym $mod+Shift+c exec vimclip
+bindsym $mod+x       [title="dropcalc"] scratchpad show
+bindsym $mod+Shift+x [title="dropcalc"] $fixwin
 
 # dmenu
 bindsym $mod+space exec i3-dmenu-desktop
-bindsym $mod+Shift+space exec dmenu_clip
+bindsym $mod+Shift+space exec dmenu_clipman
 bindsym XF86Search exec dmenu_run
 bindsym $mod+grave exec dmenu_symbols
+bindsym $mod+Shift+grave exec dmenu_states
 bindsym $mod+d exec dmenu_docs
+bindsym $mod+Shift+d exec dmenu_bookmarks
 bindsym $mod+w exec dmenu_nm
+bindsym $mod+e exec dmenu_open
 
 # window control
-bindsym $mod+q [con_id=__focused__ title="^(?!dropdown)^(?!math)"] kill
+bindsym $mod+q [con_id=__focused__ title="^(?!dropdown)^(?!dropcalc)"] kill
 bindsym $mod+a [urgent=latest] focus
 bindsym $mod+Shift+a [urgent=latest] move workspace current
 
@@ -114,7 +112,7 @@ bindsym $mod+Shift+w split toggle
 bindsym $mod+f fullscreen toggle
 
 #bindsym $mod+space focus mode_toggle
-#bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+minus floating toggle
 
 # workspace control
 set $ws1 "1 "
@@ -186,14 +184,16 @@ bindsym $mod+Shift+s exec $privbrowser
 bindsym $mod+c exec code
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+t exec ticktick
+bindsym $mod+m exec $browser --new-window https://music.youtube.com/
 
 # stystem control
-bindsym $mod+Shift+BackSpace exec sc mute && i3-msg kill && $browser && i3-msg workspace "$ws1"
+#bindsym $mod+Shift+BackSpace exec sc mute && i3-msg kill && $browser && i3-msg workspace "$ws1"
+bindsym $mod+BackSpace exec i3exit suspend
 bindsym $mod+Escape exec refresh
 bindsym --release $mod+Shift+Escape exec killer
 bindsym $mod+Delete exec i3exit logout
 bindsym $mod+Shift+Delete exec dmenu_shutdown
-bindsym $mod+Shift+d exec notify-send DUNST_COMMAND_TOGGLE
+#bindsym $mod+Shift+d exec notify-send DUNST_COMMAND_TOGGLE
 
 # i3bar config
 bar {
@@ -244,7 +244,7 @@ bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/4))
 bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight*2))
 bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight*2))
 
-bindsym $mod+e exec redtoggle
+bindsym $mod+Shift+e exec redtoggle
 
 # screenshot
 bindsym $mod+Tab exec screenshot -s
@@ -257,13 +257,7 @@ for_window [title="dropdown"] resize set 1500 600
 for_window [title="dropdown"] sticky enable
 
 # dropdown calculator
-for_window [title="math"] floating enable
-for_window [title="math"] move scratchpad
-for_window [title="math"] resize set 1500 600
-for_window [title="math"] sticky enable
-
-# vimclip
-for_window [instance="vimclip"] floating enable
-for_window [instance="vimclip"] resize set 1500 600
-for_window [instance="vimclip"] move position center
-for_window [instance="vimclip"] sticky enable
+for_window [title="dropcalc"] floating enable
+for_window [title="dropcalc"] move scratchpad
+for_window [title="dropcalc"] resize set 1500 600
+for_window [title="dropcalc"] sticky enable

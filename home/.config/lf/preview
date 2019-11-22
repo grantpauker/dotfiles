@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 case "$1" in
-	*.pdf) pdftotext $1 -;;
-	*.zip) unzip -l $1;;
-	*) src-hilite-lesspipe.sh $1 || cat $1;;
+	*.pdf)
+		pdftotext $1 -
+		;;
+	*.zip)
+		unzip -l $1
+		;;
+	*.png|*.jpg|*.jpeg|*.gif)
+		img2txt $1
+		;;
+	*)
+		bat -n --color always -r :40 $1
+		;;
 esac

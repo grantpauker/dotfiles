@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-FILE=~/.bin/dmenu_docs_list
-LINE=$(cat $FILE | dmenu -i -l 10)
+FILE=~/.data/docs
+LINE=$(cat $FILE | dmenu -i -l 10 | awk '{print $NF}')
 [[ "$LINE" == "" ]] && exit
-if rg "$LINE" -q $FILE; then
-	$BROWSER $(echo $LINE | awk '{print $NF}')
-else
-	echo "$LINE" >> $FILE
-fi
+$BROWSER $LINE

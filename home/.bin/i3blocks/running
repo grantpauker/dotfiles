@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-STATUS=""
-[[ -f /var/run/logkeys.pid ]] && STATUS+="K"
-[[ -f /tmp/screencast.lock ]] && STATUS+="S"
-[[ -f /tmp/no-lid-suspend ]] && STATUS+="L"
-
-[[ "$STATUS" != "" ]] && printf "$STATUS\n\n#89DDFF" || printf ""
-

@@ -12,5 +12,5 @@ elif [[ "$strength" -gt "30" ]]; then
 elif [[ "$strength" -gt "5" ]]; then
 	printf "●○○○\n\n#F78C6C\n"
 else
-	printf "○○○○\n\n#FF5370"\n 
+	printf "○○○○\n\n#FF5370\n" 
 fi

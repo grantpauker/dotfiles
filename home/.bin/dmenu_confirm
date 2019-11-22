@@ -1,4 +1,2 @@
 #!/usr/bin/env bash
-[[ $(printf "no\nyes" | dmenu -i -p "$1:") == "yes" ]] && $2
-
-
+[[ $(printf "no\nyes" | dmenu -i -p "$1:") == "yes" ]]

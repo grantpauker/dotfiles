@@ -1,103 +1,70 @@
 #!/usr/bin/env zsh
+alias resource='source ~/.zshrc'
 alias _=sudo
-alias a=./a.out
-alias bd=popd
 alias cclip='xclip -sel clip'
-alias clicker='while :; do xdotool click 1; done'
 alias clipdir='echo -n $PWD | cclip'
-alias code='code --high-dpi-support=true --force-device-scale-factor=2'
-alias d='dirs -v | head -10'
-alias fclear='echo -e "\033c\c"'
-alias ga='git add'
 alias hclip='clip $(fc -ln -1)'
-alias history='fc -l 1'
-alias hsearch='history | rg'
-alias keys='sudo logkeys -s'
-alias keytoggle='intoggle 17'
-alias l='ls -lAh'
-alias la='ls -A'
-alias lh='ls -lh'
-alias lo='ls -ahlG | awk '\''{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'\'
-alias m=make
-alias ma='m&&a'
-alias md='mkdir -p'
-alias mousetoggle='intoggle 10 12'
-alias kl='kill'
-alias n=ncmpcpp
-#alias o=mimeo
-alias o=opener
-alias please=sudo
-alias po=popd
-alias pu=pushd
-alias rd=rmdir
-alias readme='$EDITOR `find -maxdepth 1 -type f | rg -i read`'
-alias renet='sudo systemctl restart NetworkManager'
-alias s='sudo '
-alias sizes='du -hs'
-alias p='pacman'
-alias sp='sudo pacman'
-alias spotify='/usr/bin/spotify --force-device-scale-factor=2.2'
+alias srm='sudo rm'
 alias su='su -p'
-alias sudo='/usr/bin/sudo '
+alias renet='sudo systemctl restart NetworkManager'
+
+alias s='sudo '
+alias p='pacman'
 alias sv='sudo -E nvim'
-alias try='export LAST="$(cat ~/.system/zsh_not_found)"; sudo pacman -S $LAST'
-alias upip='micropython -m upip'
+alias sp='sudo pacman'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias at=youtube-dl
+alias yt=youtube-dl
 alias browser='$BROWSER'
 alias terminal='$TERMINAL'
-alias j='cd && fclear'
-alias yt='youtube-dl'
-alias srm='sudo rm'
-alias hw='v ~/hw'
-alias u='sudo pacman -Syu'
-alias lks='sudo logkeys -s'
-alias lkk='sudo logkeys -k'
-#alias music='google-chrome-stable --new-window https://music.youtube.com &>> /dev/null'
-alias sumn='sudo umount'
-alias of='$OPENER "$(fzf)"'
-alias vf='$EDITOR "$(fzf)"'
+alias o='fig'
+
+
 alias cfi3='$EDITOR ~/.config/i3/config'
 alias cfi3blocks='$EDITOR ~/.config/i3blocks/config'
 alias cfaliases='$EDITOR ~/.aliases'
 alias cffunctions='$EDITOR ~/.functions'
-alias cfconfigs='$EDITOR ~/.bin/configs'
-alias cffolders='$EDITOR ~/.bin/folders'
 alias cfnvim='$EDITOR ~/.config/nvim/init.vim'
 alias cfzsh='$EDITOR ~/.zshrc'
 alias cfmpv='$EDITOR ~/.config/mpv/mpv.conf'
-alias cfmpvinput='$EDITOR ~/.config/mpv/input.conf'
-alias cftermite='$EDITOR ~/.config/termite/config'
-alias cfmpd='$EDITOR ~/.config/mpd/mpd.conf'
-alias cfncmpcpp='$EDITOR ~/.ncmpcpp/config'
-alias cfkitty='$EDITOR ~/.config/kitty/kitty.conf'
 alias cfdunst='$EDITOR ~/.config/dunst/dunstrc'
 alias cfalacritty='$EDITOR ~/.config/alacritty/alacritty.yml'
-alias bell='printf "\a"'
-alias alert='PROMPT=$PROMPT$(printf "\a")'
-alias antialert='PROMPT=$(echo $PROMPT | sed "s/\a//g")'
-alias cala='cal -n 2'
-alias c='git clone'
+alias cflf='$EDITOR ~/.config/lf/lfrc'
+alias cfdocs='$EDITOR ~/.data/docs'
+
 alias nvenv='virtualenv env && venv && pip install pylint autopep8'
 alias venv='source ./env/bin/activate'
 alias uenv='deactivate'
+
 alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
-alias cflf='$EDITOR ~/.config/lf/lfrc'
+
 alias slf='sudo lf'
 alias -g '***=**/*(.)'
 alias cx='chmod +x'
 alias co='code .'
 alias irg='rg -i'
 alias sxiv='sxiv -p'
-alias cf='cfiles'
-alias rs='echo ~/Pictures/screenshots/$(ls -t ~/Pictures/screenshots/ | head -n1)'
-alias ytc 'printf https://www.youtube-nocookie.com/embed/?playlist='
-alias milkshake='o ~/shit/milkshake.ogg'
-alias skicka='/home/ruwix/go/bin/skicka'
-alias menu="dmenu -fn 'monospace-9:normal' -nb '#292D3E' -sf '#292D3E' -sb '#82AAFF' -nf '#959DCB' -i"
-alias docs='$EDITOR ~/.docs'
+
 alias ncdu='ncdu --color dark'
 alias music='google-chrome-stable https://music.youtube.com/'
-alias xa='exa'
+
+alias x='exa'
+alias xa='exa -a'
+alias xl='exa -lh'
+alias xx='exa -lah'
+
+alias udb='sudo updatedb'
+
+alias shit='mountpoint ~/shit &>> /dev/null || encfs ~/.shit ~/shit'
+alias ushit='mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit'
+
+alias lines='nl -w2 -s": "'
+
+alias ls='echo use x instead'
+alias la='echo use xa instead'
+alias lh='echo use xl instead'
+alias ll='echo use xl instead'
+alias l='echo use xx instead'
+
+alias ac='aria2c'

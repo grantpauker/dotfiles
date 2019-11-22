@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-choice=$(printf "shutdown\nreboot\nlogout\n" | dmenu -i -p "run:")
-echo $choice
+choice=$(printf "logout\nsuspend\nshutdown\nreboot" | dmenu -i -p "run:")
 i3exit $choice #&>> /dev/null

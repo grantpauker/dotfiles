@@ -191,22 +191,22 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x292d3e'
+    black:   '0x676e95'
     red:     '0xf07178'
     green:   '0xc3e88d'
     yellow:  '0xffcb6b'
     blue:    '0x82aaff'
     magenta: '0xc792ea'
     cyan:    '0x89ddff'
-    white:   '0x959dcb'
-    #black:   '0x676e95'
-    #red:     '0xf78c6c'
-    #green:   '0x444267'
-    #yellow:  '0x32374d'
-    #blue:    '0x8796b0'
-    #magenta: '0x959dcb'
-    #cyan:    '0xff5370'
-    #white:   '0xffffff'
+    white:   '0xffffff'
+
+  indexed_colors:
+    - { index: 16, color: '0xf78c6c' }
+    - { index: 17, color: '0xff5370' }
+    - { index: 18, color: '0x444267' }
+    - { index: 19, color: '0x32374d' }
+    - { index: 20, color: '0x8796b0' }
+    - { index: 21, color: '0x959dcb' }
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
@@ -603,3 +603,8 @@ key_bindings:
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                      }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   - { key: NumpadEnter,             chars: "\n"                              }
+
+  - { key: J,      mods: Alt, action: ScrollPageDown }
+  - { key: K,      mods: Alt, action: ScrollPageUp }
+  - { key: J,      mods: Alt|Shift, action: ScrollToBottom }
+  - { key: K,      mods: Alt|Shift, action: ScrollToTop }

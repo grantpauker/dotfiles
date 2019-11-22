@@ -1,5 +1,6 @@
 set previewer ~/.config/lf/preview
 set info size
+set color256 true
 
 cmd open $$OPENER $fx
 
@@ -9,42 +10,26 @@ map gdo cd ~/Downloads
 map gr  cd /
 map gm  cd /media
 map gP  cd ~/Pictures
-map gv  cd ~/Videos
+map gp  cd ~/Pictures
+map gd  cd ~/Downloads
+map gD  cd ~/Documents
+map gs  cd ~/shit
 map m push $mkdir<space>
+map t push $touch<space>
 map <delete> delete
 map C %code .
-map t &kitty -d .
-map c push $touch<space>
+map a &alacritty ---working-directory .
+map bs  $mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit|| encfs ~/.shit ~/shit
 
 set shellopts '-eu'
 set ifs "\n"
 
-cmd bulk-rename ${{
-	index=$(mktemp /tmp/lf-bulk-rename-index.XXXXXXXXXX)
+cmd vidir ${{
 	if [ -n "${fs}" ]; then
-		echo "$fs" > $index
+		echo "$fs"
 	else
-		echo "$(ls "$(dirname $f)" | tr ' ' "\n")" > $index
-	fi
-	index_edit=$(mktemp /tmp/lf-bulk-rename.XXXXXXXXXX)
-	cat $index > $index_edit
-	$EDITOR $index_edit
-	if [ $(cat $index | wc -l) -eq $(cat $index_edit | wc -l) ]; then
-		max=$(($(cat $index | wc -l)+1))
-		counter=1
-		while [ $counter -le $max ]; do
-			a="$(cat $index | sed "${counter}q;d")"
-			b="$(cat $index_edit | sed "${counter}q;d")"
-			counter=$(($counter+1))
-			
-			[ "$a" = "$b" ] && continue
-			[ -e "$b" ] && echo "File exists: $b" && continue
-			mv "$a" "$b"
-		done
-	else
-		echo "Number of lines must stay the same"
-	fi
-	rm $index $index_edit
+		ls -N1 
+	fi | xargs -d '\n' -L1 realpath --relative-base=. | xargs -d '\n' vidir
 }}
 
-map r bulk-rename
+map r vidir

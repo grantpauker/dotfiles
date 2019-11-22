@@ -1,50 +1,28 @@
+# oh-my-zsh config variables
 export ZSH=/usr/share/oh-my-zsh
-export ZSH_THEME="minimal"
 export ZSH_CUSTOM=$HOME/.config/zsh-custom
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export PKG_CONFIG_PATH=$PKG_CONFIG_SEARCH_PATH:/usr/local/lib/pkgconfig
-export FZF_DEFAULT_OPTS='--color 16'
+export ZSH_THEME="minimal"
 
+# oh-my-zsh plugins
 plugins=(
 	sudo
 )
 
+# setup oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+# source custom aliases, functions, and keybindings
 source ~/.aliases
 source ~/.functions
-alias resource='source ~/.zshrc'
+source ~/.keybindings
 
-bindkey '^[[3;5~' kill-word
-bindkey '^H' backward-kill-word
+# fix completion???
+#zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*' rehash true
 
-full-clear(){ zle kill-whole-line; fclear; zle reset-prompt; }
-zle -N full-clear 
-bindkey '^L' full-clear
-
-zstyle ':completion:*:functions' ignored-patterns '_*'
+# various zsh options
 setopt extendedglob
 setopt HIST_IGNORE_ALL_DUPS
 
-
-zstyle ':completion:*' rehash true
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-fpath=(/path/to/folder/containing_lf $fpath)
-autoload -Uz compinit
-compinit
-kitty + complete setup zsh | source /dev/stdin
-
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-unsetopt BEEP
-
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-
-source /usr/share/fzf/key-bindings.zsh
+# reload completions
+autoload -Uz compinit && compinit

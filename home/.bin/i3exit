@@ -1,26 +1,19 @@
 #!/usr/bin/env bash
 case "$1" in
-lock)
-	i3lock
-	;;
 logout)
-	dmenu_confirm "Are you sure you want to logout?"	"i3-msg exit" && vlock -c
-	;;
+  dmenu_confirm "Are you sure you want to logout?" && i3-msg exit
+  ;;
 suspend)
-	dmenu_confirm "Are you sure you want to suspend?" "systemctl suspend"
-	;;
-hibernate)
-	dmenu_confirm "Are you sure you want to hibernate?" "i3lock"
-	systemctl hibernate
-	;;
+  dmenu_confirm "Are you sure you want to suspend?" && systemctl suspend
+  ;;
 reboot)
-	dmenu_confirm "Are you sure you want to reboot?" "systemctl reboot"
-	;;
+  dmenu_confirm "Are you sure you want to reboot?" && systemctl reboot
+  ;;
 shutdown)
-	dmenu_confirm "Are you sure you want to shutdown?" "systemctl poweroff"
-	;;
+  dmenu_confirm "Are you sure you want to shutdown?" && systemctl poweroff
+  ;;
 *)
-	echo "Usage: i3exit {logout|suspend|hibernate|reboot|shutdown}"
-	exit 2
-	;;
+  echo "Usage: i3exit {logout|suspend|reboot|shutdown}"
+  exit 2
+  ;;
 esac
