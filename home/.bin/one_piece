@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+get_links(){
+	curl -s https://mangalife.us/read-online/One-Piece-Digital-Colored-Comics-chapter-$1.html | rg "class='fullchapimage'" | rg 'http[^"]*png' -o
+}
+
+TMP=$(mktemp -d)
+trap "{ rm -rf $TMP; }" EXIT
+
+lines="$(get_links $1)"
+if [[ "$lines" == "" ]]; then
+	>&2 echo "Links not found (chapter-$1)"
+	exit 1
+fi
+length=$(echo "$lines" | wc -l)
+
+echo "$lines" | awk '{printf "%s\n\tout='$TMP'/%03d.png\n", $1, NR}' | aria2c -d / -x 4 -j 8 -i -
+
+if [[ "$length" != "$(ls -1 $TMP | wc -l)" ]] || [[ "$length" == "0" ]]; then
+	>&2 echo "Download failed (chapter-$1)"
+	exit 1
+fi
+
+convert $TMP/*.png chapter-$1.pdf

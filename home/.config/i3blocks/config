@@ -1,39 +1,27 @@
-# Global properties
-command=~/.bin/i3blocks/$BLOCK_NAME
+# global properties
+command=~/.local/share/bin/i3blocks/$BLOCK_NAME
 separator_block_width=20
 markup=pango
 
-[promo]
-interval=1
-
-#[coin]
-#interval=300
-#instance=dash #bitcoin, ethereum, dash
-
-#[wotd]
-#interval=1800
-
-#[notd]
-#interval=1800
-
-# Volume indicator
+# volume indicator
 [volume]
 instance=Master
 interval=once
 signal=1
 
-# Network interface monitoring
+# network interface monitoring
 [wifi]
 interval=1
 
-# Battery indicator
+# battery indicator
 [battery]
 interval=30
 signal=12
 
-# Date Time
+# date and time
 [time]
 interval=1
 
+# check updates
 [pacman]
 interval=300

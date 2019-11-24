@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#index=$(clipman -m | dmenu -i -l 10 | awk '{print substr($1, 1, length($1)-1)}')
+#clipman -g $index | xclip -sel clipboard
+index=$(xcmenu --dmenu | awk '{$1=$1};1' | dmenu -i -l 10 | awk '{print substr($1, 1, length($1)-1)}')
+xcmenu --get $index | xclip -sel c

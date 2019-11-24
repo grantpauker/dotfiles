@@ -3,7 +3,6 @@ set nrformats+=alpha
 set t_Co=256
 set ignorecase smartcase
 
-
 set autoindent 
 set shiftround
 let s:tabwidth=2
@@ -20,7 +19,9 @@ set ttimeoutlen=10
 let mapleader=" "
 
 syntax on
-colorscheme material
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'PotatoesMaster/i3-vim-syntax'
@@ -31,7 +32,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'cespare/vim-toml'
 	Plug 'ptzz/lf.vim'
 	Plug 'rbgrouleff/bclose.vim'
+	Plug 'kaicataldo/material.vim'
 call plug#end()
+
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+colorscheme material
 
 let g:airline_symbols = {}
 let g:airline_theme='base16color'

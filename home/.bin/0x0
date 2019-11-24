@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+URL=https://0x0.st
+regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+
+if [[ $1 =~ $regex ]]; then
+	curl -F "shorten=$1" "$URL" | tee >(xclip -sel c)
+elif [ -f "$1" ]; then
+	curl -F "file=@$1" "$URL" | tee >(xclip -sel c)
+else
+	echo "Not a valid file or url: $1"
+fi

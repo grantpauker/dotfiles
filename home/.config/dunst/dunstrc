@@ -1,15 +1,10 @@
 [global]
     font = Monospace 8
 		icon_position = left
-		#icon_path = 
+
     # allow a small subset of html markup:
-    # <b>bold</b>
-    # <i>italic</i>
-    # <s>strikethrough<s/>
-    # <u>underline</u>
-    #
     # for a complete reference see http://developer.gnome.org/pango/stable/PangoMarkupFormat.html
-    # If markup is not allowed, those tags will be stripped out of the message.
+
     markup = yes
 
     # The format of the message. Possible variables are:
@@ -19,7 +14,6 @@
     #   %i  iconname (including its path)
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
-    # Markup is allowed
     format = "<b>%a</b>: %s\n%b"
 
     # Sort messages by urgency
@@ -48,7 +42,6 @@
     # ignore newlines '\n' in notifications
     ignore_newline = no
 
-
     # the geometry of the window
     # geometry [{width}]x{height}][+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -63,13 +56,12 @@
     geometry = "800x100-30+20"
 
     # The transparency of the window. range: [0; 100]
-    # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
     transparency = 0
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    idle_threshold = 120
+    idle_threshold = 30
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -119,12 +111,12 @@
     startup_notification = true
 
     # dmenu path
-    dmenu = rofi -theme mini -dmenu -p dunst
+    dmenu = dmenu -p dunst
 
     # browser for opening urls in context menu
-    browser = /usr/bin/firefox -new-tab
+    browser = google-chrome-stable
 
-    frame_width = 2
+    frame_width = 0
     frame_color = "#89ddff"
 
 [shortcuts]
@@ -187,35 +179,3 @@
 #[script-test]
 #    summary = "*script*"
 #    script = dunst_test.sh
-
-#[ignore]
-## This notification will not be displayed
-#    summary = "foobar"
-#    format = ""
-
-[signed_on]
-    appname = Pidgin
-    summary = "*signed on*"
-    urgency = low
-
-[signed_off]
-    appname = Pidgin
-    summary = *signed off*
-    urgency = low
-
-[says]
-    appname = Pidgin
-    summary = *says*
-    urgency = critical
-    format  = "%s "%b""
-
-[music]
-    appname = Amarok
-    summary = "Now playing"
-    urgency = low
-
-#[twitter]
-#    appname = Pidgin
-#    summary = *twitter.com*
-#    urgency = normal
-#

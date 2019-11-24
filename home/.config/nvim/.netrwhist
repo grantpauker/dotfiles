@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/ruwix/.local/share/bin'
+let g:netrw_dirhist_0='/home/ruwix/Documents/school-19-20/math'
+let g:netrw_dirhist_9='/home/ruwix/go/bin'
+let g:netrw_dirhist_8='/home/ruwix/one-piece'
+let g:netrw_dirhist_7='/home/ruwix/tmp'
+let g:netrw_dirhist_6='/home/ruwix/one-piece/links'
+let g:netrw_dirhist_5='/home/ruwix/Documents'
+let g:netrw_dirhist_4='/home/ruwix/.local/share/clipman'
+let g:netrw_dirhist_3='/home/ruwix/.local/share/nvim/plugged/ale'
+let g:netrw_dirhist_2='/home/ruwix/.local/share/nvim/plugged'

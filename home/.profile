@@ -1,7 +1,9 @@
 # system paths and directories
-export PATH="$HOME/.bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/share/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export PKG_CONFIG_PATH=$PKG_CONFIG_SEARCH_PATH:/usr/local/lib/pkgconfig
 export XDG_CONFIG_HOME=$HOME/.config
+export ZDOTDIR="$HOME/.config/zsh"
+export DOTFILES="$HOME/builds/dotfiles"
 
 # default apps
 export EDITOR=nvim

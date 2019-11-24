@@ -12,9 +12,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # source custom aliases, functions, and keybindings
-source ~/.aliases
-source ~/.functions
-source ~/.keybindings
+source $ZDOTDIR/.aliases
+source $ZDOTDIR/.functions
+source $ZDOTDIR/.keybindings
 
 # fix completion???
 #zstyle ':completion:*:functions' ignored-patterns '_*'

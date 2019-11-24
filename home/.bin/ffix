@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-file="$1"
-[[ ! -a "$file" ]] && echo "\"$file\" does not exist" && exit
-case "$file" in
-	*.docx|*.doc|*.ppxt) lowriter --headless --convert-to pdf "$file" ;;
-	*) echo "unknown filetype" ;;
-esac
-

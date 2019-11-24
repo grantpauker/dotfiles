@@ -32,3 +32,18 @@ cl(){
 			fi
 	fi
 }
+
+cf(){
+	d=$(fd -t d | fzf)
+	[[ "$d" != "" ]] && cd $d
+}
+
+vf(){
+	f=$(fd -t f | fzf)
+	[[ "$f" != "" ]] && $EDITOR $f
+}
+
+of(){
+	f=$(fd -t f | fzf)
+	[[ "$f" != "" ]] && $OPENER $f
+}

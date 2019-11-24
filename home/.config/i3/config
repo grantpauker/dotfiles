@@ -32,7 +32,6 @@ set $down j
 set $left h
 set $right l
 set $mod Mod4
-set $mouseaccel 0.2
 
 floating_modifier $mod
 
@@ -47,20 +46,19 @@ set $filemanager lf
 # startup 'n' stuff
 exec dunst
 exec xrandr --dpi 276
-exec [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
-exec [ -e ~/.fehbg ] && ~/.fehbg
-exec picom -b
-exec xhost +
-exec xinput --set-prop 12 'libinput Accel Speed' $mouseaccel
+exec --no-startup-id [ -e ~/.config/wallpaper.png ] && xwallpaper --zoom ~/.config/wallpaper.png
+exec --no-startup-id [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
+exec --no-startup-id picom -b
+exec --no-startup-id xhost +
+exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.2
 
-#exec syncthing
-#exec nm-applet
-exec udiskie
-exec xcmenu -d
+exec --no-startup-id udiskie
+exec --no-startup-id xcmenu -d
+exec --no-startup-id redtoggle
 
 exec telegram-desktop
-exec ticktick
-exec $browser
+#exec ticktick
+#exec $browser
 exec $term
 exec $termfree --title "dropdown" 
 exec $termfree --title "dropcalc" -e $calculator
@@ -74,7 +72,7 @@ bindsym $mod+Shift+x [title="dropcalc"] $fixwin
 
 # dmenu
 bindsym $mod+space exec i3-dmenu-desktop
-bindsym $mod+Shift+space exec dmenu_clipman
+bindsym $mod+Shift+space exec dmenu_clip
 bindsym XF86Search exec dmenu_run
 bindsym $mod+grave exec dmenu_symbols
 bindsym $mod+Shift+grave exec dmenu_states
@@ -111,8 +109,7 @@ bindsym $mod+Shift+$right move right $winmv
 bindsym $mod+Shift+w split toggle
 bindsym $mod+f fullscreen toggle
 
-#bindsym $mod+space focus mode_toggle
-bindsym $mod+Shift+minus floating toggle
+#bindsym $mod+space floating toggle
 
 # workspace control
 set $ws1 "1 "
@@ -148,21 +145,16 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-#for_window [instance="Godot_Engine"] floating enable
-for_window [title="float"] floating enable
-for_window [title="float2"] floating enable
 assign [class="Google-chrome"]  $ws1
 assign [class="Firefox"] $ws1
-assign [class="qutebrowser"] $ws1
 assign [class="^(?!workfree)kitty"] $ws2
 assign [class="^(?!workfree)Alacritty"] $ws2
 assign [class="Code"] $ws5
-assign [class="Godot"] $ws5
 assign [class="TelegramDesktop"] $ws4
-for_window [title="YouTube Music - Google Chrome"] move to workspace $ws7
+assign [title="YouTube Music"] $ws7
 for_window [class="Surf" title=".*ticktick.*"] move to workspace $ws3
 
-# window/gap resizing
+# window resizing
 set $rw2 8
 set $rw1 4
 set $rg1 5
@@ -184,16 +176,14 @@ bindsym $mod+Shift+s exec $privbrowser
 bindsym $mod+c exec code
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+t exec ticktick
-bindsym $mod+m exec $browser --new-window https://music.youtube.com/
+bindsym $mod+m exec $browser /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
 
 # stystem control
-#bindsym $mod+Shift+BackSpace exec sc mute && i3-msg kill && $browser && i3-msg workspace "$ws1"
 bindsym $mod+BackSpace exec i3exit suspend
 bindsym $mod+Escape exec refresh
 bindsym --release $mod+Shift+Escape exec killer
 bindsym $mod+Delete exec i3exit logout
 bindsym $mod+Shift+Delete exec dmenu_shutdown
-#bindsym $mod+Shift+d exec notify-send DUNST_COMMAND_TOGGLE
 
 # i3bar config
 bar {
@@ -213,8 +203,9 @@ bar {
 }
 
 # window borders/gaps
-for_window [class="^.*"] border pixel 1
-for_window [class="Google-chrome"] border pixel 1
+smart_borders on
+for_window [class=".*"] border pixel 0
+# class                 border  backgr text		indic		child_border
 client.focused					$base0C	$clear $clear $base0C	$base0C
 client.unfocused				$clear	$clear $clear	$clear  $clear
 client.focused_inactive	$clear	$clear $clear $clear  $clear
@@ -231,18 +222,20 @@ bindsym XF86AudioMute exec --no-startup-id sc tmute
 bindsym XF86AudioPlay exec --no-startup-id sc tplay 
 bindsym XF86AudioNext exec --no-startup-id sc next 
 bindsym XF86AudioPrev exec --no-startup-id sc prev
+bindsym $mod+bracketleft exec --no-startup-id sc prev
+bindsym $mod+bracketright exec --no-startup-id sc next
 bindsym $mod+p exec --no-startup-id sc tplay
 
 # sreen control
 set $backlight 8
-bindsym XF86MonBrightnessUp exec backlight $backlight
-bindsym XF86MonBrightnessDown exec backlight -$backlight
+bindsym XF86MonBrightnessUp exec --no-startup-id backlight $backlight
+bindsym XF86MonBrightnessDown exec --no-startup-id backlight -$backlight
 
-bindsym $mod+XF86MonBrightnessUp exec backlight $(($backlight/2))
-bindsym $mod+XF86MonBrightnessDown exec backlight -$(($backlight/4))
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id backlight $(($backlight/2))
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id backlight -$(($backlight/4))
 
-bindsym $mod+Shift+XF86MonBrightnessUp exec backlight $(($backlight*2))
-bindsym $mod+Shift+XF86MonBrightnessDown exec backlight -$(($backlight*2))
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id backlight $(($backlight*2))
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id backlight -$(($backlight*2))
 
 bindsym $mod+Shift+e exec redtoggle
 

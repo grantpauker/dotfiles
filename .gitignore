@@ -1,11 +1,4 @@
 .vstags
 *.swp*
-config/mpv/watch_later
 *.pyc
-old
-config/mpd/log
-config/mpd/pid
-config/mpd/state
-config/mpd/database
-config/mpd/sticker.sql
-config/mpd/playlists
+home/.config/mpv/watch_later

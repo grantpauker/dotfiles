@@ -2,18 +2,15 @@ acpi
 alacritty
 alsa
 alsa-utils
-axel
+aria2c
 bash
 bash-completion
 brother-mfc-9340cdw
 brscan4
-compton
-compton
+picom
 cups
-dmenu
 dmenu2
 dunst
-exa
 exa
 fd
 feh
@@ -28,7 +25,6 @@ i3
 i3blocks
 i3status
 intel-ucode
-intel-ucode
 kitty
 lf-git
 libqalculate
@@ -40,7 +36,6 @@ ncdu
 neofetch
 neovim
 neovim-plug
-network-manager-applet
 networkmanager
 nm-connection-editor
 oh-my-zsh-git
@@ -82,4 +77,5 @@ youtube-dl
 zathura
 zathura-pdf-poppler
 zsh
+sox
 https://github.com/Brettm12345/palenight-tdesktop-theme/blob/master/palenight.tdesktop-theme?raw=true
