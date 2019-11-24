@@ -66,3 +66,5 @@ alias ll='echo use xl instead'
 alias l='echo use xx instead'
 
 alias ac='aria2c'
+
+alias h='~/builds/habitctl/target/release/habitctl'
