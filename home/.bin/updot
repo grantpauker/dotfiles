@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-cd $DOTFILES
+#cd $DOTFILES
+cd ~/builds/dotfiles
 git add -A
 git commit -m "update dotfiles"
 git push
