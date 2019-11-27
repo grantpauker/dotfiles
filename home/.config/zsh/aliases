@@ -1,0 +1,83 @@
+#!/usr/bin/env zsh
+# utils
+alias rsc='source ~/.zshrc'
+alias clipdir='echo -n $PWD | cclip'
+alias hclip='clip $(fc -ln -1)'
+alias renet='sudo systemctl restart NetworkManager'
+alias cclip='xclip -sel clip'
+alias o='$OPENER'
+
+# abbreviations
+alias s='sudo '
+alias srm='sudo rm'
+alias yt=youtube-dl
+alias udb='sudo updatedb'
+alias slf='sudo lf'
+alias ac='aria2c'
+alias cx='chmod +x'
+alias lines='nl -w2 -s": "'
+
+# default options
+alias co='code .'
+alias irg='rg -i'
+alias su='su -p'
+alias sxiv='sxiv -p'
+alias ncdu='ncdu --color dark'
+
+# globals
+alias -g '***=**/*(.)'
+alias -g '*!=$(fd -t f | fzf)'
+alias -g '*@=$(fd -t d | fzf)'
+
+# vim
+alias sv='sudo -E $EDITOR'
+alias v='$EDITOR'
+alias vi='$EDITOR'
+alias vim='$EDITOR'
+
+# edit config files
+cfa(){
+	alias cf$1="$EDITOR $2"
+}
+cfa	i3				~/.config/i3/config
+cfa	i3blocks	~/.config/i3blocks/config
+cfa	aliases		$ZDOTDIR/.aliases
+cfa	functions $ZDOTDIR/.functions
+cfa	nvim			~/.config/nvim/init.vim
+cfa	zsh				$ZDOTDIR/.zshrc
+cfa	profile		~/.profile
+cfa	mpv				~/.config/mpv/mpv.conf
+cfa	dunst			~/.config/dunst/dunstrc
+cfa	alacritty	~/.config/alacritty/alacritty.yml
+cfa	lf				~/.config/lf/lfrc
+cfa	docs			~/.data/docs
+cfa	picom			~/.config/picom/picom.conf
+unset -f cfa
+
+# python virtual environments
+alias nvenv='virtualenv env && venv && pip install pylint autopep8'
+alias venv='source ./env/bin/activate'
+alias uenv='deactivate'
+
+# novelty
+alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
+alias harsh='play -q -c 2 --null synth brownnoise band -n 2500 4000 tremolo 20 .1 reverb 5'
+alias busy='cat /dev/urandom | hexdump -C | rg "ca fe"'
+
+# exa
+alias x='exa'
+alias xa='exa -a'
+alias xl='exa -lh'
+alias xx='exa -lah'
+
+# secret folder
+alias shit='mountpoint ~/shit &>> /dev/null || encfs ~/.shit ~/shit'
+alias ushit='mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit'
+
+# temperory
+alias ls='echo use x instead'
+alias la='echo use xa instead'
+alias lh='echo use xl instead'
+alias ll='echo use xl instead'
+alias l='echo use xx instead'
+alias h='~/builds/habitctl/target/release/habitctl'

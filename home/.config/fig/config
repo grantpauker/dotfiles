@@ -1,6 +1,7 @@
 [sxiv]
 .*.jpg$
 .*.png$
+.*.gif$
 
 [zathura]
 .*.pdf$
@@ -22,7 +23,8 @@
 .*.mp3$
 .*.m4b$
 .*.m4a$
-.*.avi$
+.*.wav$
+
 
 [nvim]
 ^[^.]*$

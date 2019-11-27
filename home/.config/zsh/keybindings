@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+# delete words with backspace
+bindkey '^[[3;5~' kill-word
+bindkey '^H' backward-kill-word
+
+# make ctrl+l fully clear the terminal rather than just scrolling down
+full-clear(){ zle kill-whole-line; printf "\033c"; zle reset-prompt; }
+zle -N full-clear 
+bindkey '^L' full-clear
+
+# edit current command line contents in $EDITOR
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# use lf to cd into a directory
+bindkey -s '^o' 'cl\n'
+
+# use fzf to search history
+source /usr/share/fzf/key-bindings.zsh

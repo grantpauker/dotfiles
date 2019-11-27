@@ -13,6 +13,7 @@ export OPENER=fig
 
 # hidpi support
 export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
 export QT_SCREEN_SCALE_FACTORS=2
 export LIBGL_DRI3_DISABLE=1
 
@@ -25,9 +26,6 @@ export PYLINTHOME=$HOME/.local/share/pylint.d
 
 # default app options
 export LPDEST=Brother
-export BAT_THEME=ansi-dark
-export FZF_DEFAULT_OPTS='--color 16'
-export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # setup mod key
 xmodmap -e "clear mod4"

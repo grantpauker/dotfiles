@@ -3,10 +3,6 @@ ran() {
 	ps aux | rg $(echo "$1" | sed -e 's/^\(.\)/\[\1\]/')
 }
 
-clip() {
-	echo -n "$*" | cclip
-}
-
 up() {
 	cd $(printf '../%.0s' $(seq 1 $1))
 }

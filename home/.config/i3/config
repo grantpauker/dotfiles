@@ -8,8 +8,8 @@ set $halfwidth 1600
 set $halfheight 900
 
 #color
-set $background  #292D3E  
-set $foreground  #959DCB  
+set $background  #292D3E
+set $foreground  #959DCB
 set $color0 #292D3E
 set $color1 #444267
 set $color2 #32374D
@@ -47,10 +47,10 @@ set $filemanager lf
 
 # startup 'n' stuff
 exec dunst
-exec xrandr --dpi 276
+exec --no-startup-id picom -b
 exec --no-startup-id [ -e ~/.config/wallpaper.png ] && xwallpaper --zoom ~/.config/wallpaper.png
 exec --no-startup-id [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
-exec --no-startup-id picom -b
+exec --no-startup-id amixer -c PCH cset 'name=Headphone Mic Boost Volume' 1
 exec --no-startup-id xhost +
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.2
 
@@ -62,7 +62,7 @@ exec telegram-desktop
 #exec ticktick
 #exec $browser
 exec $term
-exec $termfree --title "dropdown" 
+exec $termfree --title "dropdown"
 exec $termfree --title "dropcalc" -e $calculator
 
 # popups
@@ -160,15 +160,15 @@ for_window [class="Surf" title=".*ticktick.*"] move to workspace $ws3
 set $rw2 8
 set $rw1 4
 set $rg1 5
-bindsym $mod+y resize shrink width $rw2 px or $rw2 ppt 
-bindsym $mod+u resize shrink height $rw2 px or $rw2 ppt 
-bindsym $mod+i resize grow height $rw2 px or $rw2 ppt 
-bindsym $mod+o resize grow width $rw2 px or $rw2 ppt 
+bindsym $mod+y resize shrink width $rw2 px or $rw2 ppt
+bindsym $mod+u resize shrink height $rw2 px or $rw2 ppt
+bindsym $mod+i resize grow height $rw2 px or $rw2 ppt
+bindsym $mod+o resize grow width $rw2 px or $rw2 ppt
 
-bindsym $mod+Shift+y resize shrink width $rw1 px or $rw1 ppt 
-bindsym $mod+Shift+u resize shrink height $rw1 px or $rw1 ppt 
-bindsym $mod+Shift+i resize grow height $rw1 px or $rw1 ppt 
-bindsym $mod+Shift+o resize grow width $rw1 px or $rw1 ppt 
+bindsym $mod+Shift+y resize shrink width $rw1 px or $rw1 ppt
+bindsym $mod+Shift+u resize shrink height $rw1 px or $rw1 ppt
+bindsym $mod+Shift+i resize grow height $rw1 px or $rw1 ppt
+bindsym $mod+Shift+o resize grow width $rw1 px or $rw1 ppt
 
 # open applications
 bindsym $mod+Return exec $term
@@ -189,10 +189,11 @@ bindsym $mod+Shift+Delete exec dmenu_shutdown
 
 # i3bar config
 bar {
-	i3bar_command i3bar -t
-	font pango:mono, FontAwesome Regular 9
+	i3bar_command i3bar -t --transparency
+	font pango:mono, FontAwesome Regular 14
 	status_command i3blocks
 	position bottom
+
 	colors {
 		background	$background
 		separator		$foreground
@@ -221,8 +222,8 @@ bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id sc up 5 -f
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id sc down 5 -f
 
 bindsym XF86AudioMute exec --no-startup-id sc tmute
-bindsym XF86AudioPlay exec --no-startup-id sc tplay 
-bindsym XF86AudioNext exec --no-startup-id sc next 
+bindsym XF86AudioPlay exec --no-startup-id sc tplay
+bindsym XF86AudioNext exec --no-startup-id sc next
 bindsym XF86AudioPrev exec --no-startup-id sc prev
 bindsym $mod+bracketleft exec --no-startup-id sc prev
 bindsym $mod+bracketright exec --no-startup-id sc next

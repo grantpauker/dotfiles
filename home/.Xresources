@@ -1,3 +1,4 @@
+Xft.dpi: 180
 *foreground:        #959DCB  
 *background:        #292D3E  
 *color0:            #292D3E  
@@ -21,4 +22,4 @@ dmenu.background:     #292D3E
 dmenu.foreground:     #959DCB  
 dmenu.selbackground:  #82AAFF  
 dmenu.selforeground:  #292D3E  
-dmenu.font:           mono-10
+dmenu.font:           mono-14
