@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# mostly copied from ranger's bulkrename command (https://github.com/ranger/ranger/blob/master/ranger/config/commands.py#L1114)
 import os
 import sys
 import tempfile
