@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # utils
-alias rsc='source ~/.zshrc'
+alias rsc='source $ZDOTDIR/.zshrc'
 alias clipdir='echo -n $PWD | cclip'
 alias hclip='clip $(fc -ln -1)'
 alias renet='sudo systemctl restart NetworkManager'
@@ -39,19 +39,20 @@ alias vim='$EDITOR'
 cfa(){
 	alias cf$1="$EDITOR $2"
 }
-cfa	i3				~/.config/i3/config
-cfa	i3blocks	~/.config/i3blocks/config
-cfa	aliases		$ZDOTDIR/.aliases
-cfa	functions $ZDOTDIR/.functions
-cfa	nvim			~/.config/nvim/init.vim
-cfa	zsh				$ZDOTDIR/.zshrc
-cfa	profile		~/.profile
-cfa	mpv				~/.config/mpv/mpv.conf
-cfa	dunst			~/.config/dunst/dunstrc
-cfa	alacritty	~/.config/alacritty/alacritty.yml
-cfa	lf				~/.config/lf/lfrc
-cfa	docs			~/.data/docs
-cfa	picom			~/.config/picom/picom.conf
+cfa	i3					~/.config/i3/config
+cfa	i3blocks		~/.config/i3blocks/config
+cfa	aliases			$ZDOTDIR/aliases
+cfa	functions 	$ZDOTDIR/functions
+cfa	keybindings $ZDOTDIR/keybindings
+cfa	nvim				~/.config/nvim/init.vim
+cfa	zsh					$ZDOTDIR/.zshrc
+cfa	profile			~/.profile
+cfa	mpv					~/.config/mpv/mpv.conf
+cfa	dunst				~/.config/dunst/dunstrc
+cfa	alacritty		~/.config/alacritty/alacritty.yml
+cfa	lf					~/.config/lf/lfrc
+cfa	docs				~/.data/docs
+cfa	picom				~/.config/picom/picom.conf
 unset -f cfa
 
 # python virtual environments

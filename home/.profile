@@ -27,8 +27,5 @@ export PYLINTHOME=$HOME/.local/share/pylint.d
 # default app options
 export LPDEST=Brother
 
-# setup mod key
-xmodmap -e "clear mod4"
-xmodmap -e "add Mod4 = Super_L"
-xhost +
+#xhost +
 

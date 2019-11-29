@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+import os
+import sys
+import tempfile
+import subprocess
+# throw help message if no paths were passed
+if len(sys.argv) == 1:
+    print(f"Usage: {os.path.basename(sys.argv[0])} [directory|file]")
+    quit()
+
+# get files and editor
+filenames = sys.argv[1:]
+editor = os.environ.get('EDITOR','vim')
+
+# write list of files into tmp file
+tmp_filelist = tempfile.NamedTemporaryFile(delete=False)
+tmp_filelist.write("\n".join(filenames).encode("utf-8"))
+tmp_filename  = tmp_filelist.name
+tmp_filelist.close()
+
+# open tmp file in editor
+subprocess.call([editor, tmp_filename ])
+
+# get new file names and delete tmp file
+tmp_listfile = open(tmp_filename , 'r')
+new_filenames = tmp_listfile.read().split("\n")
+tmp_listfile.close()
+os.unlink(tmp_filename)
+
+# check if all new names are the same as old names
+if all(a == b for a, b in zip(filenames, new_filenames)):
+    print("No renaming to be done.")
+    quit()
+
+# create tmp script file for renaming review
+cmdfile = tempfile.NamedTemporaryFile()
+script_lines = []
+script_lines.append("# This file will be executed when you close the editor.")
+script_lines.append("# Please double-check everything, clear the file to abort.")
+new_dirs = []
+
+# make sure the number of new files equals the number of old files
+if len(filenames) != (len(new_filenames) - 1):
+    print("Number of new files does not match the number of old files.")
+    quit()
+
+# add commands to rename files and create new folders if necessary
+for old, new in zip(filenames, new_filenames):
+    if old != new:
+        basepath, _ = os.path.split(os.path.abspath(new))
+        if (basepath is not None) and (basepath not in new_dirs) and (not os.path.isdir(basepath)):
+            script_lines.append(f"mkdir -vp -- '{basepath}'")
+            new_dirs.append(basepath)
+        script_lines.append(f"mv -vi -- '{old}' '{new}'")
+
+# write commands to file
+script_content = "\n".join(script_lines) + "\n"
+cmdfile.write(script_content.encode("utf-8"))
+cmdfile.flush()
+
+# open cmd file in editor
+subprocess.call([editor, cmdfile.name])
+
+# rename files
+subprocess.call(['/bin/sh', cmdfile.name])
+cmdfile.close()

@@ -51,8 +51,8 @@ exec --no-startup-id picom -b
 exec --no-startup-id [ -e ~/.config/wallpaper.png ] && xwallpaper --zoom ~/.config/wallpaper.png
 exec --no-startup-id [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 exec --no-startup-id amixer -c PCH cset 'name=Headphone Mic Boost Volume' 1
-exec --no-startup-id xhost +
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.2
+exec --no-startup-id remap
 
 exec --no-startup-id udiskie
 exec --no-startup-id xcmenu -d

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 FOLDER=$PWD
-#mkdir ~/builds
-#cd ~/builds
-#git clone https://aur.archlinux.org/yay.git
-#cd yay
-#makepkg -si
-for 
+mkdir ~/builds
+cd ~/builds
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 cd $FOLDER
+yay -S - < packages

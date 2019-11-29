@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# map super to mod4
+xmodmap -e "clear mod4"
+xmodmap -e "add Mod4 = Super_L"
+
+# increase key speed
+xset r rate 600 50
+
+# remap capslock to super
+setxkbmap -option caps:super
+
+# remap single press capslock to escape
+killall xcape 2>/dev/null; xcape -e 'Super_L=Escape'

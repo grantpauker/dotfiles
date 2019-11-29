@@ -24,12 +24,12 @@ map bs  $mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit|| encfs ~/.shit
 set shellopts '-eu'
 set ifs "\n"
 
-cmd vidir ${{
+cmd br ${{
 	if [ -n "${fs}" ]; then
 		echo "$fs"
 	else
 		ls -N1 
-	fi | xargs -d '\n' -L1 realpath --relative-base=. | xargs -d '\n' vidir
+	fi | xargs -d '\n' -L1 realpath --relative-base=. | xargs -d '\n' br
 }}
 
-map r vidir
+map r br

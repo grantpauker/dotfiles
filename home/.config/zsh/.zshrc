@@ -16,8 +16,7 @@ source $ZDOTDIR/aliases
 source $ZDOTDIR/functions
 source $ZDOTDIR/keybindings
 
-# fix completion???
-#zstyle ':completion:*:functions' ignored-patterns '_*'
+# fix completion
 zstyle ':completion:*' rehash true
 
 # various zsh options
@@ -35,3 +34,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+# default options
+export FZF_DEFAULT_OPTS='--color 16'
