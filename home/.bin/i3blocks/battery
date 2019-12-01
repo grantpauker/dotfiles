@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 BATTERY=0
-status=$(acpi -a | grep "Adapter $BATTERY" | awk '{print $3}')
-percent=$(acpi -b | grep "Battery $BATTERY" | sed "/Battery $BATTERY/s/.* \([0-9]*\)%.*/\1/g")
+status=$(acpi -a | awk '/Adapter '$BATTERY'/{print $3}')
+percent=$(acpi -b | sed "/Battery $BATTERY/s/.* \([0-9]*\)%.*/\1/g")
 BACKGROUND="#292D3E"
 if [[ "$percent" -le "5" ]]; then
 	COLOR="#292D3E"
@@ -13,7 +13,7 @@ elif [[ "$percent" -lt "25" ]]; then
 elif [[ "$percent" -lt "50" ]]; then
 	COLOR="#F78C6C"
 	ICON=""
-elif [[ "$percent" -lt "85" ]]; then
+elif [[ "$percent" -lt "80" ]]; then
 	COLOR="#FFCB6B"
 	ICON=""
 else 

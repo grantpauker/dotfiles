@@ -193,6 +193,7 @@ bar {
 	font pango:mono, FontAwesome Regular 14
 	status_command i3blocks
 	position bottom
+	#strip_workspace_name yes
 
 	colors {
 		background	$background
@@ -230,14 +231,14 @@ bindsym $mod+bracketright exec --no-startup-id sc next
 bindsym $mod+p exec --no-startup-id sc tplay
 
 # sreen control
-bindsym XF86MonBrightnessUp exec --no-startup-id backlight 8
-bindsym XF86MonBrightnessDown exec --no-startup-id backlight -8
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +8
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -8
 
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id backlight 2
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id backlight -2
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id xbacklight +2
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id xbacklight -2
 
-bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id backlight 16
-bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id backlight -16
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id xbacklight +16
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -16
 
 bindsym $mod+Shift+e exec redtoggle
 

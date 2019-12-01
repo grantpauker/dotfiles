@@ -1,5 +1,5 @@
 # global properties
-command=~/.local/share/bin/i3blocks/$BLOCK_NAME
+command=~/.local/bin/i3blocks/$BLOCK_NAME
 separator_block_width=20
 markup=pango
 
