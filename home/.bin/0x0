@@ -2,7 +2,7 @@
 URL="https://0x0.st"
 regex='https?://[a-zA-Z0-9./?=_-]*'
 
-if rg "$regex" <<< "$1" &>> /dev/null; then
+if grep "$regex" <<< "$1" &>> /dev/null; then
 	curl -F "shorten=$1" "$URL" | tee >(xclip -sel c)
 elif [ -f "$1" ]; then
 	curl -F "file=@$1" "$URL" | tee >(xclip -sel c)

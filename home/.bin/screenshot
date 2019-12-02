@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 OUTPUT=~/Pictures/screenshots/`date +%Y-%m-%d-%H:%M:%S`.png
 GEOMETRY=$(slop -l -c 0.54,0.87,1.0,0.25) || exit
-maim --hidecursor -g $GEOMETRY | xclip -sel c -t image/png
-#maim --hidecursor -g $GEOMETRY | tee >(xclip -sel c -t image/png) $OUTPUT
-#notify-send "saved screenshot to $OUTPUT" -a maim
+maim --hidecursor -g $GEOMETRY | tee >(xclip -sel c -t image/png) $OUTPUT

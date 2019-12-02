@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+WALLPAPER=~/.config/wallpaper.png
+[ -f "$1" ] && cp "$1" "$WALLPAPER"
+[ -f "$WALLPAPER" ] && xwallpaper --zoom "$WALLPAPER" || echo "$WALLPAPER does not exist"
+
