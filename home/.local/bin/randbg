@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 WALLPAPERS=~/projects/graphic/wallpapers
 CURRENT=~/.config/wallpaper.png
-BG=$CURRENT
-while cmp --silent "$BG" "$CURRENT"; do
+BG="$(ls $WALLPAPERS/*/wallpaper.png | shuf -n 1)"
+while [ "$BG" -ef "$CURRENT" ]; do
 	BG="$(ls $WALLPAPERS/*/wallpaper.png | shuf -n 1)"
 done
 setbg $BG
-
-

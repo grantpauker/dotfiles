@@ -4,22 +4,19 @@ set color256 true
 
 cmd open $$OPENER $fx
 
-map gp  cd ~/projects
-map gdc cd ~/Documents
-map gdo cd ~/Downloads
-map gr  cd /
-map gm  cd /media
-map gP  cd ~/Pictures
-map gp  cd ~/Pictures
-map gd  cd ~/Downloads
-map gD  cd ~/Documents
-map gs  cd ~/shit
+map gdc cd ~/docs
+map gdo cd ~/down
+map gp cd ~/proj
+map gP cd ~/pics
+map gs cd ~/shit
+map gr cd /
+map gm cd /media
 map m push $mkdir<space>
 map t push $touch<space>
 map <delete> delete
 map C %code .
 map a &alacritty ---working-directory .
-map bs  $mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit|| encfs ~/.shit ~/shit
+map bs $mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit|| encfs ~/.shit ~/shit
 
 set shellopts '-eu'
 set ifs "\n"
@@ -33,3 +30,21 @@ cmd br ${{
 }}
 
 map r br
+
+cmd fzf_jump ${{
+	res="$(fd -a | fzf --reverse )"
+	if [ -f "$res" ]; then
+		cmd="select"
+	elif [ -d "$res" ]; then
+		cmd="cd"
+	fi
+	lf -remote "send $id $cmd \"$res\""
+}}
+map <c-f> :fzf_jump
+
+cmd fzf_search ${{
+	res=$(rg -il $1 | fzf --reverse --preview="rg -ip '$1' {}")
+	lf -remote "send $id select \"$res\""
+}}
+map <c-s> push :fzf_search<space>
+

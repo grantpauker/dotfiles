@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-FOLDERS=(Downloads Documents shit)
-FILE="$(fd . --type file "${FOLDERS[@]}" | dmenu -i -l 10)"
-[[ "$FILE" != "" ]] && fig "$FILE"

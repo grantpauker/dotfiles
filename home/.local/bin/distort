@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+usage(){
+	exec=$(basename $0)
+	echo -e "usage: $exec *.jpg|*.png (level|gif)\n       $exec *.mp3"
+}
+file="${1%.*}"
+ext="${1##*.}"
+case "$1" in
+	*.jpg|*.png)
+		[ ! -f "$1" ] && usage && exit
+		size=$(identify -format '%wx%h' $1)
+		if [ "$2" == "gif" ]; then
+			for level in {100..010..5}; do
+				convert $1 -liquid-rescale $level%x$level% -resize $size ${file}_distort_$level.$ext
+				echo "Done with level $level"
+			done
+			framerate=10
+			ffmpeg -r $framerate -pattern_type glob -i "${file}_distort_*.$ext" -vcodec libx264 -crf 25 -pix_fmt yuv420p -vf reverse $file.mp4
+			rm ${file}_distort_*.$ext
+		else
+			level=${2:-50}
+			convert $1 -liquid-rescale $level%x$level% -resize $size ${file}_distort.$ext
+		fi
+		;;
+	*.mp3)
+		[ ! -f "$1" ] && usage && exit
+		v_f=7.0 # 0.1 - 20000.0
+		v_d=0.5 # 0.1 - 1.0
+		t_f=7.0 # 0.1 - 20000.0
+		t_d=0.5 # 0.1 - 1.0
+		ffmpeg -i $1 -af vibrato=f=$v_f:d=$v_d,tremolo=f=$t_f:d=$t_d ${file}_distort.$ext
+		;;
+	*)
+		usage
+		;;
+esac

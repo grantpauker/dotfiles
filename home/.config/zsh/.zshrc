@@ -5,16 +5,17 @@ export ZSH_THEME="minimal"
 
 # oh-my-zsh plugins
 plugins=(
-	sudo
+	fd
+	#sudo
 )
 
 # setup oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # source custom aliases, functions, and keybindings
-source $ZDOTDIR/aliases
-source $ZDOTDIR/functions
-source $ZDOTDIR/keybindings
+source $ZDOTDIR/aliasrc
+source $ZDOTDIR/funcrc
+source $ZDOTDIR/keyrc
 
 # fix completion
 zstyle ':completion:*' rehash true
@@ -36,4 +37,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # default options
-export FZF_DEFAULT_OPTS='--color 16'
+export FZF_DEFAULT_OPTS='--color 16 --ansi'
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export HISTFILE=$ZDOTDIR/zsh_history
+[ -f ~/.config/base16/colors ] && source ~/.config/base16/colors

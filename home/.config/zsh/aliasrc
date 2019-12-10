@@ -41,9 +41,10 @@ cfa(){
 }
 cfa	i3					~/.config/i3/config
 cfa	i3blocks		~/.config/i3blocks/config
-cfa	aliases			$ZDOTDIR/aliases
-cfa	functions 	$ZDOTDIR/functions
-cfa	keybindings $ZDOTDIR/keybindings
+cfa	polybar		~/.config/polybar/config
+cfa	aliasrc			$ZDOTDIR/aliasrc
+cfa	funcrc 	$ZDOTDIR/funcrc
+cfa	keyrc $ZDOTDIR/keyrc
 cfa	nvim				~/.config/nvim/init.vim
 cfa	zsh					$ZDOTDIR/.zshrc
 cfa	profile			~/.profile
@@ -52,18 +53,23 @@ cfa	dunst				~/.config/dunst/dunstrc
 cfa	alacritty		~/.config/alacritty/alacritty.yml
 cfa	lf					~/.config/lf/lfrc
 cfa	docs				~/.data/docs
+cfa	bookmarks		~/.data/bookmarks
+cfa	symbols			~/.data/symbols
 cfa	picom				~/.config/picom/picom.conf
+cfa	fig					~/.config/fig/config
 unset -f cfa
 
 # python virtual environments
 alias nvenv='virtualenv env && venv && pip install pylint autopep8'
 alias venv='source ./env/bin/activate'
+echo p​e​ni​s
 alias uenv='deactivate'
 
 # novelty
 alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
 alias harsh='play -q -c 2 --null synth brownnoise band -n 2500 4000 tremolo 20 .1 reverb 5'
 alias busy='cat /dev/urandom | hexdump -C | rg "ca fe"'
+alias rickroll='curl -sL 0x0.st/9a | bash'
 
 # exa
 alias x='exa'
@@ -82,3 +88,8 @@ alias lh='echo use xl instead'
 alias ll='echo use xl instead'
 alias l='echo use xx instead'
 alias h='~/builds/habitctl/target/release/habitctl'
+alias white="sed 's/ /·/g;s/\t/￫/g;s/\r/§/g;s/$/¶/g'"
+alias hrg='rg --hidden'
+
+alias xt='extract'
+alias timezone'sudo ntpdate 1.ro.pool.ntp.org'

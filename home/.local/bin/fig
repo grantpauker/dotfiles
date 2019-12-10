@@ -43,6 +43,6 @@ for file in sys.argv[1:]:
         print(f"error: {file} has no association")
 
 
+FNULL = open(os.devnull, 'w')
 for app in apps:
-    process = subprocess.Popen([app] + apps[app])
-    process.wait()
+    process = subprocess.Popen(app.split(' ') + apps[app], stdout=FNULL, stderr=FNULL)

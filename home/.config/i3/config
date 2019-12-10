@@ -45,25 +45,31 @@ set $privbrowser google-chrome-stable --incognito
 set $calculator qalc
 set $filemanager lf
 
-# startup 'n' stuff
+# startup settings
 exec dunst
-exec --no-startup-id picom -b
-exec --no-startup-id randbg
+#exec --no-startup-id randbg
+exec --no-startup-id setbg
 exec --no-startup-id [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
-exec --no-startup-id amixer -c PCH cset 'name=Headphone Mic Boost Volume' 1
+#exec --no-startup-id amixer -c PCH cset 'name=Headphone Mic Boost Volume' 1
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.2
 exec --no-startup-id remap
 
+# daemons
+exec --no-startup-id picom -b
 exec --no-startup-id udiskie
 exec --no-startup-id xcmenu -d
 exec --no-startup-id redtoggle
 
+# startup apps
 exec telegram-desktop
 #exec ticktick
 #exec $browser
 exec $term
-exec $termfree --title "dropdown"
-exec $termfree --title "dropcalc" -e $calculator
+
+# dropdown
+set $checkdrop wmctrl -l | awk '{for(i=4;i<=NF;++i)printf $i""FS ; print ""}' | sed 's/ $//g' | grep -x
+exec_always $checkdrop dropdown || $termfree --title dropdown
+exec_always $checkdrop dropcalc || $termfree --title dropcalc -e $calculator
 
 # popups
 set $fixwin resize set 1500 600, move position center
@@ -150,8 +156,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [title="YouTube Music"] $ws7
 assign [class="Google-chrome"]  $ws1
 assign [class="Firefox"] $ws1
-assign [class="^(?!workfree)kitty"] $ws2
-assign [class="^(?!workfree)Alacritty"] $ws2
+assign [class="^(?!workfree)(?!dropfzf)Alacritty"] $ws2
 assign [class="Code"] $ws5
 assign [class="TelegramDesktop"] $ws4
 for_window [class="Surf" title=".*ticktick.*"] move to workspace $ws3
@@ -257,3 +262,10 @@ for_window [title="dropcalc"] floating enable
 for_window [title="dropcalc"] move scratchpad
 for_window [title="dropcalc"] resize set 1500 600
 for_window [title="dropcalc"] sticky enable
+
+# dropdown fzf
+for_window [instance="dropfzf"] floating enable
+for_window [instance="dropfzf"] sticky enable
+for_window [instance="dropfzf"] resize set 3200 800
+for_window [instance="dropfzf"] move position 0 0
+
