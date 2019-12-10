@@ -52,7 +52,9 @@ cfa	dunst				~/.config/dunst/dunstrc
 cfa	alacritty		~/.config/alacritty/alacritty.yml
 cfa	lf					~/.config/lf/lfrc
 cfa	docs				~/.data/docs
+cfa	symbols			~/.data/symbols
 cfa	picom				~/.config/picom/picom.conf
+cfa	fig					~/.config/fig/config
 unset -f cfa
 
 # python virtual environments
@@ -82,3 +84,5 @@ alias lh='echo use xl instead'
 alias ll='echo use xl instead'
 alias l='echo use xx instead'
 alias h='~/builds/habitctl/target/release/habitctl'
+alias white="sed 's/ /·/g;s/\t/￫/g;s/\r/§/g;s/$/¶/g'"
+alias hrg='rg --hidden'

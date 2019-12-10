@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+FOLDERS=(down docs shit vids)
+FILE="$(fd . -E 'one-piece' --type file "${FOLDERS[@]}" | dmenu -i -l 10 )"
+[[ "$FILE" != "" ]] && fig "$FILE"

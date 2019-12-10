@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+HISTORY_PATH=~/.cache/dmenu
+FILE=$HISTORY_PATH/$1.hist 
+( [ ! -f $FILE ] || [ ! -s $FILE ] ) && cat - && exit
+
+awk '{$1 = ""; print $0}' $FILE | cut -c 2-
+awk 'FNR==NR {a[$0]++; next} !a[$0]' <(awk '{$1 = ""; print $0}' $FILE | cut -c 2-) <(cat -)

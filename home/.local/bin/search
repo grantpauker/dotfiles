@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+file=$(rg -il "$1" | fzf --reverse --preview="rg -ip '$1' {}")
+[[ "$file" != "" ]] && $EDITOR $file

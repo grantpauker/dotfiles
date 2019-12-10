@@ -79,8 +79,7 @@ prompt_virtualenv() {
 
 # Dir: current working directory
 prompt_dir() {
-	#[[ -L $PWD ]] && color="cyan" || color="blue" # change color if folder is a symlink
-	color="cyan"
+	[[ -L $PWD ]] && color="cyan" || color="blue" # change color if folder is a symlink
 	echo -n " %F{$color}$(formatdir $MAX_DIR_DEPTH)%f"
 }
 
@@ -126,4 +125,4 @@ build_rprompt() {
 }
 
 PROMPT='$(build_prompt) '
-RPROMPT='$(build_rprompt)'
+#RPROMPT='$(build_rprompt)'

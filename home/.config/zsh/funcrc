@@ -30,16 +30,18 @@ cl(){
 }
 
 cf(){
-	d=$(fd -t d | fzf)
-	[[ "$d" != "" ]] && cd $d
+	fd -t d --color=always | fzf --ansi | xargs -r cd
 }
 
 vf(){
-	f=$(fd -t f | fzf)
-	[[ "$f" != "" ]] && $EDITOR $f
+	fd -t f --color=always | fzf --ansi | xargs -r $EDITOR
+}
+
+sf(){
+	fd . ~/.local/bin ~/.config -E google-chrome -E Code -E GIMP -t f -H -L --color=always | fzf --ansi | xargs -r $EDITOR
 }
 
 of(){
-	f=$(fd -t f | fzf)
-	[[ "$f" != "" ]] && $OPENER $f
+	fd -t f --color=always | fzf --ansi | xargs -r $OPENER
 }
+

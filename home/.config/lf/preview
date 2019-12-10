@@ -9,6 +9,9 @@ case "$1" in
 	*.png|*.jpg|*.jpeg|*.gif)
 		img2txt $1
 		;;
+	*.mkv|*.mp4|*.avi)
+		ffprobe $1 -v quiet -print_format json -show_format -show_streams | jq '"Resolution: \(.streams[0].width)x\(.streams[0].height)@Duration: \(.format.duration)"' -r | tr '@' '\n'
+		;;
 	*)
 		bat -n --color always -r :40 $1
 		;;

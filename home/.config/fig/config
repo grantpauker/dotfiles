@@ -17,12 +17,15 @@
 .*.edu$
 .*.gov$
 
-[mpv]
+[mpv --vf=lavfi=yadif] 
 .*.mkv$
 .*.mp4$
+.*.m4a$
+.*.avi$
+
+[mpv --profile=pseudo-gui --vf=lavfi=yadif] 
 .*.mp3$
 .*.m4b$
-.*.m4a$
 .*.wav$
 
 

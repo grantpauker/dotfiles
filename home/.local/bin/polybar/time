@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+echo %{Fcolors.re}dog%{F-}
+#date '+%m-%d-%y %I:%M:%S'
