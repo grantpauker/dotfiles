@@ -90,6 +90,5 @@ alias l='echo use xx instead'
 alias h='~/builds/habitctl/target/release/habitctl'
 alias white="sed 's/ /·/g;s/\t/￫/g;s/\r/§/g;s/$/¶/g'"
 alias hrg='rg --hidden'
-
 alias xt='extract'
 alias timezone'sudo ntpdate 1.ro.pool.ntp.org'

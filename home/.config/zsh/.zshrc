@@ -40,5 +40,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export FZF_DEFAULT_OPTS='--color 16 --ansi'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export GOPATH=$HOME/proj/go
 export HISTFILE=$ZDOTDIR/zsh_history
 [ -f ~/.config/base16/colors ] && source ~/.config/base16/colors
