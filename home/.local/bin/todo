@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-todoist l | fzf -0 --reverse --height 40% | awk '{print $1}' | xargs todoist c 

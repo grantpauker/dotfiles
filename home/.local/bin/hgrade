@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-TOTAL=14
-WANT=89
-TAKEN=$(wc -l .data/history_grades | awk '{print $1}')
-LEFT=$((TOTAL-TAKEN))
-AVERAGE=$(awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' ~/.data/history_grades)
-echo $(((WANT*(TOTAL)-AVERAGE*TAKEN)/LEFT))
