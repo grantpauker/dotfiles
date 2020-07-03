@@ -1,0 +1,1 @@
+echo $* | sed 's/a/ᵃ/g; s/b/ᵇ/g; s/c/ᶜ/g; s/d/ᵈ/g; s/e/ᵉ/g; s/f/ᶠ/g; s/g/ᵍ/g; s/h/ʰ/g; s/i/ᶦ/g; s/j/ʲ/g; s/k/ᵏ/g; s/l/ˡ/g; s/m/ᵐ/g; s/n/ⁿ/g; s/o/ᵒ/g; s/p/ᵖ/g; s/q/ᑫ/g; s/r/ʳ/g; s/s/ˢ/g; s/t/ᵗ/g; s/u/ᵘ/g; s/v/ᵛ/g; s/w/ʷ/g; s/x/ˣ/g; s/y/ʸ/g; s/z/ᶻ/g'

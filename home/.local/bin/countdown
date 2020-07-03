@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+FILE=~/.data/polybar-countdown 
+[[ "$1" == "" ]] && rm $FILE && exit
+echo $((`date +%s` + $1 )) > $FILE
+

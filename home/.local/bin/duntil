@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+now=$(date +%s)
+then=$(date -d "$1" +"%s")
+echo $((1+(then-now)/(3600*24)))

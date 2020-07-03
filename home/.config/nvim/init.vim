@@ -10,6 +10,7 @@ exec 'set tabstop=' .s:tabwidth
 exec 'set shiftwidth=' .s:tabwidth
 exec 'set softtabstop='.s:tabwidth
 set formatoptions=tcroqln
+set nowrap
 
 set number
 set relativenumber
@@ -33,6 +34,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'ptzz/lf.vim'
 	Plug 'rbgrouleff/bclose.vim'
 	Plug 'kaicataldo/material.vim'
+	Plug 'tpope/vim-commentary'
+
+
 call plug#end()
 
 let g:material_terminal_italics = 1
@@ -68,4 +72,5 @@ no Q @q
 no <leader>h :noh<CR>
 no <leader>n :Neoformat<CR>
 vnoremap <C-c> "*Y :let @+=@*<CR>
+vnoremap <leader>s :sort<CR>
 map <C-p> "+P

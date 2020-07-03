@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+FILE=~/.data/memorize
+LINE=$(nl -b a -w2 -s": " $FILE | sed '/^[ ]*[0-9]*:[ ]*$/d' | dmenu -i -l 10)
+
+if [ "$LINE" != "" ]; then
+
+	TMP_LINE=$(echo "$LINE" | sed 's/^[ ]*[0-9]*:[ ]*//g')
+
+	if ! grep -q "$TMP_LINE" $FILE; then
+		echo "#$TMP_LINE" >> $FILE
+	else
+		LINE=$(echo $LINE | sed 's/^\([0-9]*\):.*/\1/g')
+		FIRST="$(sed $LINE'q;d' $FILE | head -c 1)"
+
+		sed -i 's/^#//g' $FILE
+
+		if [ "$FIRST" != "#" ]; then
+			sed -i $LINE's/^/#/g' $FILE
+		fi
+
+	fi
+fi

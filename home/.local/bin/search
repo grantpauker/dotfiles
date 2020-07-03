@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-file=$(rg -il "$1" | fzf --reverse --preview="rg -ip '$1' {}")
-[[ "$file" != "" ]] && $EDITOR $file
+#file=$(rg -il "$1" | fzf --reverse --preview="rg -ip '$1' {}")
+res=$(sk --ansi -i -c 'rg -i --color=always --line-number "{}"' | awk '{print $1}')
+file=$(echo "$res" | sed 's/:[0-9]*:.*//g')
+line=$(echo "$res" | sed 's/.*:\([0-9]*\)*:.*/\1/g')
+
+[[ "$file" != "" ]] && $EDITOR +$line $file -c 'norm zz'
+#[[ "$file" != "" ]] && $EDITOR $file 

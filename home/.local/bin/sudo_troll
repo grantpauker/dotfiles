@@ -1,0 +1,6 @@
+printf "[sudo] password for $USER: "
+read -s password
+echo 
+sleep 3
+echo "Sorry, try again."
+

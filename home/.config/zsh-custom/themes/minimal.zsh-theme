@@ -21,8 +21,7 @@ dirprefix(){
 }
 
 formatdir(){
-  [[ $(dirdepth) -le $1 ]] && getdir && exit
-  printf "$(dirprefix)…$(cutdir $(($1-1)))"
+  [[ $(dirdepth) -le $1 ]] && getdir || printf "$(dirprefix)…$(cutdir $(($1-1)))"
 }
 
 # Reset the prompt, closing any open segments

@@ -1,6 +1,4 @@
 Xft.dpi: 180
-*foreground:        #959DCB  
-*background:        #292D3E  
 *color0:            #292D3E  
 *color1:            #F07178  
 *color2:            #C3E88D  
@@ -17,6 +15,17 @@ Xft.dpi: 180
 *color13:           #C792EA  
 *color14:           #89DDFF  
 *color15:           #FFFFFF  
+
+*foreground:        #959DCB  
+*background:        #292D3E  
+*red:               #F07178
+*green:             #C3E88D
+*yellow:            #FFCB6B
+*blue:              #82AAFF
+*magenta:           #C792EA
+*cyan:              #89DDFF
+*gray:              #676E95
+*orange:						#F78C6C
 
 dmenu.background:     #292D3E  
 dmenu.foreground:     #959DCB  

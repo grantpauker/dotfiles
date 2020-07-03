@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+red=$(xgetres red)
+gray=$(xgetres gray)
+cyan=$(xgetres cyan)
+if sc isjack; then
+	icon=" "
+else
+	icon=" "
+fi
+vol=$(sc getvol)
+if [[ "$vol" -gt "100" ]]; then
+	color=$red
+else
+	color=$cyan
+fi
+if sc ismute; then
+	color=$gray
+fi
+msg="${icon}${vol}"
+echo "%{u$color}$msg%{u-}"

@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+sort_files(){
+	[[ "$#" == "0" ]] && tr '\0' '\n' ||	xargs -0 stat -c %$1\ %n | sort -rn | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'
+}
+
+# no sort if no args passed
+# sort by last opened
+[[ "$1" == "a" ]] && SORT_KEY=X 
+# sort by last modified
+[[ "$1" == "m" ]] && SORT_KEY=Y
+
 FOLDERS=(down docs shit vids)
-FILE="$(fd . -E 'one-piece' --type file "${FOLDERS[@]}" | dmenu -i -l 10 )"
+FILE="$(fd -0 . -t f "${FOLDERS[@]}" | sort_files $SORT_KEY | dmenu -i -l 10)"
 [[ "$FILE" != "" ]] && fig "$FILE"

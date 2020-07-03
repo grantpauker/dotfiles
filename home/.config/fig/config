@@ -1,12 +1,13 @@
 [sxiv]
 .*.jpg$
+.*.jpeg$
 .*.png$
 .*.gif$
 
 [zathura]
 .*.pdf$
 
-[google-chrome-stable]
+[firefox]
 .*.html$
 .*.htm$
 .*.com$
@@ -15,18 +16,19 @@
 .*.org$
 .*.net$
 .*.edu$
-.*.gov$
 
 [mpv --vf=lavfi=yadif] 
 .*.mkv$
 .*.mp4$
 .*.m4a$
 .*.avi$
+.*.webm$
 
 [mpv --profile=pseudo-gui --vf=lavfi=yadif] 
 .*.mp3$
 .*.m4b$
 .*.wav$
+.*.ogg$
 
 
 [nvim]

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+file="${1%.*}"
+x=$(identify $1 | awk '{print $3}' | cut -d'x' -f1)
+y=$(identify $1 | awk '{print $3}' | cut -d'x' -f2)
+x_2=$((x/2))
+y_2=$((y/2))
+convert -size ${x}x${y} xc:none -fill $1 -draw "ellipse $x_2,$y_2 $x_2,$y_2 0,360" ${file}-circle.png

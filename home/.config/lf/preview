@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 case "$1" in
-	*.pdf)
+	*.pdf|*.PDF)
 		pdftotext $1 -
 		;;
-	*.zip)
+	*.zip|*.ZIP)
 		unzip -l $1
 		;;
-	*.png|*.jpg|*.jpeg|*.gif)
-		img2txt $1
+	*.png|*.jpg|*.jpeg|*.gif|*.PNG|*.JPG|*.JPEG|*.GIF)
+		exiftool $1 | grep "Create Date\|Full Image Size" | sed 's/                 //g' | sed 's/    :/:    /g'
+		#img2txt $1
 		;;
-	*.mkv|*.mp4|*.avi)
+	*.mkv|*.mp4|*.avi|*.MKV|*.MP4|*.AVI)
 		ffprobe $1 -v quiet -print_format json -show_format -show_streams | jq '"Resolution: \(.streams[0].width)x\(.streams[0].height)@Duration: \(.format.duration)"' -r | tr '@' '\n'
 		;;
 	*)

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+sort_files(){
+	xargs -0 stat -c %Y\ %n | sort -rn | awk '{print $2}'
+}
+
+FOLDER="$(fd . ~/proj/* -0 --max-depth 1 --type d | sort_files | cut -d'/' -f5- |  dmenu -i -l 10)"
+[[ "$FOLDER" != "" ]] && code "$@" ~/proj/$FOLDER

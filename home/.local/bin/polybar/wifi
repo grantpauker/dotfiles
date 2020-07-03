@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+green=$(xgetres green)
+yellow=$(xgetres yellow)
+red=$(xgetres red)
+gray=$(xgetres gray)
+if [[ "$(nmcli radio  wifi)" == "disabled" ]]; then
+	text="WiFi Disabled"
+	color="$gray"
+elif [[ "$(iw wlp58s0 link)" == "Not connected." ]]; then
+	text="No Connection"
+	color="$gray"
+else
+	strength=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}' | head -n1)
+	text="$(iw dev wlp58s0 link | grep SSID | awk '{$2=$2; print $2}') "
+	if [[ "$strength" -gt "80" ]]; then
+		color="$green"
+		status="●●●●"
+	elif [[ "$strength" -gt "55" ]]; then
+		color="$green"
+		status="●●●○"
+	elif [[ "$strength" -gt "30" ]]; then
+		color="$yellow"
+		status="●●○○"
+	elif [[ "$strength" -gt "5" ]]; then
+		color="$yellow"
+		status="●○○○"
+	else
+		color="$red"
+		status="○○○○"
+	fi
+fi
+msg="${text}${status}"
+echo -n %{u$color}${msg}%{u-}
+

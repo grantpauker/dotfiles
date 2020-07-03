@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# check if port(s) are open on server
+check_port(){
+	timeout 1 bash -c "( echo  > /dev/tcp/$1/$2 ) >&  /dev/null" && echo "$2: open" || echo "$2: closed"
+}
+
+is_url(){
+	[[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || [[ $1 =~ ^[0-9a-zA-Z]*\.[a-zA-Z]*$ ]]
+}
+
+if [[ $1 =~ ^[0-9]+$ ]]; then
+	public_ip=$(curl -s ipinfo.io/ip)
+	for port in "$@"; do
+		check_port $public_ip $port
+	done
+elif is_url $1; then
+	for port in "${@:2}"; do
+		check_port $1 $port
+	done
+else
+	echo Please give a port or an IP and a port 
+fi

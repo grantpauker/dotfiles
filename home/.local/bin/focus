@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+CONFIG=~/.config/i3/config
+
+has_telegram(){
+	rg '^bindsym(.*)telegram-desktop' $CONFIG -q
+}
+
+if has_telegram; then
+	sd 'bindsym(.*)telegram-desktop' '#bindsym${1}telegram-desktop' $CONFIG
+	touch ~/.config/i3/focused
+else
+	sd '#bindsym(.*)telegram-desktop' 'bindsym${1}telegram-desktop' $CONFIG
+	rm -f ~/.config/i3/focused
+fi
+
+i3-msg reload

@@ -1,7 +1,15 @@
 # global properties
 command=~/.local/bin/i3blocks/$BLOCK_NAME
-separator_block_width=20
+separator_block_width=40
 markup=pango
+
+# quick info to memorize
+[memorize]
+interval=5
+
+# mute indicator
+[microphone]
+signal=1
 
 # volume indicator
 [volume]
@@ -11,12 +19,12 @@ signal=1
 
 # network interface monitoring
 [wifi]
-interval=1
+interval=2
 
 # battery indicator
 [battery]
-interval=30
-signal=12
+interval=5
+#signal=12
 
 # date and time
 [time]
@@ -25,3 +33,11 @@ interval=1
 # check updates
 [pacman]
 interval=300
+
+# simple countdown timer
+[countdown]
+interval=1
+
+# days until ap scores
+#[ap]
+#interval=1

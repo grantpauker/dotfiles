@@ -20,6 +20,9 @@ source $ZDOTDIR/keyrc
 # fix completion
 zstyle ':completion:*' rehash true
 
+# sk completion
+[[ $- == *i* ]] && source "/usr/share/skim/completion.zsh" 2> /dev/null
+
 # various zsh options
 setopt extendedglob
 setopt HIST_IGNORE_ALL_DUPS
@@ -37,9 +40,13 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # default options
+export SKIM_DEFAULT_OPTIONS='--color 16'
 export FZF_DEFAULT_OPTS='--color 16 --ansi'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export GOPATH=$HOME/proj/go
 export HISTFILE=$ZDOTDIR/zsh_history
 [ -f ~/.config/base16/colors ] && source ~/.config/base16/colors
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk/
+#export LS_COLORS=GxFxCxDxBxegedabagaced
+export PYTHONSTARTUP=~/.config/python/pythonrc

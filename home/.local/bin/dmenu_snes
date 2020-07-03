@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+GAME=$(ls -1 docs/games/snes/*.smc | dmenu -i -l 10)
+[[ "$GAME" == "" ]] || snes9x-gtk  $GAME

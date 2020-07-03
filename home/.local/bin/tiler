@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+ext="${1##*.}"
+name="${1%.*}"
+readarray -t array <<< $(printf "$1\n%.0s" `seq 1 $(($2*$2))`)
+montage -tile $2x$2 -geometry +0+0 ${array[@]} $name-$2.$ext

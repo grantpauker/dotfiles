@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 symbol=""
 n=$(yay -Pn)
-#n=$((n-1))
-#[[ "$n" == "-1" ]] && printf "They fixed it\n\n#C3E88D\n" 
 [[ "$n" -gt "0" ]] && printf "$symbol $n\n\n#C3E88D\n"

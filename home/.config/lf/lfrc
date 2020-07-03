@@ -29,10 +29,11 @@ cmd br ${{
 	fi | xargs -d '\n' -L1 realpath --relative-base=. | xargs -d '\n' br
 }}
 
-map r br
+map r rename
+map R br
 
-cmd fzf_jump ${{
-	res="$(fd -a | fzf --reverse )"
+cmd fuzzy_jump ${{
+	res="$(fd -a | sk --reverse )"
 	if [ -f "$res" ]; then
 		cmd="select"
 	elif [ -d "$res" ]; then
@@ -40,11 +41,13 @@ cmd fzf_jump ${{
 	fi
 	lf -remote "send $id $cmd \"$res\""
 }}
-map <c-f> :fzf_jump
+map <c-f> :fuzzy_jump
 
-cmd fzf_search ${{
-	res=$(rg -il $1 | fzf --reverse --preview="rg -ip '$1' {}")
+cmd fuzzy_search ${{
+	#res=$(rg -il $1 | sk --reverse --preview="rg -ip '$1' {}")
+	res=$(sk --ansi -i -c 'rg --color=always --line-number "{}"' | awk '{gsub(":[0-9]*:.*","",$1); print $1}')
 	lf -remote "send $id select \"$res\""
 }}
-map <c-s> push :fzf_search<space>
+#map <c-s> push :fuzzy_search<space>
+map <c-s> :fuzzy_search
 

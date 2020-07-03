@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+FILE=~/.data/memorize
+color=$(xgetres green)
+msg="$(grep "^#.*" $FILE | sed 's/^#[ ]*//g')"
+printf "$msg\n\n$color\n"

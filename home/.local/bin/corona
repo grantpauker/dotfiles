@@ -1,0 +1,7 @@
+data=$(curl -s https://corona.lmao.ninja/states | jq '.[] | select(.state == "California")')
+today_cases=$(echo $data | jq '.todayCases')
+cases=$(echo $data | jq '.cases')
+today_deaths=$(echo $data | jq '.todayDeaths')
+deaths=$(echo $data | jq '.deaths')
+echo $today_cases/$cases
+echo $today_deaths/$deaths

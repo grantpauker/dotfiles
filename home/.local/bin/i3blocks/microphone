@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+red=$((xgetres red))
+if ! sc ismic; then
+	icon=""
+	color=$red
+	msg="$icon"
+	printf "$msg\n\n$color\n"
+fi

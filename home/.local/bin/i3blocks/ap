@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+color=$(xgetres red)
+msg=$(duntil 'July 15')
+printf "$msg\n\n$color\n"

@@ -40,8 +40,10 @@ floating_modifier $mod
 # commands
 set $term alacritty
 set $termfree alacritty --class "workfree"
-set $browser google-chrome-stable
-set $privbrowser google-chrome-stable --incognito
+#set $browser google-chrome-stable
+#set $privbrowser google-chrome-stable --incognito
+set $browser firefox
+set $privbrowser firefox --private-window
 set $calculator qalc
 set $filemanager lf
 
@@ -52,6 +54,7 @@ exec --no-startup-id setbg
 exec --no-startup-id [ -e ~/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 #exec --no-startup-id amixer -c PCH cset 'name=Headphone Mic Boost Volume' 1
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.2
+exec --no-startup-id fixinputs
 exec --no-startup-id remap
 
 # daemons
@@ -68,13 +71,14 @@ exec $term
 
 # dropdown
 set $checkdrop wmctrl -l | awk '{for(i=4;i<=NF;++i)printf $i""FS ; print ""}' | sed 's/ $//g' | grep -x
-exec_always $checkdrop dropdown || $termfree --title dropdown
+exec_always $checkdrop dropterm || $termfree --title dropterm
 exec_always $checkdrop dropcalc || $termfree --title dropcalc -e $calculator
 
 # popups
 set $fixwin resize set 1500 600, move position center
-bindsym $mod+z       [title="dropdown"] scratchpad show
-bindsym $mod+Shift+z [title="dropdown"] $fixwin
+bindsym $mod+z       [title="dropterm"] scratchpad show
+
+bindsym $mod+Shift+z [title="dropterm"] $fixwin
 bindsym $mod+x       [title="dropcalc"] scratchpad show
 bindsym $mod+Shift+x [title="dropcalc"] $fixwin
 
@@ -82,15 +86,19 @@ bindsym $mod+Shift+x [title="dropcalc"] $fixwin
 bindsym $mod+space exec i3-dmenu-desktop
 bindsym $mod+Shift+space exec dmenu_clip
 bindsym XF86Search exec dmenu_run
-bindsym $mod+grave exec dmenu_symbols
-bindsym $mod+Shift+grave exec dmenu_states
-bindsym $mod+d exec dmenu_docs
+bindsym $mod+grave exec dmenu_quickcopy
+bindsym $mod+Shift+grave exec dmenu_symbols
+bindsym $mod+d exec dmenu_quicklinks
 bindsym $mod+Shift+d exec dmenu_bookmarks
 bindsym $mod+w exec dmenu_nm
-bindsym $mod+e exec dmenu_open
+bindsym $mod+e exec dmenu_open m
+bindsym $mod+Shift+e exec dmenu_open a
+bindsym $mod+Shift+g exec dmenu_snes
+bindsym $mod+g exec dmenu_files
+bindsym $mod+Shift+r exec dmenu_memorize
 
 # window control
-bindsym $mod+q [con_id=__focused__ title="^(?!dropdown)^(?!dropcalc)"] kill
+bindsym $mod+q [con_id=__focused__ title="^(?!dropterm)^(?!dropcalc)"] kill
 bindsym $mod+a [urgent=latest] focus
 bindsym $mod+Shift+a [urgent=latest] move workspace current
 
@@ -116,13 +124,14 @@ bindsym $mod+Shift+$up move up $winmv
 bindsym $mod+Shift+$right move right $winmv
 bindsym $mod+Shift+w split toggle
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f exec polybar-msg cmd toggle
 
 #bindsym $mod+space floating toggle
 
 # workspace control
-set $ws1 "1 "
+set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3 "
+set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
@@ -153,11 +162,11 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-assign [title="YouTube Music"] $ws7
+for_window [title="YouTube Music - Mozilla Firefox"] move to workspace $ws7
 assign [class="Google-chrome"]  $ws1
-assign [class="Firefox"] $ws1
+assign [class="firefox"] $ws1
 assign [class="^(?!workfree)(?!dropfzf)Alacritty"] $ws2
-assign [class="Code"] $ws5
+assign [class="code-oss"] $ws5
 assign [class="TelegramDesktop"] $ws4
 for_window [class="Surf" title=".*ticktick.*"] move to workspace $ws3
 
@@ -180,10 +189,12 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $termfree
 bindsym $mod+s exec $browser
 bindsym $mod+Shift+s exec $privbrowser
-bindsym $mod+c exec code
+bindsym $mod+c exec dmenu_code --enable-proposed-api ms-vscode-remote.remote-ssh
+bindsym $mod+Shift+c exec code --enable-proposed-api ms-vscode-remote.remote-ssh
+
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+t exec ticktick
-bindsym $mod+m exec $browser /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
+bindsym $mod+m exec $browser --new-window music.youtube.com
 
 # stystem control
 bindsym $mod+BackSpace exec i3exit suspend
@@ -191,11 +202,14 @@ bindsym $mod+Escape exec refresh
 bindsym --release $mod+Shift+Escape exec killer
 bindsym $mod+Delete exec i3exit logout
 bindsym $mod+Shift+Delete exec dmenu_shutdown
+bindsym $mod+v exec focus
 
 # i3bar config
+#exec_always --no-startup-id polybar_launch
+
 bar {
 	i3bar_command i3bar -t --transparency
-	font pango:mono, FontAwesome Regular 14
+	font pango:FontAwesome, Fira Code 15
 	status_command i3blocks
 	position bottom
 	#strip_workspace_name yes
@@ -203,11 +217,11 @@ bar {
 	colors {
 		background	$background
 		separator		$foreground
-		#class							border		backgr	  text
+		# class							border		backgr	  text
 		focused_workspace		$color13  $color13	$color0
 		active_workspace		$color0   $color0   $color0
-		inactive_workspace	$color0   $color0   $color3
-		urgent_workspace		$color15  $color15  $color7
+		inactive_workspace	$color0   $color0   $foreground
+		urgent_workspace		$color15  $color15  $background
 	}
 }
 
@@ -221,13 +235,17 @@ client.focused_inactive $clear    $clear  $clear  $clear    $clear
 client.urgent           $color15  $clear  $clear  $color15  $color15
 
 # audio keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id sc up 5
-bindsym XF86AudioLowerVolume exec --no-startup-id sc down 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id sc up 5 -f
+bindsym XF86AudioLowerVolume exec --no-startup-id sc down 5 -f
 
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id sc up 5 -f
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id sc down 5 -f
+#bindsym XF86AudioRaiseVolume exec --no-startup-id sc up 5
+#bindsym XF86AudioLowerVolume exec --no-startup-id sc down 5
+
+#bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id sc up 5 -f
+#bindsym $mod+XF86AudioLowerVolume exec --no-startup-id sc down 5 -f
 
 bindsym XF86AudioMute exec --no-startup-id sc tmute
+bindsym $mod+XF86AudioMute exec --no-startup-id sc tmic
 bindsym XF86AudioPlay exec --no-startup-id sc tplay
 bindsym XF86AudioNext exec --no-startup-id sc next
 bindsym XF86AudioPrev exec --no-startup-id sc prev
@@ -236,26 +254,26 @@ bindsym $mod+bracketright exec --no-startup-id sc next
 bindsym $mod+p exec --no-startup-id sc tplay
 
 # sreen control
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +8
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -8
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +8 -time 1 -steps 1
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -8 -time 1 -steps 1
 
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id xbacklight +2
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id xbacklight -2
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id xbacklight +2 -time 1 -steps 1
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id xbacklight -2 -time 1 -steps 1
 
-bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id xbacklight +16
-bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -16
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id xbacklight +16 -time 1 -steps 1
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -16 -time 1 -steps 1
 
-bindsym $mod+Shift+e exec redtoggle
+bindsym $mod+r exec redtoggle
 
 # screenshot
 bindsym $mod+Tab exec screenshot -s
 #bindsym $mod+Shift+Tab exec screencast
 
 # dropdown terminal
-for_window [title="dropdown"] floating enable
-for_window [title="dropdown"] move scratchpad
-for_window [title="dropdown"] resize set 1500 600
-for_window [title="dropdown"] sticky enable
+for_window [title="dropterm"] floating enable
+for_window [title="dropterm"] move scratchpad
+for_window [title="dropterm"] resize set 1500 600
+for_window [title="dropterm"] sticky enable
 
 # dropdown calculator
 for_window [title="dropcalc"] floating enable
@@ -268,4 +286,3 @@ for_window [instance="dropfzf"] floating enable
 for_window [instance="dropfzf"] sticky enable
 for_window [instance="dropfzf"] resize set 3200 800
 for_window [instance="dropfzf"] move position 0 0
-

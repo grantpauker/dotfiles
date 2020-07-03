@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+FILE=~/.data/memorize
+red=$(xgetres red)
+gray=$(xgetres gray)
+cyan=$(xgetres cyan)
+green=$(xgetres green)
+color=$green
+#msg="$(head -n1 $FILE)"
+msg="$(grep "^#.*" $FILE | sed 's/^#[ ]*//g')"
+echo "%{u$color}$msg%{u-}"

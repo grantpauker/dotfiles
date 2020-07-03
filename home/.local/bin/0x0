@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 URL="https://0x0.st"
-regex='https?://[a-zA-Z0-9./?=_-]*'
+regex='https\?://[a-zA-Z0-9./?=_-]*'
 
 if grep "$regex" <<< "$1" &>> /dev/null; then
 	curl -F "shorten=$1" "$URL" | tee >(xclip -sel c)

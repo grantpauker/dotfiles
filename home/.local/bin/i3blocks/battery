@@ -1,26 +1,30 @@
 #!/usr/bin/env bash
 BATTERY=0
-status=$(acpi -a | awk '/Adapter '$BATTERY'/{print $3}')
-percent=$(acpi -b | sed "/Battery $BATTERY/s/.* \([0-9]*\)%.*/\1/g")
-BACKGROUND="#292D3E"
+BAT_FILE="/org/freedesktop/UPower/devices/battery_BAT0"
+#status=$(acpi -a | awk '/Adapter '$BATTERY'/{print $3}')
+#percent=$(acpi -b | grep -v unavailable | tail -n1 | sed 's/.* \([0-9]*\)%.*/\1/g')
+percent=$(upower -i $BAT_FILE | awk '/percentage/ { print $2 }' | sed 's/.$//g' )
+background=$(xgetres background)
 if [[ "$percent" -le "5" ]]; then
-	COLOR="#292D3E"
-	BACKGROUND="#F07178"
-	ICON=""
+	color=$(xgetres background)
+	background=$(xgetres red)
+	icon=""
 elif [[ "$percent" -lt "25" ]]; then
-	COLOR="#F07178"
-	ICON=""
+	color=$(xgetres red)
+	icon=""
 elif [[ "$percent" -lt "50" ]]; then
-	COLOR="#F78C6C"
-	ICON=""
+	color=$(xgetres orange)
+	icon=""
 elif [[ "$percent" -lt "80" ]]; then
-	COLOR="#FFCB6B"
-	ICON=""
+	color=$(xgetres yellow)
+	icon=""
 else 
-	COLOR="#C3E88D"
-	ICON=""
+	color=$(xgetres green)
+	icon=""
 fi
-if [[ "$status" == "on-line" ]]; then
-	ICON=""
+#if [[ "$status" == "on-line" ]]; then
+if upower -i $BAT_FILE | grep -q 'state:.* charging'; then
+	icon=""
 fi
-printf "<span background='$BACKGROUND' foreground='$COLOR'>$ICON $percent%%</span>\n"
+msg="$icon $percent"
+printf "<span background='$background' foreground='$color'>$msg%%</span>\n"

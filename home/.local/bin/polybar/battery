@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+red=$(xgetres red)
+yellow=$(xgetres green)
+BATTERY=0
+percent=$(acpi -b | rg -v unavailable | tail -n1 | sed 's/.* \([0-9]*\)%.*/\1/g')
+#percent=$(acpi -b | sed "/Battery $BATTERY/s/.* \([0-9]*\)%.*/\1/g")
+if [[ "$percent" -le "5" ]]; then
+	color="#292D3E"
+	icon=""
+elif [[ "$percent" -lt "25" ]]; then
+	color="#F07178"
+	icon=""
+elif [[ "$percent" -lt "50" ]]; then
+	color="#F78C6C"
+	icon=""
+elif [[ "$percent" -lt "80" ]]; then
+	color="#FFCB6B"
+	icon=""
+else 
+	color="#C3E88D"
+	icon=""
+fi
+status=$(acpi -a | awk '/Adapter '$BATTERY'/{print $3}')
+if [[ "$status" == "on-line" ]]; then
+	icon=""
+fi
+msg="${icon} ${percent}%"
+echo -n %{u$color}$msg%{u-}

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-FILE=~/.data/docs
+FILE=~/.data/perry
 LINE=$(cat $FILE | dmenu -i -l 10 | awk '{print $NF}')
 [[ "$LINE" == "" ]] && exit
 $BROWSER $LINE
+

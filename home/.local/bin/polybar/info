@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+color=$(xgetres cyan)
+echo
+#msg=$(transmission-remote perry -l | rg "I.Think." | awk '{print $3}')
+#echo -n %{u$color}$msg%{u-}

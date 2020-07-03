@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-FILE=~/.config/google-chrome/Default/Bookmarks
-LINE=$(jq '.roots.bookmark_bar.children[] | {name,url}[]' -r $FILE  | paste - - -d ' ' | dmenu -i -l 10 | awk '{print $NF}')
+#FILE=~/.config/google-chrome/Default/Bookmarks
+#LINE=$(jq '.roots.bookmark_bar.children[] | {name,url}[]' -r $FILE  | paste - - -d ' ' | dmenu -i -l 10 | awk '{print $NF}')
+FILE=~/.data/bookmarks
+LINE=$(cat $FILE | dmenu -i -l 10 | awk '{print $NF}')
 [[ "$LINE" == "" ]] && exit
 $BROWSER $LINE
 

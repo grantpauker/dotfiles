@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-WALLPAPERS=~/projects/graphic/wallpapers
+WALLPAPERS=~/proj/graphic/wallpapers
 CURRENT=~/.config/wallpaper.png
 BG="$(ls $WALLPAPERS/*/wallpaper.png | shuf -n 1)"
 while [ "$BG" -ef "$CURRENT" ]; do

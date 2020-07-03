@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+/usr/lib/jvm/java-11-openjdk/bin/java -jar ~/builds/shuffleboard/app/build/libs/app-2020.424242.2.2-20200208203737-3-g1b3bd00-all.jar

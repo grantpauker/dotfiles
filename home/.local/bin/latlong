@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+IP=$(curl -s ipinfo.io/ip)
+CITY=$(curl -s https://ipapi.co/$IP/json/ | jq -r '.city')
+LATLONG=$(curl -s "https://geocode.xyz/$CITY?json=1" | jq -r '.latt,.longt')
+LAT=$(echo "$LATLONG" | head -n1)
+LONG=$(echo "$LATLONG" | tail -n1)
+printf "City:\t$CITY\nLat:\t$LAT\nLong:\t$LONG\n"

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cd ~/proj
+fd --exact-depth 2 -t d -x most_recent_file 2> /dev/null | sort -rn | awk '{ print $2 }'

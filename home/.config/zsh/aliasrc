@@ -1,32 +1,54 @@
 #!/usr/bin/env zsh
 # utils
-alias rsc='source $ZDOTDIR/.zshrc'
-alias clipdir='echo -n $PWD | cclip'
-alias hclip='clip $(fc -ln -1)'
-alias renet='sudo systemctl restart NetworkManager'
+alias byline='xargs -L 1'
 alias cclip='xclip -sel clip'
-alias o='$OPENER'
+alias clipdir='echo -n $PWD | cclip'
+alias duse='lsof | rg'
+alias hclip='echo -n $(fc -ln -1) | cclip'
+alias ips="nmap -sP -oG - '192.168.1.*'"
+alias lines='nl -w2 -s": "'
+alias ports='exa /dev/tty[^S0-9]*'
+alias renet='sudo systemctl restart NetworkManager'
+alias rsc='source $ZDOTDIR/.zshrc'
+#alias sort_length="awk '{ print length, \$0 }' | sort -n -s | cut -d\" \" -f2-'"
+alias timezone'sudo ntpdate 1.ro.pool.ntp.org'
+alias tran='tremc -c perry:9091'
+alias vttr='curl v2.wttr.in'
+alias wake_perry='curl pauker.org:9090'
+alias white="sed 's/ /·/g;s/\t/￫/g;s/\r/§/g;s/$/¶/g'"
+alias wttr='curl wttr.in'
+
 
 # abbreviations
-alias s='sudo '
-alias srm='sudo rm'
-alias yt=youtube-dl
-alias udb='sudo updatedb'
-alias slf='sudo lf'
 alias ac='aria2c'
-alias cx='chmod +x'
-alias lines='nl -w2 -s": "'
-
-# default options
+alias cala='cal -n3'
+alias cleme='~/meme/clean'
 alias co='code .'
+alias cx='chmod +x'
+alias hrg='rg --hidden'
+alias i3r='i3-msg restart'
 alias irg='rg -i'
+alias lmesg='dmesg -wH'
+alias ncdu='ncdu --color dark'
+alias o='$OPENER'
+alias pcat='stapler cat'
+alias rs='rsync -rav --progress'
+alias s='sudo '
+alias slf='sudo lf'
+alias srm='sudo rm'
 alias su='su -p'
 alias sxiv='sxiv -p'
-alias ncdu='ncdu --color dark'
+alias udb='sudo updatedb'
+alias unique="awk '!x[\$0]++'"
+alias wl='wc -l'
+alias ww='wc -w'
+alias xt='extract'
+alias yt='youtube-dl'
+alias yta='youtube-dl -x --audio-format mp3'
 
 # globals
-alias -g '***=**/*(.)'
 alias -g '*!=$(fd -t f | fzf)'
+alias -g '***=**/*(.)'
 alias -g '*@=$(fd -t d | fzf)'
 
 # vim
@@ -39,56 +61,52 @@ alias vim='$EDITOR'
 cfa(){
 	alias cf$1="$EDITOR $2"
 }
+cfa	alacritty		~/.config/alacritty/alacritty.yml
+cfa	aliasrc			$ZDOTDIR/aliasrc
+cfa	bookmarks		~/.data/bookmarks
+cfa	docs				~/.data/docs
+cfa	dunst				~/.config/dunst/dunstrc
+cfa	fig					~/.config/fig/config
+cfa	funcrc			$ZDOTDIR/funcrc
 cfa	i3					~/.config/i3/config
 cfa	i3blocks		~/.config/i3blocks/config
-cfa	polybar		~/.config/polybar/config
-cfa	aliasrc			$ZDOTDIR/aliasrc
-cfa	funcrc 	$ZDOTDIR/funcrc
-cfa	keyrc $ZDOTDIR/keyrc
-cfa	nvim				~/.config/nvim/init.vim
-cfa	zsh					$ZDOTDIR/.zshrc
-cfa	profile			~/.profile
-cfa	mpv					~/.config/mpv/mpv.conf
-cfa	dunst				~/.config/dunst/dunstrc
-cfa	alacritty		~/.config/alacritty/alacritty.yml
+cfa	keyrc				$ZDOTDIR/keyrc
 cfa	lf					~/.config/lf/lfrc
-cfa	docs				~/.data/docs
-cfa	bookmarks		~/.data/bookmarks
-cfa	symbols			~/.data/symbols
+cfa	memorize		~/.data/memorize
+cfa	mpv					~/.config/mpv/mpv.conf
+cfa	nvim				~/.config/nvim/init.vim
 cfa	picom				~/.config/picom/picom.conf
-cfa	fig					~/.config/fig/config
+cfa	polybar			~/.config/polybar/config
+cfa	profile			~/.profile
+cfa	quicklinks	~/.data/quicklinks
+cfa	ssh					~/.ssh/config
+cfa	symbols			~/.data/symbols
+cfa	zsh					$ZDOTDIR/.zshrc
+cfa	times				~/.data/times
 unset -f cfa
 
 # python virtual environments
 alias nvenv='virtualenv env && venv && pip install pylint autopep8'
 alias venv='source ./env/bin/activate'
-echo p​e​ni​s
 alias uenv='deactivate'
 
 # novelty
-alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
-alias harsh='play -q -c 2 --null synth brownnoise band -n 2500 4000 tremolo 20 .1 reverb 5'
 alias busy='cat /dev/urandom | hexdump -C | rg "ca fe"'
+alias harsh='play -q -c 2 --null synth brownnoise band -n 2500 4000 tremolo 20 .1 reverb 5'
+alias loopy='looper="xdotool type \"\$looper\" && xdotool key Return" && xdotool type "$looper" && xdotool key Return'
+alias ocean='play -nq synth brownnoise synth pinknoise mix synth 0 0 0 10 10 40 trapezium amod 0.1 30'
 alias rickroll='curl -sL 0x0.st/9a | bash'
 
 # exa
 alias x='exa'
 alias xa='exa -a'
-alias xl='exa -lh'
-alias xx='exa -lah'
+alias xl='exa -glh'
+alias xx='exa -glah'
 
 # secret folder
 alias shit='mountpoint ~/shit &>> /dev/null || encfs ~/.shit ~/shit'
 alias ushit='mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit'
 
 # temperory
-alias ls='echo use x instead'
-alias la='echo use xa instead'
-alias lh='echo use xl instead'
-alias ll='echo use xl instead'
-alias l='echo use xx instead'
-alias h='~/builds/habitctl/target/release/habitctl'
-alias white="sed 's/ /·/g;s/\t/￫/g;s/\r/§/g;s/$/¶/g'"
-alias hrg='rg --hidden'
-alias xt='extract'
-alias timezone'sudo ntpdate 1.ro.pool.ntp.org'
+#alias mpv='MESA_LOADER_DRIVER_OVERRIDE=i965 mpv'
+alias ap='duntil "July 15"'

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-echo %{Fcolors.re}dog%{F-}
-#date '+%m-%d-%y %I:%M:%S'
+color=$(xgetres cyan)
+msg=$(date '+%m-%d-%y %I:%M:%S')
+[[ -a ~/.config/i3/focused ]] && msg="($msg)"
+echo -n %{u$color}$msg%{u-}

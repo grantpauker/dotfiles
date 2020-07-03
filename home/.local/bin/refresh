@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 i3-msg reload
 xrdb ~/.Xresources
+pkill -USR1 -x sxhkd

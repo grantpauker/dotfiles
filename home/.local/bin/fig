@@ -33,7 +33,7 @@ for file in sys.argv[1:]:
     has_assoc = False
     for app in assoc:
         for regex in assoc[app]:
-            pattern = re.compile(regex)
+            pattern = re.compile(regex,re.IGNORECASE)
             if pattern.match(file):
                 if app not in apps:
                     apps[app] = []
@@ -44,5 +44,10 @@ for file in sys.argv[1:]:
 
 
 FNULL = open(os.devnull, 'w')
+
+env = os.environ.copy()
+# TODO remove iris fix
+env['MESA_LOADER_DRIVER_OVERRIDE'] = 'i965'
+
 for app in apps:
-    process = subprocess.Popen(app.split(' ') + apps[app], stdout=FNULL, stderr=FNULL)
+    process = subprocess.Popen(app.split(' ') + apps[app], stdout=FNULL, stderr=FNULL, env=env)

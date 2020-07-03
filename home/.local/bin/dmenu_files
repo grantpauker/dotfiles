@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+FILE="$(fd . -t f | dmenu -i -l 10)"
+[[ "$FILE" != "" ]] && echo "$FILE" | xclip -sel c

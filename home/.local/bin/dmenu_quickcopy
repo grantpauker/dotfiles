@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+FILE=~/.data/quickcopy
+copy="$(cat $FILE | dmenu -i | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}')"
+[[ "$copy" != "" ]] && printf "$copy" | xclip -sel c 

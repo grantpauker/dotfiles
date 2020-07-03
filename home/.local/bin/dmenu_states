@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-FILE=~/.data/state_codes
-code="$(cat $FILE | dmenu -i)"
-[[ "$code" == "" ]] && exit
-printf "${code:0:2}" | xclip -sel clip
