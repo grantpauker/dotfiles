@@ -6,6 +6,7 @@ export ZSH_THEME="minimal"
 # oh-my-zsh plugins
 plugins=(
 	fd
+	zsh-abbr
 	#sudo
 )
 

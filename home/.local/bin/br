@@ -1,9 +1,32 @@
 #!/usr/bin/env python
 # mostly copied from ranger's bulkrename command (https://github.com/ranger/ranger/blob/master/ranger/config/commands.py#L1114)
+# and from ranger's shell_escape util (https://github.com/ranger/ranger/blob/master/ranger/ext/shell_escape.py)
 import os
 import sys
 import tempfile
 import subprocess
+
+META_CHARS = (' ', "'", '"', '`', '&', '|', ';', '#',
+              '$', '!', '(', ')', '[', ']', '<', '>', '\t')
+UNESCAPABLE = set(map(chr, list(range(9)) + list(range(10, 32)) + list(range(127, 256))))
+META_DICT = dict([(mc, '\\' + mc) for mc in META_CHARS])
+
+
+def shell_quote(string):
+    """Escapes by quoting"""
+    return "'" + str(string).replace("'", "'\\''") + "'"
+
+
+def shell_escape(arg):
+    """Escapes by adding backslashes"""
+    arg = str(arg)
+    if UNESCAPABLE & set(arg):
+        return shell_quote(arg)
+    arg = arg.replace('\\', '\\\\')  # make sure this comes at the start
+    for key, value in META_DICT.items():
+        arg = arg.replace(key, value)
+    return arg
+    
 # throw help message if no paths were passed
 if len(sys.argv) == 1:
     print(f"Usage: {os.path.basename(sys.argv[0])} [directory|file]")
@@ -50,9 +73,9 @@ for old, new in zip(filenames, new_filenames):
     if old != new:
         basepath, _ = os.path.split(os.path.abspath(new))
         if (basepath is not None) and (basepath not in new_dirs) and (not os.path.isdir(basepath)):
-            script_lines.append(f"mkdir -vp -- '{basepath}'")
+            script_lines.append(f"mkdir -vp -- {shell_escape(basepath)}")
             new_dirs.append(basepath)
-        script_lines.append(f"mv -vi -- '{old}' '{new}'")
+        script_lines.append(f"mv -vi -- {shell_escape(old)} {shell_escape(new)}")
 
 # write commands to file
 script_content = "\n".join(script_lines) + "\n"

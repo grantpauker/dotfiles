@@ -1,0 +1,8 @@
+ran() {
+	ps aux | rg $(echo "$1" | sed -e 's/^\(.\)/\[\1\]/')
+}
+for pid in "$(ran $1 | awk '{ print $2 }')"; do
+	kill $pid
+done
+
+

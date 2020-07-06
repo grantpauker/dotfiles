@@ -9,7 +9,7 @@ alias ips="nmap -sP -oG - '192.168.1.*'"
 alias lines='nl -w2 -s": "'
 alias ports='exa /dev/tty[^S0-9]*'
 alias renet='sudo systemctl restart NetworkManager'
-alias rsc='source $ZDOTDIR/.zshrc'
+alias rsrc='source $ZDOTDIR/.zshrc'
 #alias sort_length="awk '{ print length, \$0 }' | sort -n -s | cut -d\" \" -f2-'"
 alias timezone'sudo ntpdate 1.ro.pool.ntp.org'
 alias tran='tremc -c perry:9091'
@@ -32,6 +32,7 @@ alias lmesg='dmesg -wH'
 alias ncdu='ncdu --color dark'
 alias o='$OPENER'
 alias pcat='stapler cat'
+alias rf='rm -rf'
 alias rs='rsync -rav --progress'
 alias s='sudo '
 alias slf='sudo lf'
@@ -110,3 +111,9 @@ alias ushit='mountpoint ~/shit &>> /dev/null && fusermount -u ~/shit'
 # temperory
 #alias mpv='MESA_LOADER_DRIVER_OVERRIDE=i965 mpv'
 alias ap='duntil "July 15"'
+
+
+# git
+alias gc='git clone'
+alias gcm='git commit'
+alias gp='git push'
