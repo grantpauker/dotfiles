@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/ruwix/builds/dotfiles/home/.config/zsh-custom/plugins'
 let g:netrw_dirhist_7='/home/ruwix/proj/robotics/dog'
 let g:netrw_dirhist_6='/home/ruwix/proj/robotics/dog/arm19/.lib'
 let g:netrw_dirhist_5='/home/ruwix/proj/robotics/microbot/.git'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_2='/home/ruwix/DCIM'
 let g:netrw_dirhist_1='/home/ruwix/website'
 let g:netrw_dirhist_0='/home/ruwix/down/telegram'
 let g:netrw_dirhist_9='/home/ruwix/docs/school-19-20/apes'
-let g:netrw_dirhist_8='/home/ruwix/vids/differential-equations'

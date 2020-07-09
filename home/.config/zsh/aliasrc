@@ -8,9 +8,10 @@ alias hclip='echo -n $(fc -ln -1) | cclip'
 alias ips="nmap -sP -oG - '192.168.1.*'"
 alias lines='nl -w2 -s": "'
 alias ports='exa /dev/tty[^S0-9]*'
+alias randline='shuf -n 1'
 alias renet='sudo systemctl restart NetworkManager'
 alias rsrc='source $ZDOTDIR/.zshrc'
-#alias sort_length="awk '{ print length, \$0 }' | sort -n -s | cut -d\" \" -f2-'"
+alias sort_length="awk '{ print length, \$0 }' | sort -n -s | cut -d\" \" -f2-'"
 alias timezone'sudo ntpdate 1.ro.pool.ntp.org'
 alias tran='tremc -c perry:9091'
 alias vttr='curl v2.wttr.in'

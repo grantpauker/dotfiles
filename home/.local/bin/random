@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if [[ "$#" == "0" ]]; then
+	echo $(($RANDOM))
+elif [[ "$#" == "1" ]]; then
+	echo $(($RANDOM%$1))
+elif [[ "$#" == "2" ]]; then
+	diff=$(($2-$1))
+	echo $(($RANDOM%$diff+$1))
+fi

@@ -9,6 +9,6 @@ sort_files(){
 # sort by last modified
 [[ "$1" == "m" ]] && SORT_KEY=Y
 
-FOLDERS=(down docs shit vids)
+FOLDERS=(down docs shit vids meme)
 FILE="$(fd -0 . -t f "${FOLDERS[@]}" | sort_files $SORT_KEY | dmenu -i -l 10)"
 [[ "$FILE" != "" ]] && fig "$FILE"
