@@ -38,6 +38,10 @@ interval=300
 [countdown]
 interval=1
 
+# simple stopwatch
+[stopwatch]
+interval=1
+
 # days until ap scores
 #[ap]
 #interval=1

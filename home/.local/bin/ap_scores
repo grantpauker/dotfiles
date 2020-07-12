@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+is_subject(){
+	echo $1 | grep -q "Compare the"
+}
+is_percent(){
+	echo $1 | grep -Eq "<td><span >.*%.*<\/span>"
+}
+URL=https://www.totalregistration.net/AP-Exam-Registration-Service/AP-Exam-Score-Distributions.php
+first_sub="true"
+last="none"
+valid="false"
+to_print=""
+curl -s $URL | sed -n '/<tbody>/,/<\/tbody>/p' | while read p; do
+	if is_subject "$p" || is_percent "$p"; then
+		if is_subject "$p"; then
+			if [[ "$last" == "subject" ]]; then
+				valid="false"
+			fi
+			last="subject"
+			out=$(echo $p | sed 's/.*>\(.*\)<\/a>.*/\1/g' | sed 's/ /_/g;s/,//g')
+			if [[ "$first_sub" == "true" ]]; then
+				echo $out
+			fi
+			first_sub="false"
+		elif is_percent "$p"; then
+			if [[ "$last" == "subject" ]] || [[ "$last" == "percent" ]]; then
+				valid="true"
+			fi
+			out=$(echo $p | sed 's/.*>\(.*\)<\/span>.*/\1/g')
+			last="percent"
+		fi
+		if ! [[ "$valid" == "false" ]]; then
+			echo "$out"
+		fi
+		to_print="$out"
+	fi
+done | grep -v World_History | xargs -n6 | sed 's/ /,/g'  | column -t -s,

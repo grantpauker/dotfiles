@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# give a list of files to concatenate
+tmpfile=$(mktemp tmp.XXXXXXXX)
+for f in "${@:1:$#-1}"; do 
+	echo $f
+	echo "file '$(realpath $f)'" >> $tmpfile
+done
+ffmpeg -f concat -safe 0 -i $tmpfile -c copy ${@: -1}
+rm $tmpfile

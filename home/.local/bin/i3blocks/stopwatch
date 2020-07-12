@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-FILE=~/.data/statusbar-countdown
+FILE=~/.data/statusbar-stopwatch
 [[  -a $FILE ]] || exit
 function show_time () {
     num=$1
@@ -31,7 +31,7 @@ function show_time () {
 }
 color=$(xgetres red)
 now=$(date '+%s')
-later=$(cat $FILE)
-msg=$(show_time $((later-now)))
+start=$(cat $FILE)
+msg=$(show_time $((now-start)))
 echo $msg | rg -q "-" && rm $FILE && exit
 printf "$msg\n\n$color\n"

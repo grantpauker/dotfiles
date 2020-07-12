@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+ext="${1##*.}"
+file="${1%.*}"
+ffmpeg -i $1 -ss $2 -to $3 -async 1 "$file-trimmed.$ext"
+

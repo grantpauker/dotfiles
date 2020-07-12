@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+FILE=~/.data/statusbar-stopwatch
+[[ "$1" == "stop" ]] && rm $FILE && exit
+date +%s > $FILE
+

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# give either a url to shorten or a file to upload to 0x0
 URL="https://0x0.st"
 regex='https\?://[a-zA-Z0-9./?=_-]*'
 
