@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# give either a url to shorten or a file to upload to 0x0
+usage(){
+	exec=$(basename $0)
+	echo -e "usage: $exec <file>|<url>"
+}
+[[ "$#" -lt 1 ]] && usage && exit
+
 URL="https://0x0.st"
 regex='https\?://[a-zA-Z0-9./?=_-]*'
 
@@ -8,5 +13,5 @@ if grep "$regex" <<< "$1" &>> /dev/null; then
 elif [ -f "$1" ]; then
 	curl -F "file=@$1" "$URL" | tee >(xclip -sel c)
 else
-	echo "Not a valid file or url: $1"
+	echo "error: not a valid file or url ($1)"
 fi

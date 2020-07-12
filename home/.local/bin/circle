@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# give a file and crop it to a circle
+usage(){
+	exec=$(basename $0)
+	echo -e "usage: $exec <image>"
+}
+[[ "$#" -lt 1 ]] && usage && exit
+
 file="${1%.*}"
 x=$(identify $1 | awk '{print $3}' | cut -d'x' -f1)
 y=$(identify $1 | awk '{print $3}' | cut -d'x' -f2)
